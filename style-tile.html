@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Style tile v4, Geetika Agarwal portfolio</title>
 <meta name="robots" content="noindex">
-<link rel="preload" as="image" href="assets/generated/cover-folder-closed.jpg">
+<link rel="preload" as="image" href="assets/generated/cover-geetika.jpg">
 <style>
 /* ---------- Fonts, stored locally so double-clicking the file works offline ---------- */
 @font-face { font-family: "Figtree"; font-weight: 400 800; font-style: normal; font-display: swap; src: url(fonts/figtree-var-latin.woff2) format("woff2"); }
@@ -79,7 +79,18 @@ a { color: inherit; }
 
 /* ---------- Cover ---------- */
 .cover .frame { --fh: calc(100svh - var(--bar-h)); min-height: 520px; }
-.photo-open { opacity: 0; }
+.photo-open { opacity: 1; }
+.cover .scene { opacity: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+/* the closed file: Geetika's portrait cover, centred, with its own graph paper carried out to both sides */
+.closed-wrap { position: absolute; top: -9%; left: 50%; height: 118%; aspect-ratio: 1122 / 1402; transform: translateX(-50%); z-index: 2; container-type: size; }
+.closed-wrap::before { content: ""; position: absolute; top: 0; bottom: 0; left: -200vw; right: -200vw; z-index: -1;
+  background: url(assets/generated/graph-tile.png) repeat;
+  background-size: calc(99 / 1402 * 100cqh) calc(146 / 1402 * 100cqh);
+  background-position: calc(200vw + 33 / 1402 * 100cqh) calc(12 / 1402 * 100cqh); }
+.closed-photo { position: relative; width: 100%; height: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
 
 .front-text { left: 28.5%; top: 35%; width: 39.5%; text-align: center; container-type: inline-size; }
 .front-text h1 { margin: 0; font-weight: 400; display: grid; justify-items: center; }
@@ -111,7 +122,8 @@ a { color: inherit; }
   filter: drop-shadow(0 1px 1px rgba(40,30,50,.28)) drop-shadow(3px 9px 10px rgba(40,30,50,.22)); opacity: 0; z-index: 2; }
 
 /* static fallback: no JS, reduced motion, or the scripts didn't load */
-.no-motion .photo-closed, .no-motion .front-text { opacity: 0; }
+.no-motion .closed-wrap { opacity: 0; }
+.no-motion .cover .scene { opacity: 1; }
 .no-motion .photo-open, .no-motion .on-card, .no-motion .on-sheet, .no-motion .sticker { opacity: 1; }
 .no-motion .hint { display: none; }
 
@@ -164,7 +176,9 @@ a { color: inherit; }
   .titlebar .year { display: none; }
   /* zoom the photo so the closed folder fills the width; the open file then pans to the contents sheet */
   .cover .scene { width: 215vw; }
-  .cover .frame { --fh: 121vw; min-height: 0; }
+  .cover .frame { --fh: 125vw; min-height: 0; }
+  .closed-photo { -webkit-mask-image: none; mask-image: none; }
+  .closed-wrap { top: 0; height: 100%; }
   .sticker { width: calc(var(--w) * .8); }
   .divider .frame { --fh: 112vw; min-height: 0; }
   .divider .scene { width: 200vw; --pan: 22%; }
@@ -181,7 +195,7 @@ a { color: inherit; }
   <defs><symbol id="heart" viewBox="0 0 26 24"><path fill="#EC2A84" d="M13 23.2 11.2 21.6C4.8 15.8.6 12 .6 7.3.6 3.5 3.6.6 7.3.6c2.1 0 4.2 1 5.7 2.6C14.5 1.6 16.6.6 18.7.6c3.7 0 6.7 2.9 6.7 6.7 0 4.7-4.2 8.5-10.6 14.3z"/></symbol></defs>
 </svg>
 
-<p class="tile-note">Style tile v4. The folder and papers are photo-real images, and the cut-outs are yours. Scroll to open the file.</p>
+<p class="tile-note">Style tile v5. Your cover is the first page. Scroll to open the file.</p>
 
 <div class="window">
   <header class="titlebar">
@@ -195,15 +209,12 @@ a { color: inherit; }
     <!-- ================= COVER ================= -->
     <section class="cover" aria-label="Cover">
       <div class="frame">
+        <h1 class="sr-only">Portfolio: marketing, events and PR. Geetika Agarwal. I like ideas that are fun to look at and still move numbers.</h1>
+        <div class="closed-wrap" aria-hidden="true">
+          <img class="closed-photo" src="assets/generated/cover-geetika.jpg" alt="" width="1122" height="1402" fetchpriority="high">
+        </div>
         <div class="scene">
           <img class="photo photo-open" src="assets/generated/cover-folder-open.jpg" alt="" width="1536" height="864">
-          <img class="photo photo-closed" src="assets/generated/cover-folder-closed.jpg" alt="" width="1536" height="864" fetchpriority="high">
-
-          <div class="print front-text">
-            <h1><span class="script">Portfolio</span><span class="serif">Marketing, PR<br>and content</span></h1>
-            <p class="name">Geetika Agarwal</p>
-            <p class="line">I like ideas that are fun to look at and still move numbers.</p>
-          </div>
 
           <div class="print on-card">
             <h2>About the file</h2>
@@ -351,12 +362,11 @@ a { color: inherit; }
     });
     coverST = tl.scrollTrigger;
     tl.to('.hint', { autoAlpha: 0, duration: .08 }, 0)
-      .to('.front-text', { autoAlpha: 0, duration: .14 }, .06)
-      // the closed file eases toward the viewer as it opens, then the open photo takes over
-      .to('.cover .photo', { scale: 1.03, duration: .3 }, 0)
-      .to('.photo-closed', { autoAlpha: 0, duration: .22 }, .2)
-      .to('.photo-open', { autoAlpha: 1, duration: .22 }, .2)
-      .to('.cover .photo', { scale: 1, duration: .3 }, .3)
+      // the closed file lifts toward the viewer, then the open file takes its place
+      .to('.closed-photo', { scale: 1.06, duration: .3 }, 0)
+      .to('.closed-wrap', { autoAlpha: 0, duration: .2 }, .2)
+      .fromTo('.cover .scene', { opacity: 0 }, { opacity: 1, duration: .2 }, .2)
+      .fromTo('.cover .photo', { scale: 1.04 }, { scale: 1, duration: .3 }, .2)
       .to(['.on-card', '.on-sheet'], { opacity: 1, duration: .18, stagger: .06 }, .44); // opacity only, so the links stay reachable by keyboard
     if (phone) tl.to('.cover .scene', { '--pan': '-22%', duration: .4 }, .32);
     // the stickers slide out sideways from the middle of the file
