@@ -55,7 +55,7 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
 .house h2 { margin-top: 0; font-size: 1.5rem; }
 .house h3 { font: 700 1.0625rem/1.3 "Figtree", sans-serif; margin: 28px 0 8px; }
 .house p, .house li { max-width: 72ch; }
-.house ul { padding-left: 1.2em; margin: 0; }
+.house ul, .house ol { padding-left: 1.2em; margin: 0; }
 .house li { margin-bottom: 5px; }
 .refs { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); margin-top: 10px; }
 .refs figure { margin: 0; }
@@ -67,6 +67,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
 .copy:hover { background: var(--ink); color: #fff; }
 .copy:focus-visible { outline: 3px solid var(--work-zone); outline-offset: 2px; }
 .copied { font-size: .8125rem; margin-left: 10px; }
+.prompt .scene { font-size: .9375rem; }
+.prompt .plus { font-size: .8125rem; margin-top: 8px; color: #4A4E63; }
 .swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; list-style: none; padding: 0; }
 .swatches li { display: flex; align-items: center; gap: 8px; font-size: .875rem; margin: 0; }
 .swatches i { width: 34px; height: 34px; border-radius: 8px; border: 1px solid rgba(29,27,58,.15); }
@@ -97,14 +99,26 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
       <figure><img src="../assets/generated/divider-folders.jpg" alt="Stacked pastel folders with a polaroid clipped on" loading="lazy"><figcaption>The pastel palette</figcaption></figure>
       <figure><img src="../assets/generated/originals/sticker-sheet.png" alt="Six objects cut out as white-bordered stickers on grey" loading="lazy"><figcaption>How cut-out objects should look</figcaption></figure>
     </div>
-    <p>Tip: most tools let you upload a reference image. Upload the closed folder photo above as a style reference with every prompt.</p>
+    <p>Download these four from the repo (assets/generated) once, and keep them handy to attach in ChatGPT.</p>
 
-    <h3>The style paragraph: paste this at the end of every prompt</h3>
+
+    <h3>How to use ChatGPT for these</h3>
+    <ol>
+      <li>Start a new chat for each section, so it doesn't drift from earlier images.</li>
+      <li>Attach the closed folder photo (cover-folder-closed.jpg) as the style reference. For cut-out stickers, attach the sticker sheet instead.</li>
+      <li>Copy the prompt from that image's card below and send it. Every prompt already includes the style paragraph.</li>
+      <li>One image per message. If something is off, reply with just the fix, like "make the screens completely blank" or "softer shadows".</li>
+      <li>If it starts drifting after a few edits, start a new chat with the reference again.</li>
+      <li>Download the full-size PNG and rename it to the file name on the card.</li>
+    </ol>
+    <p>ChatGPT only makes landscape, portrait and square images, about 1536px on the long side. That's fine: I crop each one to the exact shape the site needs.</p>
+
+    <h3>The style paragraph (already inside every prompt below)</h3>
     <div class="prompt">
       <p id="master">Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</p>
       <button class="copy" type="button" data-copy="master">Copy style paragraph</button><span class="copied" role="status" aria-live="polite"></span>
     </div>
-    <p>How to write each prompt: describe the scene from its card below in one or two sentences, then paste the style paragraph. For example: <em>"Three iPhones standing upright in a row on plain lilac card, seen straight on and slightly from above, the middle one a little forward, screens completely blank and evenly lit."</em> followed by the style paragraph.</p>
+    <p>If you ever write your own prompt: describe the scene in one or two sentences, then paste the style paragraph. For example: <em>"Three iPhones standing upright in a row on plain lilac card, seen straight on and slightly from above, the middle one a little forward, screens completely blank and evenly lit."</em> followed by the style paragraph.</p>
 
     <h3>Colours</h3>
     <ul class="swatches">
@@ -159,7 +173,7 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         </ul>
         <h3>Cut-out stickers</h3>
         <ul>
-          <li>Flat plain mid-grey background with no shadow or gradient.</li>
+          <li>Ask ChatGPT for a transparent background. If it can't, a flat plain mid-grey background with no shadow or gradient.</li>
           <li>An even, thick white paper border around each object, like the sticker sheet above.</li>
           <li>Objects spaced apart so none of them touch.</li>
         </ul>
@@ -172,11 +186,11 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
       <li>Pastel and chalky, nothing neon, glossy or dark</li>
       <li>Blank areas are really blank, with no fake writing</li>
       <li>No logos, brand names or watermarks</li>
-      <li>At least 2048px on the long side, saved as PNG</li>
+      <li>Downloaded at full size as a PNG (use ChatGPT's download button, not a screenshot)</li>
       <li>It looks like the same shoot as the cover photo</li>
       <li>Saved with the exact file name from its card</li>
     </ul>
-    <p>If it fails one of these, generate 2 to 4 more versions and pick the best. Reuse the same seed if your tool offers one.</p>
+    <p>If it fails one of these, generate 2 to 4 more versions and pick the best. Or tell ChatGPT exactly what to fix, for example "make the light softer" or "remove the writing on the paper".</p>
   </section>
 
 
@@ -206,8 +220,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="o" x="14" y="24" width="18" height="21" transform="rotate(-5 23 34)"/>
         <rect class="t" x="20" y="58" width="46" height="50"/><text x="24" y="84">Title and name</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/generated/cover-folder-closed-phone.png</dd><dt>Shape</dt><dd>9:16 portrait</dd></dl>
-      <p class="note">Same pink folder as the laptop one, but filling most of a tall frame. Front completely blank.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/generated/cover-folder-closed-phone.png</dd><dt>Shape</dt><dd>Portrait</dd></dl>
+      <div class="prompt"><p class="scene">Portrait format. A top-down photo of the same closed light pastel pink manila file folder lying on pale white graph paper, filling most of the tall frame. A white polaroid is held to its top-left corner by a silver binder clip, a light blue gingham tab peeks out from the right edge, and two printed photos peek out from behind it on the right. The front of the folder is completely blank.</p><span hidden id="p0">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Portrait format. A top-down photo of the same closed light pastel pink manila file folder lying on pale white graph paper, filling most of the tall frame. A white polaroid is held to its top-left corner by a silver binder clip, a light blue gingham tab peeks out from the right edge, and two printed photos peek out from behind it on the right. The front of the folder is completely blank. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p0">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card done">
@@ -229,8 +243,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="t" x="36" y="30" width="44" height="98"/><text x="42" y="80">Contents</text>
         <text class="s" x="2" y="152">left page runs off the edge</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/generated/cover-folder-open-phone.png</dd><dt>Shape</dt><dd>9:16 portrait</dd></dl>
-      <p class="note">The open folder seen from above, cropped so the right-hand page with its blank white sheet fills the frame.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/generated/cover-folder-open-phone.png</dd><dt>Shape</dt><dd>Portrait</dd></dl>
+      <div class="prompt"><p class="scene">Portrait format. A top-down photo of an open light pastel pink manila file folder lying flat on pale white graph paper, cropped so the right-hand page fills most of the tall frame and only a thin strip of the left page shows at the left edge. On the right page lies a blank white A4 sheet with a few blank sheets beneath it, and a light blue gingham tab sticks out from the right edge.</p><span hidden id="p1">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Portrait format. A top-down photo of an open light pastel pink manila file folder lying flat on pale white graph paper, cropped so the right-hand page fills most of the tall frame and only a thin strip of the left page shows at the left edge. On the right page lies a blank white A4 sheet with a few blank sheets beneath it, and a light blue gingham tab sticks out from the right edge. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p1">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -240,10 +254,10 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="f" x="0" y="0" width="160" height="90" style="fill:#D9DADC;stroke:none"/>
         <path class="o" d="M58 30c10-10 34-10 44 0s6 32-8 34-34 4-40-8-6-18 4-26z" style="stroke-width:2.4;stroke:#fff;fill:#fff"/>
         <circle class="f" cx="70" cy="42" r="9"/><circle class="f" cx="86" cy="38" r="9"/><circle class="f" cx="80" cy="52" r="9"/>
-        <text class="s" x="58" y="80">white sticker border, grey background</text>
+        <text class="s" x="58" y="80">white sticker border, transparent background</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/generated/sticker-coins.png</dd><dt>Shape</dt><dd>square</dd></dl>
-      <p class="note">A small pile of shiny Indian rupee coins only. No notes or portraits.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/generated/sticker-coins.png</dd><dt>Shape</dt><dd>Square</dd></dl>
+      <div class="prompt"><p class="scene">Square format. A sticker cut-out of a small pile of shiny Indian rupee coins, seen from slightly above, with a thick, even white paper sticker border around the outline, matching the style of the attached sticker sheet. Coins only, with no banknotes. Transparent background.</p><span hidden id="p2">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Square format. A sticker cut-out of a small pile of shiny Indian rupee coins, seen from slightly above, with a thick, even white paper sticker border around the outline, matching the style of the attached sticker sheet. Coins only, with no banknotes. Transparent background. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p2">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
   </div>
 
@@ -280,7 +294,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect x="110" y="54" width="44" height="28" rx="2" style="fill:#FCEFB6;stroke:#6B7184;stroke-width:.6"/><text x="113" y="88">Photos butter</text>
         </g>
       </svg></div>
-      <dl class="meta"><dt>Files</dt><dd>assets/generated/divider-tooyumm.png, divider-tiya.png, divider-aquaterra.png, divider-media.png, divider-pr.png, divider-photography.png</dd><dt>Shape</dt><dd>16:9</dd></dl>
+      <dl class="meta"><dt>Files</dt><dd>assets/generated/divider-tooyumm.png, divider-tiya.png, divider-aquaterra.png, divider-media.png, divider-pr.png, divider-photography.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A photo of five pastel file folders stacked and overlapping, seen straight on and slightly from above, each one sitting lower than the one behind it so every top tab shows, each tab at a different position. At the very front, filling the lower half of the frame, is a [FRONT COLOUR] folder; the four behind it are in the other pastels: light blue, mint green, lilac, butter yellow and light pink. A small white polaroid is clipped to the top edge of the front folder with a pastel pink bulldog clip, on the right. All tabs and folders are blank.</p><span hidden id="p3">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A photo of five pastel file folders stacked and overlapping, seen straight on and slightly from above, each one sitting lower than the one behind it so every top tab shows, each tab at a different position. At the very front, filling the lower half of the frame, is a [FRONT COLOUR] folder; the four behind it are in the other pastels: light blue, mint green, lilac, butter yellow and light pink. A small white polaroid is clipped to the top edge of the front folder with a pastel pink bulldog clip, on the right. All tabs and folders are blank. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p3">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div><p class="note">Replace [FRONT COLOUR] each time: mint green for Too Yumm!, lilac for Tiya reels, peach for AquaTerra, light blue for media planning, white for PR desk, butter yellow for photography.</p>
       <p class="note">Same arrangement as the CRFTD one, just the big front folder changes colour. All tabs blank. One polaroid clipped to the front folder.</p>
     </article>
   </div>
@@ -298,8 +313,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <path class="o" d="M116 40h18l4 5v26h-26V45z"/><circle class="o" cx="125" cy="46" r="1.6"/>
         <rect class="t" x="116" y="52" width="18" height="14"/><text class="s" x="117" y="61">2,000+</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/crftd/tee-mockup-blank.png</dd><dt>Shape</dt><dd>4:5</dd></dl>
-      <p class="note">A plain white tee on a wooden hanger against a pale wall, front facing, plus a blank kraft paper swing tag. I place each of your real tee designs on the chest.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/crftd/tee-mockup-blank.png</dd><dt>Shape</dt><dd>Portrait</dd></dl>
+      <div class="prompt"><p class="scene">Portrait format. A straight-on photo of a plain white cotton t-shirt on a light wooden hanger against a pale warm-white wall, front facing, smooth with soft natural folds, and a blank kraft paper swing tag hanging from the collar on a thin string. The chest of the tee is plain and evenly lit.</p><span hidden id="p4">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Portrait format. A straight-on photo of a plain white cotton t-shirt on a light wooden hanger against a pale warm-white wall, front facing, smooth with soft natural folds, and a blank kraft paper swing tag hanging from the collar on a thin string. The chest of the tee is plain and evenly lit. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p4">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -311,8 +326,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="f" x="102" y="16" width="30" height="60" rx="5" transform="rotate(5 117 46)"/><rect class="w" x="105" y="21" width="24" height="50" rx="2" transform="rotate(5 117 46)"/>
         <text class="s" x="58" y="84">your 4 live posts on the screens</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/tooyumm/phones-desk.png</dd><dt>Shape</dt><dd>16:9</dd></dl>
-      <p class="note">Three modern phones lying flat on mint card, seen from above, screens completely blank and evenly lit.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/tooyumm/phones-desk.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A top-down photo of three modern smartphones with thin bezels and no visible brand logo, lying flat in a loose row on plain matte mint green card, the outer two slightly angled. The screens are completely blank, an even light grey with no glare or reflections.</p><span hidden id="p5">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A top-down photo of three modern smartphones with thin bezels and no visible brand logo, lying flat in a loose row on plain matte mint green card, the outer two slightly angled. The screens are completely blank, an even light grey with no glare or reflections. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p5">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -322,8 +337,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="f" x="30" y="6" width="100" height="78" rx="2" transform="rotate(-2 80 45)"/>
         <rect class="t" x="38" y="12" width="84" height="66" transform="rotate(-2 80 45)"/><text x="62" y="47">30-day calendar</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/tooyumm/calendar-paper.png</dd><dt>Shape</dt><dd>16:9</dd></dl>
-      <p class="note">A blank sheet of A4 paper on mint card, with a paper clip at the top. I print the calendar grid onto it.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/tooyumm/calendar-paper.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A top-down photo of one blank white A4 sheet of paper lying slightly rotated on plain matte mint green card, held at the top by a silver paper clip.</p><span hidden id="p6">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A top-down photo of one blank white A4 sheet of paper lying slightly rotated on plain matte mint green card, held at the top by a silver paper clip. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p6">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -335,8 +350,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="f" x="100" y="10" width="30" height="62" rx="5"/><rect class="w" x="103" y="15" width="24" height="52" rx="2"/>
         <rect class="t" x="58" y="76" width="44" height="9"/><text class="s" x="62" y="82">250K+ views</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/tiya/three-phones.png</dd><dt>Shape</dt><dd>16:9</dd></dl>
-      <p class="note">Three iPhones standing upright in a row on lilac card, blank screens, the middle one slightly forward.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/tiya/three-phones.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A photo of three modern iPhones standing upright in a row on plain matte lilac card, seen straight on and slightly from above, the middle one a little forward. The screens are completely blank, an even light grey with no glare or reflections.</p><span hidden id="p7">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A photo of three modern iPhones standing upright in a row on plain matte lilac card, seen straight on and slightly from above, the middle one a little forward. The screens are completely blank, an even light grey with no glare or reflections. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p7">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -349,8 +364,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="t" x="20" y="64" width="30" height="12" transform="rotate(-6 35 70)"/><rect class="t" x="60" y="66" width="30" height="12" transform="rotate(4 75 72)"/>
         <path class="o" d="M100 70c10-6 30-6 44 2"/><text class="s" x="104" y="80">wristband</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/aquaterra/pinboard.png</dd><dt>Shape</dt><dd>16:9</dd></dl>
-      <p class="note">A peach fabric pinboard with three blank white poster sheets pinned up, two blank ticket stubs and a festival wristband. Your real Paradox, Starry Night and Disco Diwali posters go on the sheets.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/aquaterra/pinboard.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A straight-on photo of a soft peach fabric pinboard on a pale warm-white wall. Pinned to it: three blank white poster sheets in a row with pastel push pins, and below them two blank pastel pink ticket stubs and one woven pastel pink festival wristband.</p><span hidden id="p8">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A straight-on photo of a soft peach fabric pinboard on a pale warm-white wall. Pinned to it: three blank white poster sheets in a row with pastel push pins, and below them two blank pastel pink ticket stubs and one woven pastel pink festival wristband. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p8">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -361,8 +376,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="t" x="20" y="14" width="54" height="64"/><text x="28" y="47">Titan Edge</text>
         <rect class="t" x="86" y="14" width="54" height="64"/><text x="90" y="47">DantKanti Pro+</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/media/planner-open.png</dd><dt>Shape</dt><dd>16:9</dd></dl>
-      <p class="note">An open spiral planner lying flat on sky blue card, both pages blank white. I draw the real donut charts, city bars and schedule onto the pages.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/media/planner-open.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A top-down photo of an open spiral-bound planner lying flat on plain matte light blue card, both pages blank white, with a pencil lying beside it.</p><span hidden id="p9">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A top-down photo of an open spiral-bound planner lying flat on plain matte light blue card, both pages blank white, with a pencil lying beside it. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p9">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -374,8 +389,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="t" x="38" y="26" width="38" height="52"/><rect class="t" x="80" y="26" width="38" height="52"/>
         <text class="s" x="42" y="52">release text</text><text class="s" x="84" y="52">release text</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/pr/clipping-blank.png</dd><dt>Shape</dt><dd>4:5</dd></dl>
-      <p class="note">A torn-out newspaper page with blank columns, on white card, with a paper clip. I set your real press release on it in newspaper type.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/pr/clipping-blank.png</dd><dt>Shape</dt><dd>Portrait</dd></dl>
+      <div class="prompt"><p class="scene">Portrait format. A top-down photo of a torn-out newspaper page with ragged torn edges lying on plain white card, held by a silver paper clip at the top. The newsprint has a headline area and two columns that are completely empty, just the pale grey newsprint paper.</p><span hidden id="p10">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Portrait format. A top-down photo of a torn-out newspaper page with ragged torn edges lying on plain white card, held by a silver paper clip at the top. The newsprint has a headline area and two columns that are completely empty, just the pale grey newsprint paper. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p10">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -389,8 +404,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="o" x="40" y="52" width="40" height="30"/><rect class="w" x="44" y="56" width="32" height="22"/>
         <rect class="t" x="96" y="58" width="30" height="16"/><text class="s" x="99" y="67">placard</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/photography/gallery-wall.png</dd><dt>Shape</dt><dd>16:9</dd></dl>
-      <p class="note">A pale gallery wall with four empty thin white frames with mounts, and a small blank exhibition placard. Your four NCPA photos go in the frames.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/photography/gallery-wall.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A straight-on photo of a pale warm-white gallery wall with four empty thin white picture frames with white mounts, hung in a relaxed cluster, and a small blank white exhibition placard on the wall beside them. The frames are completely empty.</p><span hidden id="p11">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A straight-on photo of a pale warm-white gallery wall with four empty thin white picture frames with white mounts, hung in a relaxed cluster, and a small blank white exhibition placard on the wall beside them. The frames are completely empty. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p11">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -401,8 +416,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="t" x="68" y="28" width="28" height="36" transform="rotate(-2 82 46)"/><rect class="t" x="98" y="22" width="28" height="36" transform="rotate(4 112 40)"/>
         <rect class="t" x="128" y="28" width="26" height="36" transform="rotate(-3 141 46)"/>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/generated/desk-cards.png</dd><dt>Shape</dt><dd>wide, 3:1</dd></dl>
-      <p class="note">Five blank pastel index cards in a loose row on graph paper, each a different pastel. One role per card.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/generated/desk-cards.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A top-down photo of five blank index cards in a loose row on pale white graph paper, each a different pastel colour: light pink, light blue, mint green, lilac and butter yellow, each slightly rotated.</p><span hidden id="p12">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A top-down photo of five blank index cards in a loose row on pale white graph paper, each a different pastel colour: light pink, light blue, mint green, lilac and butter yellow, each slightly rotated. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p12">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
 
     <article class="card">
@@ -414,8 +429,8 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
         <rect class="t" x="50" y="28" width="62" height="32"/><text x="54" y="46">email, LinkedIn</text>
         <rect class="t" x="122" y="28" width="22" height="32"/><text class="s" x="124" y="46">CV</text>
       </svg></div>
-      <dl class="meta"><dt>File</dt><dd>assets/generated/boarding-pass.png</dd><dt>Shape</dt><dd>16:9</dd></dl>
-      <p class="note">A blank pastel blue boarding pass with a tear-off stub, lying on graph paper next to a burgundy passport. I print your email, LinkedIn and CV links onto it.</p>
+      <dl class="meta"><dt>File</dt><dd>assets/generated/boarding-pass.png</dd><dt>Shape</dt><dd>Landscape</dd></dl>
+      <div class="prompt"><p class="scene">Landscape format. A top-down photo of a blank pastel light blue boarding pass with a perforated tear-off stub on the right, lying on pale white graph paper next to a closed burgundy passport, both slightly rotated.</p><span hidden id="p13">Create a new photo that matches the lighting, colours and paper style of the attached reference photo. Landscape format. A top-down photo of a blank pastel light blue boarding pass with a perforated tear-off stub on the right, lying on pale white graph paper next to a closed burgundy passport, both slightly rotated. Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</span><button class="copy" type="button" data-copy="p13">Copy full prompt</button><span class="copied" role="status" aria-live="polite"></span><p class="plus">Copying adds the reference line and the style paragraph for you.</p></div>
     </article>
   </div>
 
