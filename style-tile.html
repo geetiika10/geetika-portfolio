@@ -3,521 +3,425 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Style tile, Geetika Agarwal portfolio</title>
+<title>Style tile v2, Geetika Agarwal portfolio</title>
 <meta name="robots" content="noindex">
 <style>
-/* Fonts: stored locally so the page works when double-clicked, even offline */
-@font-face { font-family: "Rozha One"; font-weight: 400; font-display: swap; src: url(fonts/rozha-400-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2212; }
-@font-face { font-family: "Rozha One"; font-weight: 400; font-display: swap; src: url(fonts/rozha-400-deva.woff2) format("woff2"); unicode-range: U+0900-097F, U+20B9, U+25CC; }
-@font-face { font-family: "Mukta"; font-weight: 400; font-display: swap; src: url(fonts/mukta-400-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2212; }
-@font-face { font-family: "Mukta"; font-weight: 400; font-display: swap; src: url(fonts/mukta-400-deva.woff2) format("woff2"); unicode-range: U+0900-097F, U+20B9, U+25CC; }
-@font-face { font-family: "Mukta"; font-weight: 500; font-display: swap; src: url(fonts/mukta-500-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2212; }
-@font-face { font-family: "Mukta"; font-weight: 500; font-display: swap; src: url(fonts/mukta-500-deva.woff2) format("woff2"); unicode-range: U+0900-097F, U+20B9, U+25CC; }
-@font-face { font-family: "Mukta"; font-weight: 700; font-display: swap; src: url(fonts/mukta-700-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2212; }
-@font-face { font-family: "Mukta"; font-weight: 700; font-display: swap; src: url(fonts/mukta-700-deva.woff2) format("woff2"); unicode-range: U+0900-097F, U+20B9, U+25CC; }
+/* ---------- Fonts, stored locally so double-clicking the file works offline ---------- */
+@font-face { font-family: "Figtree"; font-weight: 400 800; font-style: normal; font-display: swap; src: url(fonts/figtree-var-latin.woff2) format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 400 800; font-style: italic; font-display: swap; src: url(fonts/figtree-var-italic-latin.woff2) format("woff2"); }
+/* Figtree has no rupee sign, so the ₹ falls through to Mukta */
+@font-face { font-family: "Rupee"; font-weight: 400; font-display: swap; src: url(fonts/mukta-400-deva.woff2) format("woff2"); unicode-range: U+20B9; }
+@font-face { font-family: "Rupee"; font-weight: 700; font-display: swap; src: url(fonts/mukta-700-deva.woff2) format("woff2"); unicode-range: U+20B9; }
+@font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-var-latin.woff2) format("woff2"); }
+@font-face { font-family: "Silkscreen"; font-weight: 700; font-display: swap; src: url(fonts/silkscreen-700-latin.woff2) format("woff2"); }
+@font-face { font-family: "Pinyon Script"; font-weight: 400; font-display: swap; src: url(fonts/pinyon-latin.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/instrumentserif-italic-latin.woff2) format("woff2"); }
+@font-face { font-family: "Rozha One"; font-weight: 400; font-display: swap; src: url(fonts/rozha-400-latin.woff2) format("woff2"); }
 
 :root {
-  /* Colour: every colour is a material on the desk */
-  --desk:   #CFE3F5;  /* light blue desk mat, page background */
-  --folder: #F7C5D5;  /* pink folder card */
-  --folder-deep: #EEB1C5; /* the folder's inside face, a shade darker */
-  --paper:  #FAFCFF;  /* cool copier white */
-  --butter: #FDE99B;
-  --mint:   #C4EBD5;
-  --lilac:  #DACDF3;
-  --peach:  #FFD2B6;
-  --sky:    #B9D6F0;  /* divider card a step deeper than the desk */
-  --ink:    #1E2A6E;  /* ballpoint blue, all text */
-  --stamp:  #5A3FA6;  /* violet stamp-pad ink */
+  /* Colour. Light blue and light pink lead; one loud pink does the reference's electric-blue job. */
+  --canvas:   #F2F7FD;   /* pale sky, the dot-grid canvas (not cream) */
+  --dot:      #B5CAE7;   /* the grid dots */
+  --desktop:  #F9D3E4;   /* light pink desktop behind the window */
+  --sky:      #CFE6FB;   /* light blue lead */
+  --blush:    #F9D7E6;   /* light pink lead */
+  --signature:#EC2A84;   /* candy pink: dividers, pill tags, hearts */
+  --signature-text: #C81E6F; /* the same pink, darkened for small text on the canvas */
+  --butter:   #FCEFB6;
+  --mint:     #D3F1E0;
+  --lilac:    #E3D9FB;
+  --peach:    #FFD9C2;
+  --sunny:    #FFC83D;   /* pixel sparkles, camera focus box */
+  --ink:      #1D1B3A;   /* text */
+  --chrome:   #FBFCFE;   /* window title bars */
+  --chrome-line: #E3E7EE;
+  --on-signature: #FFF4F9;
 
-  /* Type scale (px): 12 14 18 21 24 36 48 72 120 */
-  --t-12: 0.75rem; --t-14: 0.875rem; --t-18: 1.125rem; --t-21: 1.3125rem;
-  --t-24: 1.5rem;  --t-36: 2.25rem;  --t-48: 3rem;     --t-72: 4.5rem;
-  --t-120: clamp(3.5rem, 9vw, 7.5rem);
+  --sans: "Figtree", "Rupee", system-ui, sans-serif;
+  --wide: "Archivo", "Figtree", sans-serif;
 
-  --display: "Rozha One", "Bodoni 72", Georgia, serif;
-  --text: "Mukta", "Segoe UI", system-ui, sans-serif;
+  --win-shadow: 0 1px 2px rgba(29,27,58,.10), 0 22px 44px -20px rgba(29,27,58,.35);
+  --card-shadow: 0 1px 2px rgba(29,27,58,.08), 0 14px 28px -16px rgba(29,27,58,.30);
+  /* cut-out objects: a contact shadow plus a soft cast shadow, like a photo on a desk */
+  --cutout-shadow: drop-shadow(0 2px 1px rgba(29,27,58,.25)) drop-shadow(6px 14px 14px rgba(29,27,58,.22));
 
-  /* Shadows are tinted with the ink blue, because shadows on a blue desk go blue.
-     Height decides the shadow: flat paper sits close, thicker things throw further. */
-  --lift-paper: 0 1px 1px rgba(30,42,110,.20), 0 3px 8px -2px rgba(30,42,110,.16);
-  --lift-card:  0 1px 2px rgba(30,42,110,.22), 0 8px 18px -6px rgba(30,42,110,.24);
-  --lift-folder: 0 2px 3px rgba(30,42,110,.20), 0 22px 40px -14px rgba(30,42,110,.35);
-
-  /* Paper grain, a tiny noise texture laid over every paper surface */
-  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .12  0 0 0 0 .16  0 0 0 0 .43  0 0 0 .16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  /* Photoshop's "transparent layer" checkerboard: the honest look for an image that isn't there yet */
+  --checker: repeating-conic-gradient(#E6EAF1 0 25%, #FFFFFF 0 50%) 0 0 / 22px 22px;
 }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0;
-  background-color: var(--desk);
-  background-image: var(--grain);
-  background-size: 160px;
-  background-blend-mode: multiply;
-  color: var(--ink);
-  font-family: var(--text);
-  font-size: var(--t-18);
-  line-height: 1.55;
+  margin: 0; background: var(--desktop); color: var(--ink);
+  font-family: var(--sans); font-size: 1.125rem; line-height: 1.55;
 }
-img { display: block; max-width: 100%; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--stamp); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
 
-/* Anything made of paper gets grain */
-.paper { position: relative; isolation: isolate; }
-.paper::after {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background-image: var(--grain); background-size: 160px; opacity: .6; mix-blend-mode: multiply;
-  border-radius: inherit;
+.tile-note { margin: 0 auto; max-width: 1400px; padding: 14px 20px 10px; font-size: .875rem; line-height: 1.4; }
+
+/* ---------- The app window around the whole page ---------- */
+.window {
+  max-width: 1400px; margin: 0 auto 40px;
+  background-color: var(--canvas);
+  background-image: radial-gradient(circle, var(--dot) 1.15px, transparent 1.6px);
+  background-size: 22px 22px;
+  border-radius: 16px; overflow: clip;
+  box-shadow: var(--win-shadow);
 }
+@media (min-width: 700px) { .window { margin-inline: 16px; } }
+@media (min-width: 1432px) { .window { margin-inline: auto; } }
 
-.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-@media (min-width: 700px) { .wrap { padding: 0 48px; } }
-
-.tile-section { padding-block: 72px; }
-.tile-section + .tile-section { padding-block-start: 24px; }
-.tile-head { font: 700 var(--t-24)/1.2 var(--text); margin: 0 0 8px; }
-.tile-note { max-width: 64ch; margin: 0 0 36px; font-size: var(--t-14); line-height: 1.5; }
-
-/* ---------- Intro ---------- */
-.intro { padding-block: 48px 0; }
-.intro h1 { font: 700 var(--t-24)/1.2 var(--text); margin: 0 0 8px; }
-.intro p { max-width: 64ch; margin: 0; font-size: var(--t-14); }
-
-/* ---------- Paper swatches ---------- */
-.swatches {
-  display: grid; gap: 28px 24px;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  list-style: none; margin: 0; padding: 0;
+.titlebar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; gap: 22px;
+  height: 64px; padding: 0 24px;
+  background: var(--chrome);
+  box-shadow: 0 1px 0 var(--chrome-line), 0 6px 14px -8px rgba(29,27,58,.25);
 }
-.swatch {
-  aspect-ratio: 1 / 1.414;           /* A-series paper proportion */
-  background: var(--c);
-  box-shadow: var(--lift-paper);
-  padding: 14px 14px 12px;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  transform: rotate(var(--r, 0deg));
-}
-.swatch b { font-weight: 700; font-size: var(--t-18); line-height: 1.2; }
-.swatch span { font-size: var(--t-14); line-height: 1.35; }
-.swatch .hex { font-weight: 500; margin-top: 2px; }
-.swatch.lead { outline: 2px solid var(--ink); outline-offset: 6px; }
+.lights { display: flex; gap: 12px; }
+.lights i { width: 15px; height: 15px; border-radius: 50%; display: block; }
+.lights i:nth-child(1) { background: #FF5F57; } .lights i:nth-child(2) { background: #FEBC2E; } .lights i:nth-child(3) { background: #28C840; }
+.titlebar .sep { width: 1px; align-self: stretch; background: var(--chrome-line); }
+.titlebar .owner { font-size: 1.125rem; font-weight: 500; }
+.titlebar .year { margin-left: auto; font-size: .875rem; font-weight: 500; }
 
-.inks { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 36px; }
-.ink-card {
-  background: var(--paper); box-shadow: var(--lift-paper);
-  padding: 16px 18px; display: flex; align-items: center; gap: 14px; min-width: 260px;
-}
-.ink-dot { width: 44px; height: 44px; border-radius: 50%; background: var(--c); flex: none;
-  /* ink soaks unevenly into paper */
-  -webkit-mask: radial-gradient(circle at 48% 52%, #000 62%, transparent 72%);
-          mask: radial-gradient(circle at 48% 52%, #000 62%, transparent 72%); }
-.ink-card b { display: block; line-height: 1.2; }
-.ink-card span { font-size: var(--t-14); }
-
-/* ---------- Type specimen ---------- */
-.specimen { background: var(--paper); box-shadow: var(--lift-card); padding: 32px 20px; }
-@media (min-width: 700px) { .specimen { padding: 48px 56px; } }
-.specimen h3 { font: 700 var(--t-21)/1.3 var(--text); margin: 0 0 4px; }
-.specimen .who { font-size: var(--t-14); margin: 0 0 28px; }
-.specimen + .specimen { margin-top: 32px; }
-.spec-row { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 14px 0; border-top: 1px solid rgba(30,42,110,.15); }
-@media (min-width: 900px) { .spec-row { grid-template-columns: 170px 1fr; gap: 24px; align-items: baseline; } }
-.spec-row .size { font-size: var(--t-14); line-height: 1.35; }
-.spec-row .size b { font-weight: 700; }
-.spec-row .sample { margin: 0; overflow-wrap: anywhere; }
-.rozha { font-family: var(--display); font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; }
-.mukta { font-family: var(--text); }
-.weights { display: grid; gap: 6px; margin-top: 28px; }
-.weights p { margin: 0; font-size: var(--t-21); line-height: 1.3; }
-.body-sample { max-width: 64ch; margin-top: 28px; }
-.body-sample p { margin: 0 0 12px; }
-
-/* ---------- Placeholder frame (stands in for a missing image) ---------- */
+/* ---------- Placeholders ---------- */
 .ph {
-  background: var(--paper);
-  border: 1.5px dashed rgba(30,42,110,.45);
-  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
-  padding: 12px 14px; gap: 2px;
-  font-size: var(--t-12); line-height: 1.35;
-  overflow: hidden; min-width: 0;
+  background: var(--checker);
+  outline: 1.5px dashed rgba(29,27,58,.45); outline-offset: -1.5px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+  gap: 1px; padding: 8px; font-size: .75rem; line-height: 1.3; color: var(--ink);
+  min-width: 0; overflow: hidden;
 }
-.ph b { font-size: var(--t-14); font-weight: 700; }
-.ph code { font-family: var(--text); font-weight: 500; overflow-wrap: anywhere; }
+.ph b { font-size: .8125rem; font-weight: 700; }
+.ph span { overflow-wrap: anywhere; }
+.ph .tag { background: rgba(255,255,255,.88); border-radius: 8px; padding: 6px 9px; }
 
-/* ---------- Folder with index tabs ---------- */
-.folder-stage { padding: 24px 0 8px; }
-.folder {
-  position: relative; max-width: 1040px; margin: 0 auto;
-  aspect-ratio: 1.75 / 1;
-}
-.folder-back {
-  position: absolute; inset: 9% 0 0 0;
-  background: var(--folder-deep); border-radius: 6px;
-  box-shadow: var(--lift-folder);
-}
-.dividers { position: absolute; inset: 0 3.5% 0 3.5%; list-style: none; margin: 0; padding: 0; }
-.divider {
-  position: absolute; left: 0; right: 0; bottom: 4%;
-  top: calc(13% + var(--i) * 1.5%);
-  background: var(--c); border-radius: 3px 3px 2px 2px;
-  box-shadow: 0 -1px 0 rgba(30,42,110,.10), var(--lift-paper);
-}
-.divider a {
-  position: absolute; bottom: 100%;
-  left: calc(var(--i) * 10.6%);
-  width: 11.4%; min-width: 0;
-  background: var(--c);
-  border-radius: 7px 7px 0 0;
-  padding: 7px 6px 5px; margin-bottom: -1px;
-  font: 500 var(--t-14)/1.15 var(--text);
-  text-decoration: none; text-align: center;
-  box-shadow: 0 -1px 2px rgba(30,42,110,.14);
-  overflow-wrap: anywhere;
-}
-/* The one hover effect on the whole site: a tab lifts. Instant for now, no animation yet. */
-.divider a:hover, .divider a:focus-visible { transform: translateY(-6px); }
-.divider a:focus-visible { outline-offset: 2px; }
+/* ---------- Cover ---------- */
+.cover { position: relative; height: 1280px; }
 
-.folder-front {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 32%;
-  background: var(--folder); border-radius: 4px 4px 6px 6px;
-  box-shadow: 0 -2px 2px rgba(30,42,110,.10), 0 -10px 24px -12px rgba(30,42,110,.35);
-  display: flex; align-items: flex-end; justify-content: flex-start; padding: 0 0 4.5% 6%;
-}
-.folder-label {
-  background: var(--paper); box-shadow: var(--lift-paper);
-  padding: 10px 16px 8px; transform: rotate(-1.2deg);
-  font: 500 var(--t-18)/1.3 var(--text);
-  max-width: 70%;
-}
-.folder-label small { display: block; font-size: var(--t-12); font-weight: 400; margin-top: 2px; opacity: .8; }
+/* collage objects: real cut-out photos go here, with a real shadow */
+.cut { position: absolute; border-radius: 22px; filter: var(--cutout-shadow); }
+.cut.ph { background-color: rgba(255,255,255,.5); }
+.cut-camera  { left: 2.5%; top: 40px;  width: 230px; height: 170px; transform: rotate(-8deg); }
+.cut-clapper { left: 1.5%; top: 300px; width: 180px; height: 160px; transform: rotate(7deg); z-index: 3; }
+.cut-ticket  { left: 2%; top: 780px; width: 230px; height: 104px; transform: rotate(-5deg); z-index: 4; }
+.cut-momos   { right: 2%; top: 640px; width: 250px; height: 180px; transform: rotate(4deg); z-index: 4; }
 
-/* Phones: the tabs can't sit in one row, so the dividers stand up as a stack you read top to bottom */
-@media (max-width: 760px) {
-  .folder { aspect-ratio: auto; padding: 18px 12px 0; background: var(--folder-deep); border-radius: 6px; box-shadow: var(--lift-folder); }
-  .folder-back { display: none; }
-  .dividers { position: static; display: grid; gap: 0; }
-  .divider { position: relative; inset: auto; height: 56px; margin-top: -18px; border-radius: 3px; }
-  .divider:first-child { margin-top: 26px; }
-  .divider a { left: calc(var(--i) * 6%); width: auto; min-width: 44%; padding: 8px 14px 6px; text-align: left; }
-  .folder-front { position: relative; height: auto; padding: 28px 16px 24px; margin: -10px -12px 0; border-radius: 4px 4px 6px 6px; }
-  .folder-label { max-width: 100%; }
-}
+/* camera focus box around the momos, the photographer's eye */
+.focus { position: absolute; right: 2.6%; top: 628px; width: 150px; height: 128px; border: 2px solid var(--sunny); z-index: 5; pointer-events: none; }
+.focus::before, .focus::after { content: ""; position: absolute; background: var(--sunny); }
+.focus::before { left: 50%; top: -6px; width: 2px; height: 12px; }
+.focus::after  { top: 50%; left: -6px; width: 12px; height: 2px; }
+.focus svg { position: absolute; right: -34px; top: 22px; width: 30px; height: 30px; }
 
-/* ---------- Small objects: stamp, sticky note, button ---------- */
-.objects { display: grid; gap: 48px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: center; }
-.obj-cap { font-size: var(--t-14); margin: 18px 0 0; max-width: 34ch; }
+/* desktop folder icons */
+.desk-folders { position: absolute; right: 1.5%; top: 34px; width: 330px; height: 400px; list-style: none; margin: 0; padding: 0; z-index: 3; }
+.desk-folders li { position: absolute; }
+.desk-folders a { display: grid; justify-items: center; gap: 6px; text-decoration: none; padding: 6px 10px; border-radius: 10px; }
+.desk-folders a:hover { background: rgba(207,230,251,.7); }
+.desk-folders svg { width: 104px; height: 84px; filter: drop-shadow(0 4px 6px rgba(29,27,58,.15)); }
+.desk-folders span { font-size: .9375rem; font-weight: 500; line-height: 1.25; text-align: center; white-space: nowrap; }
 
-.stamp-sheet { background: var(--paper); box-shadow: var(--lift-paper); padding: 40px 24px; display: grid; place-items: center; }
-.stamp {
-  color: var(--stamp);
-  border: 3px solid currentColor; border-radius: 10px;
-  padding: 6px; transform: rotate(-7deg);
-  mix-blend-mode: multiply; filter: url(#ink);
-  text-align: center;
-}
-.stamp-inner { border: 1.5px solid currentColor; border-radius: 6px; padding: 8px 18px 6px; }
-.stamp b { display: block; font: 700 var(--t-24)/1.1 var(--text); letter-spacing: .02em; }
-.stamp span { display: block; font: 500 var(--t-14)/1.3 var(--text); }
+/* the torn photo at the bottom of the cover */
+.tear { position: absolute; left: 0; right: 0; top: 700px; height: 580px; }
+.tear .checker, .tear .photo { position: absolute; inset: 0; }
+.tear .checker { background: repeating-conic-gradient(#D7DCE5 0 25%, #FFFFFF 0 50%) 0 0 / 26px 26px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 25px), 99.7% calc(100% - 26px), 95.4% calc(100% - 29px), 91.5% calc(100% - 41px), 89.6% calc(100% - 22px), 89.1% calc(100% - 20px), 86.6% calc(100% - 23px), 83.4% calc(100% - 30px), 80.3% calc(100% - 23px), 80.1% calc(100% - 27px), 79.2% calc(100% - 17px), 78.5% calc(100% - 28px), 75.6% calc(100% - 31px), 73.3% calc(100% - 31px), 73.1% calc(100% - 28px), 72.8% calc(100% - 16px), 70.5% calc(100% - 34px), 67.7% calc(100% - 31px), 65.8% calc(100% - 30px), 62.6% calc(100% - 36px), 56.9% calc(100% - 37px), 54.5% calc(100% - 22px), 54.2% calc(100% - 28px), 52.0% calc(100% - 22px), 51.1% calc(100% - 16px), 50.0% calc(100% - 27px), 48.0% calc(100% - 50px), 45.4% calc(100% - 25px), 41.4% calc(100% - 22px), 39.6% calc(100% - 25px), 39.4% calc(100% - 34px), 39.0% calc(100% - 35px), 38.9% calc(100% - 18px), 37.7% calc(100% - 41px), 36.9% calc(100% - 26px), 32.7% calc(100% - 30px), 32.5% calc(100% - 36px), 31.1% calc(100% - 34px), 29.9% calc(100% - 26px), 28.9% calc(100% - 42px), 26.8% calc(100% - 19px), 26.3% calc(100% - 29px), 26.1% calc(100% - 16px), 26.0% calc(100% - 20px), 24.5% calc(100% - 28px), 23.3% calc(100% - 35px), 20.3% calc(100% - 29px), 20.2% calc(100% - 40px), 14.8% calc(100% - 16px), 13.9% calc(100% - 34px), 12.8% calc(100% - 17px), 12.0% calc(100% - 21px), 11.4% calc(100% - 30px), 10.8% calc(100% - 41px), 10.5% calc(100% - 29px), 9.9% calc(100% - 30px), 7.1% calc(100% - 16px), 2.6% calc(100% - 22px), 0.7% calc(100% - 31px), 0% calc(100% - 21px));
+  filter: drop-shadow(0 3px 3px rgba(29,27,58,.18)); }
+.tear .photo { background-color: #DCEBFA; background-image: repeating-conic-gradient(#CBDDF2 0 25%, #DCEBFA 0 50%); background-size: 34px 34px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 55px), 98.0% calc(100% - 73px), 97.6% calc(100% - 72px), 94.8% calc(100% - 73px), 87.5% calc(100% - 56px), 85.8% calc(100% - 61px), 82.7% calc(100% - 62px), 81.6% calc(100% - 68px), 79.4% calc(100% - 69px), 76.5% calc(100% - 74px), 75.7% calc(100% - 55px), 72.9% calc(100% - 69px), 69.9% calc(100% - 69px), 68.0% calc(100% - 59px), 66.8% calc(100% - 67px), 65.1% calc(100% - 73px), 63.9% calc(100% - 51px), 62.7% calc(100% - 76px), 58.6% calc(100% - 51px), 58.2% calc(100% - 70px), 57.7% calc(100% - 58px), 57.4% calc(100% - 70px), 57.3% calc(100% - 74px), 54.8% calc(100% - 53px), 53.6% calc(100% - 58px), 52.5% calc(100% - 75px), 50.7% calc(100% - 51px), 48.9% calc(100% - 52px), 45.3% calc(100% - 60px), 43.4% calc(100% - 54px), 42.8% calc(100% - 61px), 42.5% calc(100% - 74px), 41.8% calc(100% - 69px), 39.7% calc(100% - 69px), 37.2% calc(100% - 84px), 36.6% calc(100% - 62px), 32.4% calc(100% - 73px), 31.4% calc(100% - 59px), 30.8% calc(100% - 50px), 30.0% calc(100% - 64px), 29.0% calc(100% - 56px), 28.8% calc(100% - 54px), 24.4% calc(100% - 73px), 22.3% calc(100% - 59px), 20.6% calc(100% - 57px), 18.1% calc(100% - 70px), 15.2% calc(100% - 63px), 15.1% calc(100% - 52px), 14.4% calc(100% - 59px), 12.4% calc(100% - 79px), 11.8% calc(100% - 62px), 9.1% calc(100% - 51px), 7.2% calc(100% - 59px), 7.0% calc(100% - 70px), 6.3% calc(100% - 66px), 6.0% calc(100% - 51px), 5.8% calc(100% - 61px), 4.7% calc(100% - 70px), 3.9% calc(100% - 64px), 3.7% calc(100% - 67px), 0% calc(100% - 71px)); }
+.tear .photo-label { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); width: max-content; max-width: 90%; }
 
-.sticky {
-  aspect-ratio: 1 / 1; max-width: 260px; width: 100%;
-  background: var(--butter);
-  transform: rotate(2deg);
-  /* a sticky note lifts at the free bottom edge, so its shadow is deeper there */
-  box-shadow: 0 1px 1px rgba(30,42,110,.18), 2px 14px 14px -10px rgba(30,42,110,.40);
-  padding: 22px 18px 18px;
-  display: flex;
+/* the white card holding the ransom-note title */
+.title-card {
+  position: absolute; left: 50%; top: 190px; transform: translateX(-50%);
+  width: min(900px, 64%); padding: 44px 40px 60px;
+  background: rgba(255,255,255,.74);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  border-radius: 36px; z-index: 2;
 }
-.sticky::before { /* the glue strip along the top reads slightly darker */
-  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 18%;
-  background: rgba(30,42,110,.035);
-}
-.sticky .ph { flex: 1; background: transparent; }
+.ransom { --L: clamp(64px, 15vw, 215px); margin: 0; display: grid; justify-items: center; row-gap: calc(var(--L) * .16); line-height: 1; font-weight: 400; }
+.ransom .row { display: flex; align-items: flex-end; justify-content: center; }
+.ransom .row > span { display: inline-grid; place-items: center; position: relative; }
+.ransom .row1 { margin-left: calc(var(--L) * -.5); }
+.ransom .row2 { margin-left: calc(var(--L) * .35); }
+.l-p  { font: 700 calc(var(--L) * 1.18)/.78 "Silkscreen", monospace; transform: rotate(-3deg); margin-right: .02em; }
+.l-o1 { width: calc(var(--L) * .74); height: calc(var(--L) * .9); transform: rotate(4deg) translateY(-6%);
+        background: linear-gradient(165deg, #FFE27A 0%, #FF9DC4 52%, #C6B4FF 100%); box-shadow: var(--card-shadow); }
+.l-o1 b { font: 900 calc(var(--L) * .86)/1 var(--wide); color: rgba(255,255,255,.82); filter: blur(1.2px); }
+.l-r  { font: calc(var(--L) * 1.32)/.8 "Pinyon Script", cursive; margin: 0 calc(var(--L) * -.1) 0 calc(var(--L) * -.04); transform: translateY(4%); }
+.l-t  { font: 800 calc(var(--L) * 1.16)/.8 var(--wide); font-stretch: 62%; }
+.l-f  { font: 900 calc(var(--L) * 1.04)/.82 var(--wide); font-stretch: 100%;
+        background: repeating-linear-gradient(0deg, rgba(236,42,132,.5) 0 9px, transparent 9px 18px),
+                    repeating-linear-gradient(90deg, rgba(236,42,132,.5) 0 9px, transparent 9px 18px), #FFE1EE;
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+        filter: drop-shadow(0 2px 0 rgba(200,30,111,.55)) drop-shadow(3px 8px 6px rgba(29,27,58,.25)); transform: rotate(-4deg); }
+.l-o2 { width: calc(var(--L) * .66); height: calc(var(--L) * .66); margin: 0 calc(var(--L) * .04); }
+.l-o2 i { position: absolute; left: 50%; top: 50%; width: calc(var(--L) * .14); height: calc(var(--L) * .14); margin: calc(var(--L) * -.07);
+          border-radius: 50%; background: #9FB3CF; transform: rotate(calc(var(--n) * 45deg)) translate(calc(var(--L) * .25)); }
+.l-l  { font: calc(var(--L) * .96)/.9 "Rozha One", serif; padding: .02em .14em 0;
+        background: var(--peach); transform: rotate(-5deg); box-shadow: var(--card-shadow);
+        /* ticket-stub notches on both sides */
+        -webkit-mask: radial-gradient(circle at 0 50%, transparent 9px, #000 10px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, transparent 9px, #000 10px) right / 51% 100% no-repeat;
+                mask: radial-gradient(circle at 0 50%, transparent 9px, #000 10px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, transparent 9px, #000 10px) right / 51% 100% no-repeat; }
+.l-i  { font: italic calc(var(--L) * 1.2)/.8 "Instrument Serif", serif; margin: 0 .04em 0 .06em; }
+.l-o3 { width: calc(var(--L) * .8); height: calc(var(--L) * .8); }
+.l-o3 .wheel { position: absolute; inset: 0; border-radius: 50%;
+        background: conic-gradient(#FF9DC4, #FFC9A6, #FFE27A, #BFEBD2, #A9D4FA, #C6B4FF, #FF9DC4);
+        -webkit-mask: radial-gradient(circle, transparent 57%, #000 58%); mask: radial-gradient(circle, transparent 57%, #000 58%); }
+.l-o3 .coin { position: absolute; inset: 15%; border-radius: 50%; font-size: .625rem; padding: 4px; }
+.l-o3 .coin b { font-size: .6875rem; }
 
-.btn-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-.btn {
-  appearance: none; cursor: pointer;
-  font: 500 var(--t-18)/1 var(--text); color: var(--ink);
-  background: var(--paper);
-  border: 1.5px solid var(--ink); border-radius: 4px;
-  padding: 13px 22px 11px; min-height: 48px;
-  box-shadow: var(--lift-paper);
-}
-.btn:hover, .btn.is-hover { background: var(--ink); color: var(--paper); }
-.btn.is-focus { outline: 3px solid var(--stamp); outline-offset: 3px; }
-.btn-states { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; font-size: var(--t-12); }
-.btn-states div { display: grid; gap: 8px; justify-items: start; }
-.copy-status { font-size: var(--t-14); min-height: 1.5em; margin: 10px 0 0; }
+/* pixel cursor and sparkles */
+.px { position: absolute; image-rendering: pixelated; shape-rendering: crispEdges; pointer-events: none; z-index: 6; }
+.cursor { filter: drop-shadow(4px 4px 0 rgba(29,27,58,.18)); }
+.cursor-cover { left: 72%; top: 690px; width: 72px; height: 108px; }
+.spark-a { left: 30%; top: 330px; width: 54px; height: 54px; }
+.spark-b { left: 19%; top: 160px; width: 30px; height: 30px; }
+.spark-c { right: 27%; top: 470px; width: 40px; height: 40px; }
 
-/* ---------- CRFTD spread, real size ---------- */
-.spread-wrap { padding-block: 72px 96px; }
-.spread-intro { margin-bottom: 24px; }
-.spread {
-  display: grid; grid-template-columns: 1fr;
-  background: var(--butter);
-  box-shadow: var(--lift-folder);
-  width: 100%;
-}
+/* pill tags and tools */
+.pills { position: absolute; left: 6%; top: 330px; list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; justify-items: start; z-index: 3; }
+.pill { display: inline-block; background: var(--signature); color: #fff; font: 700 1.5rem/1 var(--sans); padding: 10px 26px 12px; border-radius: 999px; box-shadow: 0 6px 14px -8px rgba(29,27,58,.45); }
+.tools { position: absolute; right: 6%; top: 340px; z-index: 3; display: flex; gap: 14px; padding: 12px; border-radius: 22px; background: rgba(255,255,255,.55); }
+.tools .ph { width: 80px; height: 80px; border-radius: 20px; font-size: .6875rem; background-color: #fff; }
+
+/* ---------- Folder-tab section divider ---------- */
+.divider { position: relative; margin-top: 170px; background: var(--signature); color: var(--on-signature);
+  border-radius: 32px 32px 0 0; min-height: 78vh; display: grid; place-items: center; padding: 64px 16px; }
+.divider .tab { position: absolute; bottom: calc(100% - 1px); left: var(--tab-x, 8%); width: 360px; height: 54px; }
+.divider .tab svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.divider .tab span { position: relative; display: block; text-align: center; padding-top: 14px; font: 700 1.5rem/1 var(--sans); }
+.divider h2 { margin: 0; font: 800 clamp(3.5rem, 13vw, 12.5rem)/.9 var(--wide); font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; text-align: center; }
+
+/* ---------- CRFTD shop ---------- */
+.shop { padding: 96px 5% 140px; position: relative; }
+.shop-intro { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; margin-bottom: 64px; max-width: 1180px; }
+@media (min-width: 900px) { .shop-intro { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; } }
+.shop-intro p { margin: 0; font-size: 1.3125rem; line-height: 1.5; text-align: justify; hyphens: auto; max-width: 60ch; }
+.accent { color: var(--signature-text); font-weight: 700; font-style: italic; }
+.fact-pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.fact-pills li { background: var(--sky); border-radius: 999px; padding: 6px 16px 7px; font-size: 1rem; font-weight: 600; }
+
+.cards { display: grid; gap: 28px; grid-template-columns: repeat(12, minmax(0, 1fr)); }
+.card { grid-column: span 12; border-radius: 32px; padding: 16px 16px 0; background: var(--bg); box-shadow: var(--card-shadow); display: flex; flex-direction: column; }
+@media (min-width: 900px) { .card.wide { grid-column: span 7; } .card.narrow { grid-column: span 5; } }
+.card .frame { background: #fff; border-radius: 22px; overflow: hidden; display: flex; gap: 12px; padding: 12px; height: clamp(280px, 30vw, 430px); }
+.card .frame .ph { flex: 1; border-radius: 14px; }
+.card footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 10px 22px; }
+.card h3 { margin: 0; font: 500 1.375rem/1.2 var(--sans); }
+.card .heart { width: 26px; height: 24px; flex: none; }
+
+/* stacked app windows */
+.stack { position: relative; margin-top: 88px; display: grid; gap: 28px; }
 @media (min-width: 900px) {
-  .spread { grid-template-columns: 1fr 1fr; min-height: 100vh; min-height: 100svh; }
-  /* the fold between two pages: a real shadow where the paper curves into the spine */
-  .page-left  { box-shadow: inset -28px 0 30px -26px rgba(30,42,110,.30); }
-  .page-right { box-shadow: inset  28px 0 30px -26px rgba(30,42,110,.30); }
+  .stack { display: block; height: 560px; }
+  .stack .appwin:nth-child(1) { position: absolute; left: 0; top: 0; width: 58%; }
+  .readme p { max-width: 50ch; }
+  .stack .appwin:nth-child(2) { position: absolute; left: 54%; top: 230px; width: 42%; }
 }
-.page { padding: 32px 16px; min-width: 0; }
-@media (min-width: 700px) { .page { padding: 56px 48px; } }
+.appwin { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: var(--win-shadow); }
+.appwin .bar { display: flex; align-items: center; gap: 14px; height: 42px; padding: 0 16px; background: #ECEEF2; }
+.appwin .bar .lights { gap: 8px; } .appwin .bar .lights i { width: 12px; height: 12px; }
+.appwin .bar h3 { margin: 0; font: 500 .9375rem/1 var(--sans); }
+.appwin .body { padding: 26px 30px 30px; }
+.readme p { margin: 0 0 12px; max-width: 62ch; }
+.readme p:last-child { margin-bottom: 0; }
+.sales dl { margin: 0; display: grid; grid-template-columns: 1fr auto; }
+.sales dt, .sales dd { margin: 0; padding: 14px 0; border-bottom: 1px solid #E7EAF0; }
+.sales dt { font-size: 1rem; }
+.sales dd { font: 800 1.75rem/1 var(--sans); text-align: right; align-self: center; }
+.sales dl > :nth-last-child(-n+2) { border-bottom: 0; }
+.cursor-stack { left: 49%; top: 470px; width: 54px; height: 81px; }
+.spark-d { right: 2%; top: 40px; width: 46px; height: 46px; }
 
-.lookbook { display: grid; grid-template-columns: minmax(0, 2.9fr) minmax(0, 1fr); gap: 16px; align-items: start; }
-.lookbook .hero { aspect-ratio: 4 / 5; }
-.tees { display: grid; gap: 16px; }
-.tee figure, figure.tee { margin: 0; }
-.tee .ph { aspect-ratio: 1 / 1; padding: 8px; }
-.tee figcaption { font-size: var(--t-14); line-height: 1.3; margin-top: 6px; font-weight: 500; }
-@media (max-width: 560px) {
-  .lookbook { grid-template-columns: 1fr; }
-  .tees { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-  .tee .ph b { font-size: var(--t-12); }
+/* ---------- Phones: drop the absolute collage into a stacked flow ---------- */
+@media (min-width: 900px) { .collage-row { display: contents; } }
+@media (max-width: 899px) {
+  .titlebar { height: 52px; gap: 14px; padding: 0 16px; }
+  .titlebar .year { display: none; }
+  .cover { height: auto; display: flex; flex-direction: column; align-items: center; padding: 20px 16px 0; }
+  .desk-folders { position: static; width: auto; height: auto; display: flex; gap: 2px; justify-content: center; order: 1; }
+  .desk-folders li { position: static !important; }
+  .desk-folders svg { width: 64px; height: 52px; }
+  .desk-folders span { font-size: .8125rem; white-space: normal; max-width: 9em; }
+  .title-card { position: relative; left: auto; top: auto; transform: none; width: 100%; order: 2; margin-top: 18px; padding: 26px 12px 34px; }
+  .ransom { --L: clamp(52px, 24vw, 140px); }
+  .l-o3 .coin span { display: none; }
+  .ransom .row1, .ransom .row2 { margin-left: 0; }
+  .collage-row { order: 3; display: flex; gap: 14px; justify-content: center; margin: 22px 0 8px; position: relative; z-index: 3; }
+  .cut { position: relative; left: auto; right: auto; top: auto; width: 30vw; height: 24vw; max-width: 150px; max-height: 120px; font-size: .625rem; }
+  .cut .tag { padding: 4px 5px; }
+  .cut-ticket { display: none; }
+  .focus, .spark-b, .spark-c, .cursor-cover { display: none; }
+  .tear { position: relative; top: auto; height: 560px; order: 4; margin: -40px -16px 0; width: calc(100% + 32px); }
+  .tear .photo-label { top: 360px; }
+  .pills { top: 80px; left: 16px; }
+  .pill { font-size: 1.25rem; }
+  .tools { top: 250px; right: 16px; left: 16px; gap: 8px; justify-content: center; }
+  .tools .ph { width: 54px; height: 54px; font-size: .5625rem; border-radius: 14px; }
+  .tools .ph b { font-size: .625rem; }
+  .spark-a { left: auto; right: 16px; top: 70px; }
+  .divider { margin-top: 110px; min-height: 52vh; border-radius: 24px 24px 0 0; }
+  .divider .tab { width: 220px; height: 44px; left: 16px; }
+  .divider .tab span { padding-top: 11px; font-size: 1.25rem; }
+  .shop { padding: 64px 16px 96px; }
+  .shop-intro p { text-align: left; font-size: 1.1875rem; }
+  .cursor-stack, .spark-d { display: none; }
 }
-
-.page-right { display: flex; flex-direction: column; }
-.page-right h2 { font: 400 var(--t-72)/1 var(--display); letter-spacing: -0.01em; margin: 0; }
-@media (max-width: 560px) { .page-right h2 { font-size: var(--t-48); } }
-.standfirst { font-size: var(--t-21); line-height: 1.4; margin: 12px 0 28px; max-width: 34ch; }
-.dek { font-size: var(--t-14); margin: 0 0 24px; }
-.story { max-width: 60ch; }
-.story p { margin: 0 0 14px; }
-.story strong { font-weight: 700; }
-
-.hangtag {
-  align-self: flex-end; margin-top: auto;
-  position: relative; width: 200px;
-  background: var(--paper); box-shadow: var(--lift-card);
-  padding: 34px 18px 16px; transform: rotate(4deg);
-  /* tag shape: the top corners are clipped, like a real swing tag */
-  clip-path: polygon(18% 0, 82% 0, 100% 14%, 100% 100%, 0 100%, 0 14%);
-}
-.hangtag::before { /* punched hole */
-  content: ""; position: absolute; top: 12px; left: 50%; width: 12px; height: 12px; margin-left: -6px;
-  border-radius: 50%; background: var(--butter);
-  box-shadow: inset 0 1px 2px rgba(30,42,110,.35);
-}
-.hangtag b { display: block; font: 400 var(--t-36)/1 var(--display); }
-.hangtag span { display: block; font-size: var(--t-14); line-height: 1.3; margin-top: 6px; }
-@media (max-width: 899px) { .hangtag { margin-top: 24px; } }
-
-.next-note { font-size: var(--t-14); margin-top: 16px; max-width: 64ch; }
-
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 </style>
 </head>
 <body>
 
-<!-- Ink texture for the rubber stamp: roughens the edges and knocks out tiny specks, the way a real stamp prints -->
+<!-- Reusable drawings: folder icon, pixel cursor, pixel sparkle, heart -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
-    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="rough"/>
-    <feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="2" seed="11" result="speck"/>
-    <feColorMatrix in="speck" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2 1.85" result="mask"/>
-    <feComposite in="rough" in2="mask" operator="in"/>
-  </filter>
+  <defs>
+    <linearGradient id="folderFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A6DCFF"/><stop offset="1" stop-color="#5DB5F6"/></linearGradient>
+    <symbol id="folder" viewBox="0 0 104 84">
+      <path d="M8 6h28c3 0 4.5 1 6.5 3.2L46 13h50a8 8 0 0 1 8 8v55a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8V14a8 8 0 0 1 8-8z" fill="#58A9E8"/>
+      <rect x="7" y="17" width="90" height="10" rx="2.5" fill="#FFFFFF" opacity=".95"/>
+      <rect x="0" y="23" width="104" height="61" rx="8" fill="url(#folderFront)"/>
+      <rect x="0" y="23" width="104" height="2" rx="1" fill="#D3EEFF" opacity=".8"/>
+    </symbol>
+    <symbol id="cursor" viewBox="0 0 12 18"><rect x="0" y="0" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="1" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="1" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="2" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="2" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="2" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="3" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="3" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="3" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="3" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="4" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="4" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="4" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="4" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="4" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="5" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="5" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="5" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="5" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="5" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="5" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="6" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="6" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="7" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="7" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="8" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="8" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="9" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="9" y="9" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="10" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="9" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="10" y="10" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="7" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="8" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="9" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="10" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="11" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="12" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="12" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="12" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="12" width="1" height="1" fill="#1D1B3A"/><rect x="4" y="12" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="12" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="12" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="13" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="13" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="13" width="1" height="1" fill="#1D1B3A"/><rect x="4" y="13" width="1" height="1" fill="#1D1B3A"/><rect x="5" y="13" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="13" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="13" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="14" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="14" width="1" height="1" fill="#1D1B3A"/><rect x="4" y="14" width="1" height="1" fill="#1D1B3A"/><rect x="5" y="14" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="14" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="14" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="15" width="1" height="1" fill="#1D1B3A"/><rect x="5" y="15" width="1" height="1" fill="#1D1B3A"/><rect x="6" y="15" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="15" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="15" width="1" height="1" fill="#1D1B3A"/><rect x="5" y="16" width="1" height="1" fill="#1D1B3A"/><rect x="6" y="16" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="16" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="16" width="1" height="1" fill="#1D1B3A"/><rect x="6" y="17" width="1" height="1" fill="#1D1B3A"/><rect x="7" y="17" width="1" height="1" fill="#1D1B3A"/></symbol>
+    <symbol id="spark" viewBox="0 0 9 9">
+      <path fill="#FFC83D" d="M4 0h1v1h-1zM4 1h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM5 3h1v1h-1zM6 3h1v1h-1zM0 4h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1zM4 8h1v1h-1z"/>
+      <path fill="#FFF6D6" d="M4 3h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM4 5h1v1h-1z"/>
+    </symbol>
+    <symbol id="heart" viewBox="0 0 26 24"><path fill="#EC2A84" d="M13 23.2 11.2 21.6C4.8 15.8.6 12 .6 7.3.6 3.5 3.6.6 7.3.6c2.1 0 4.2 1 5.7 2.6C14.5 1.6 16.6.6 18.7.6c3.7 0 6.7 2.9 6.7 6.7 0 4.7-4.2 8.5-10.6 14.3z"/></symbol>
+  </defs>
 </svg>
 
-<header class="intro wrap">
-  <h1>Style tile for Geetika Agarwal's portfolio</h1>
-  <p>This is a test page, not the site. It shows the colours, type, folder, one project spread and the small objects, all still. Dashed frames mark photos that haven't been added yet. Each one says which file goes there and at what size.</p>
-</header>
+<p class="tile-note">Style tile v2, to compare side by side with the reference screenshots. Everything is still, with no animation yet. Checkerboard frames are photos still to add, and each one names its file and size.</p>
 
-<main>
+<div class="window">
+  <header class="titlebar">
+    <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    <span class="sep" aria-hidden="true"></span>
+    <span class="owner">Geetika Agarwal</span>
+    <span class="year">Portfolio 2026</span>
+  </header>
 
-<!-- Paper swatches -->
-<section class="tile-section wrap" aria-labelledby="h-colour">
-  <h2 class="tile-head" id="h-colour">Paper stock</h2>
-  <p class="tile-note">Every colour on the site is a material you could pick up. Light blue and pink lead (outlined). The others are coloured paper, one per project, and the same colour shows on that project's index tab.</p>
-  <ul class="swatches">
-    <li class="swatch paper lead" style="--c:var(--desk);--r:-1deg"><b>Desk</b><span>The page itself</span><span class="hex">#CFE3F5</span></li>
-    <li class="swatch paper lead" style="--c:var(--folder);--r:1.2deg"><b>Folder</b><span>The case file, cover and index</span><span class="hex">#F7C5D5</span></li>
-    <li class="swatch paper" style="--c:var(--paper);--r:-.6deg"><b>Paper</b><span>Text pages, PR desk</span><span class="hex">#FAFCFF</span></li>
-    <li class="swatch paper" style="--c:var(--butter);--r:.8deg"><b>Butter</b><span>CRFTD, sticky notes</span><span class="hex">#FDE99B</span></li>
-    <li class="swatch paper" style="--c:var(--mint);--r:-1.4deg"><b>Mint</b><span>Too Yumm!, contact</span><span class="hex">#C4EBD5</span></li>
-    <li class="swatch paper" style="--c:var(--lilac);--r:.5deg"><b>Lilac</b><span>Tiya reels, photography</span><span class="hex">#DACDF3</span></li>
-    <li class="swatch paper" style="--c:var(--peach);--r:-.4deg"><b>Peach</b><span>AquaTerra</span><span class="hex">#FFD2B6</span></li>
-    <li class="swatch paper" style="--c:var(--sky);--r:1deg"><b>Sky card</b><span>Media planning divider</span><span class="hex">#B9D6F0</span></li>
-  </ul>
-  <div class="inks">
-    <div class="ink-card paper"><span class="ink-dot" style="--c:var(--ink)"></span><div><b>Ballpoint ink #1E2A6E</b><span>All text, instead of black</span></div></div>
-    <div class="ink-card paper"><span class="ink-dot" style="--c:var(--stamp)"></span><div><b>Stamp ink #5A3FA6</b><span>Only on stamps</span></div></div>
-  </div>
-</section>
+  <main>
+    <!-- ================= COVER ================= -->
+    <section class="cover" aria-label="Cover">
 
-<!-- Type specimen -->
-<section class="tile-section wrap" aria-labelledby="h-type">
-  <h2 class="tile-head" id="h-type">Type</h2>
-  <p class="tile-note">Two typefaces, both from Indian foundries. Rozha One is only for the cover line and headlines. Mukta does everything else. Each one is shown below at every size in the scale, so you can see where each starts and stops working.</p>
+      <ul class="desk-folders" aria-label="Folders">
+        <li style="left:0;top:0"><a href="#crftd"><svg aria-hidden="true"><use href="#folder"/></svg><span>brand and merch</span></a></li>
+        <li style="left:170px;top:80px"><a href="#crftd"><svg aria-hidden="true"><use href="#folder"/></svg><span>social and reels</span></a></li>
+        <li style="left:90px;top:230px"><a href="#crftd"><svg aria-hidden="true"><use href="#folder"/></svg><span>events and PR</span></a></li>
+      </ul>
 
-  <div class="specimen paper">
-    <h3>Rozha One</h3>
-    <p class="who">Indian Type Foundry. One weight. Display only.</p>
-    <div class="spec-row"><div class="size"><b>120px</b><br>Cover line. Shrinks on phones</div><p class="sample rozha" style="font-size:var(--t-120)">Marketing, PR and content</p></div>
-    <div class="spec-row"><div class="size"><b>72px</b><br>Spread headlines</div><p class="sample rozha" style="font-size:var(--t-72)">Too Yumm!</p></div>
-    <div class="spec-row"><div class="size"><b>48px</b><br>Headlines on phones</div><p class="sample rozha" style="font-size:var(--t-48)">Same ₹8 crore, opposite jobs</p></div>
-    <div class="spec-row"><div class="size"><b>36px</b><br>Figures on tags and tickets</div><p class="sample rozha" style="font-size:var(--t-36)">250K+ views in 3 days</p></div>
-    <div class="spec-row"><div class="size"><b>24px</b><br>Smallest it should go</div><p class="sample rozha" style="font-size:var(--t-24)">Paradox 4.0, 1,200+ attendees</p></div>
-    <div class="spec-row"><div class="size"><b>21px</b><br>Too small, not used</div><p class="sample rozha" style="font-size:var(--t-21)">Starry Night and Disco Diwali</p></div>
-    <div class="spec-row"><div class="size"><b>18px</b><br>Too small, not used</div><p class="sample rozha" style="font-size:var(--t-18)">Chandor, Aguada Fort, Aguada Jail</p></div>
-    <div class="spec-row"><div class="size"><b>14px</b><br>Too small, not used</div><p class="sample rozha" style="font-size:var(--t-14)">Kolkata and Mumbai</p></div>
-    <div class="spec-row"><div class="size"><b>12px</b><br>Too small, not used</div><p class="sample rozha" style="font-size:var(--t-12)">Whistling Woods International</p></div>
-  </div>
-
-  <div class="specimen paper">
-    <h3>Mukta</h3>
-    <p class="who">Ek Type, Mumbai. Regular 400, Medium 500, Bold 700.</p>
-    <div class="spec-row"><div class="size"><b>120px</b><br>Not used this big</div><p class="sample mukta" style="font-size:var(--t-120);line-height:1.05;font-weight:700">Marketing, PR and content</p></div>
-    <div class="spec-row"><div class="size"><b>72px</b><br>Not used this big</div><p class="sample mukta" style="font-size:var(--t-72);line-height:1.05;font-weight:700">Too Yumm!</p></div>
-    <div class="spec-row"><div class="size"><b>48px</b><br>Not used this big</div><p class="sample mukta" style="font-size:var(--t-48);line-height:1.1;font-weight:500">Same ₹8 crore, opposite jobs</p></div>
-    <div class="spec-row"><div class="size"><b>36px</b><br>Rarely, large pull lines</div><p class="sample mukta" style="font-size:var(--t-36);line-height:1.15;font-weight:500">250K+ views in 3 days</p></div>
-    <div class="spec-row"><div class="size"><b>24px</b><br>Section and name heads, bold</div><p class="sample mukta" style="font-size:var(--t-24);line-height:1.25;font-weight:700">Geetika Agarwal</p></div>
-    <div class="spec-row"><div class="size"><b>21px</b><br>Standfirst under a headline</div><p class="sample mukta" style="font-size:var(--t-21);line-height:1.4">An apparel label printed with artwork by children.</p></div>
-    <div class="spec-row"><div class="size"><b>18px</b><br>Body text, 1.55 line height</div><p class="sample mukta" style="font-size:var(--t-18)">I like ideas that are fun to look at and still move numbers.</p></div>
-    <div class="spec-row"><div class="size"><b>14px</b><br>Captions, dates, tabs</div><p class="sample mukta" style="font-size:var(--t-14)">Co-founder and director, Kolkata, January 2024 to June 2026</p></div>
-    <div class="spec-row"><div class="size"><b>12px</b><br>Photo credits, the smallest text</div><p class="sample mukta" style="font-size:var(--t-12)">Photographed in Goa for Erasmus. Selected for NCPA, Mumbai, January 2027.</p></div>
-
-    <div class="weights">
-      <p style="font-weight:400">Regular 400: brand building, social content, events</p>
-      <p style="font-weight:500">Medium 500: sponsorships and PR writing</p>
-      <p style="font-weight:700">Bold 700: 30+ sponsors closed</p>
-    </div>
-
-    <div class="body-sample">
-      <p><strong>Body text at 18px, kept under 64 characters a line.</strong> I co-founded an apparel label that sold 2,000+ units, ran events for a student NGO, wrote strategy for a snack brand and shot reels that crossed 250K views.</p>
-      <p>I like ideas that are fun to look at and still move numbers. Off the clock: my camera, momos, and the next trip.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Folder and index tabs -->
-<section class="tile-section wrap" aria-labelledby="h-folder">
-  <h2 class="tile-head" id="h-folder">The folder and its index tabs</h2>
-  <p class="tile-note">On the real site the cover folder will be your photograph. These dividers and tabs are built in code because they are the links. Hover over a tab or Tab to it with the keyboard and it lifts. That is the only hover effect on the site.</p>
-
-  <div class="folder-stage">
-    <div class="folder">
-      <div class="folder-back paper" aria-hidden="true"></div>
-      <nav aria-label="Sections in the folder">
-        <ol class="dividers">
-          <li class="divider paper" style="--i:0;--c:var(--butter)"><a href="#crftd">CRFTD</a></li>
-          <li class="divider paper" style="--i:1;--c:var(--mint)"><a href="#crftd">Too Yumm!</a></li>
-          <li class="divider paper" style="--i:2;--c:var(--lilac)"><a href="#crftd">Tiya reels</a></li>
-          <li class="divider paper" style="--i:3;--c:var(--peach)"><a href="#crftd">AquaTerra</a></li>
-          <li class="divider paper" style="--i:4;--c:var(--sky)"><a href="#crftd">Media planning</a></li>
-          <li class="divider paper" style="--i:5;--c:var(--paper)"><a href="#crftd">PR desk</a></li>
-          <li class="divider paper" style="--i:6;--c:var(--lilac)"><a href="#crftd">Photography</a></li>
-          <li class="divider paper" style="--i:7;--c:var(--butter)"><a href="#crftd">Also on my desk</a></li>
-          <li class="divider paper" style="--i:8;--c:var(--mint)"><a href="#crftd">Contact</a></li>
-        </ol>
-      </nav>
-      <div class="folder-front paper">
-        <p class="folder-label paper">Geetika Agarwal, Portfolio 2026<small>Your handwritten label replaces this: assets/objects/folder-label-hand.png</small></p>
+      <div class="title-card">
+        <h1 class="ransom" aria-label="Portfolio">
+          <span class="row row1"><span class="l-p" aria-hidden="true">P</span><span class="l-o1" aria-hidden="true"><b>o</b></span><span class="l-r" aria-hidden="true">r</span><span class="l-t" aria-hidden="true">t</span></span>
+          <span class="row row2"><span class="l-f" aria-hidden="true">f</span><span class="l-o2" aria-hidden="true"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i></span><span class="l-l" aria-hidden="true">l</span><span class="l-i" aria-hidden="true">i</span><span class="l-o3" aria-hidden="true"><span class="wheel"></span><span class="coin ph"><b>coin</b><span>finance/<br>coin.png</span></span></span></span>
+        </h1>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- Stamp, sticky note, button -->
-<section class="tile-section wrap" aria-labelledby="h-objects">
-  <h2 class="tile-head" id="h-objects">Stamp, sticky note and button</h2>
-  <p class="tile-note">The small things that repeat across the site.</p>
-  <div class="objects">
-    <div>
-      <div class="stamp-sheet paper">
-        <div class="stamp"><div class="stamp-inner"><b>Selected</b><span>NCPA, Mumbai</span><span>January 2027</span></div></div>
+      <div class="collage-row">
+        <div class="cut cut-camera ph"><span class="tag"><b>camera.png</b><br>assets/objects<br>1600 × 1200</span></div>
+        <div class="cut cut-clapper ph"><span class="tag"><b>clapperboard.png</b><br>cutouts/film<br>1400 × 1250</span></div>
+        <div class="cut cut-ticket ph"><span class="tag"><b>ticket.png</b> cutouts/events, 1600 × 720</span></div>
+        <div class="cut cut-momos ph"><span class="tag"><b>momos.png</b><br>cutouts/food<br>1600 × 1150</span></div>
       </div>
-      <p class="obj-cap">The violet stamp only marks things that really happened, like the NCPA selection or a release going out.</p>
-    </div>
-    <div>
-      <div class="sticky paper">
-        <div class="ph"><b>Image to add</b><span>A sticky note in your handwriting, cut out</span><code>assets/objects/note-hand-1.png</code><span>1:1, 1200 × 1200</span></div>
-      </div>
-      <p class="obj-cap">The note's paper and shadow are built in code. What's written on it is a scan of your handwriting.</p>
-    </div>
-    <div>
-      <div class="btn-row">
-        <button class="btn" type="button" id="copy">Copy email</button>
-      </div>
-      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
-      <div class="btn-states" aria-hidden="true">
-        <div><span class="btn is-hover">Copy email</span>Hover</div>
-        <div><span class="btn is-focus">Copy email</span>Keyboard focus</div>
-      </div>
-      <p class="obj-cap">One button style for the whole site. The label says exactly what happens, with no arrow.</p>
-    </div>
-  </div>
-</section>
+      <div class="focus" aria-hidden="true"><svg viewBox="0 0 30 30"><g stroke="#FFC83D" stroke-width="2.4" stroke-linecap="round"><circle cx="15" cy="15" r="5" fill="#FFC83D" stroke="none"/><path d="M15 2v4M15 24v4M2 15h4M24 15h4M5.8 5.8l2.8 2.8M21.4 21.4l2.8 2.8M5.8 24.2l2.8-2.8M21.4 8.6l2.8-2.8"/></g></svg></div>
 
-<!-- CRFTD spread, real size -->
-<section class="spread-wrap" id="crftd" aria-labelledby="h-crftd">
-  <div class="wrap spread-intro">
-    <h2 class="tile-head">The CRFTD spread at real size</h2>
-    <p class="tile-note" style="margin-bottom:0">On a laptop this fills the screen exactly, the way it will on the site. On the site a second spread will slide in from the right after this one, with the DIY kits and the move to selling to schools.</p>
-  </div>
-
-  <article class="spread paper" aria-labelledby="h-crftd">
-    <div class="page page-left">
-      <div class="lookbook">
-        <div class="ph hero" role="img" aria-label="Image to add: CRFTD lookbook hero">
-          <b>Image to add</b><span>Lookbook hero: a tee being worn, or a styled flat lay</span><code>assets/crftd/crftd-lookbook-hero.jpg</code><span>4:5, 1600 × 2000</span>
+      <div class="tear">
+        <div class="checker" aria-hidden="true"></div>
+        <div class="photo"></div>
+        <div class="ph photo-label" style="background:none;outline:none"><span class="tag"><b>Photo to add: one of your wide shots, like the Goa sea</b><br>assets/photography/cover-wide.jpg, 2800 × 1000</span></div>
+        <ul class="pills" aria-label="What I do">
+          <li class="pill">marketing</li>
+          <li class="pill">PR</li>
+          <li class="pill">content</li>
+        </ul>
+        <div class="tools" aria-label="Tools I use">
+          <div class="ph"><b>Canva</b>icon</div>
+          <div class="ph"><b>Figma</b>icon</div>
+          <div class="ph"><b>CapCut</b>icon</div>
+          <div class="ph"><b>VN</b>icon</div>
+          <div class="ph"><b>Insta­gram</b>icon</div>
         </div>
-        <div class="tees">
-          <figure class="tee"><div class="ph" role="img" aria-label="Image to add: Valentine's drop tee mockup"><b>Image to add</b><code>assets/crftd/crftd-tee-valentines.png</code><span>1:1, 1600 × 1600</span></div><figcaption>Valentine's drop</figcaption></figure>
-          <figure class="tee"><div class="ph" role="img" aria-label="Image to add: Earth Day drop tee mockup"><b>Image to add</b><code>assets/crftd/crftd-tee-earthday.png</code><span>1:1, 1600 × 1600</span></div><figcaption>Earth Day drop</figcaption></figure>
-          <figure class="tee"><div class="ph" role="img" aria-label="Image to add: IPL drop tee mockup"><b>Image to add</b><code>assets/crftd/crftd-tee-ipl.png</code><span>1:1, 1600 × 1600</span></div><figcaption>IPL drop</figcaption></figure>
-        </div>
+        <svg class="px spark-a" viewBox="0 0 9 9" aria-hidden="true"><use href="#spark"/></svg>
       </div>
-    </div>
 
-    <div class="page page-right">
-      <h2 id="h-crftd">CRFTD</h2>
-      <p class="standfirst">An apparel label printed with artwork by children, supporting welfare initiatives.</p>
-      <p class="dek">Co-founder and director, formerly Roots. Kolkata, January 2024 to June 2026.</p>
-      <div class="story">
-        <p><strong>The brief.</strong> Build an apparel brand from zero that sells, with children's art at its heart.</p>
-        <p><strong>My role.</strong> I co-founded the label and ran it as director, owning product design, social media, logistics and fulfilment.</p>
-        <p><strong>What I made.</strong> Three themed drops for Valentine's, Earth Day and IPL. I designed 8 of the tees and children designed 4. We also made DIY T-shirt print kits, so buyers could make their own.</p>
-        <p><strong>Result.</strong> 2,000+ units sold and ₹8 lakh+ in fully bootstrapped revenue before we rebranded to CRFTD. The DIY kits brought in 100+ sales before launch. We then moved into selling to schools and worked with 10+ in Kolkata.</p>
+      <svg class="px cursor cursor-cover" viewBox="0 0 12 18" aria-hidden="true"><use href="#cursor"/></svg>
+      <svg class="px spark-b" viewBox="0 0 9 9" aria-hidden="true"><use href="#spark"/></svg>
+      <svg class="px spark-c" viewBox="0 0 9 9" aria-hidden="true"><use href="#spark"/></svg>
+    </section>
+
+    <!-- ================= DIVIDER ================= -->
+    <section class="divider" style="--tab-x:7%" aria-labelledby="crftd">
+      <div class="tab" aria-hidden="true">
+        <svg viewBox="0 0 360 54" preserveAspectRatio="none"><path fill="#EC2A84" d="M0 54c16 0 21-5 25-15L35 13C39 4 45 0 56 0h248c11 0 17 4 21 13l10 26c4 10 9 15 25 15z"/></svg>
+        <span>01</span>
       </div>
-      <div class="hangtag paper" aria-hidden="true"><b>2,000+</b><span>units sold, fully bootstrapped</span></div>
-    </div>
-  </article>
+      <h2 id="crftd">CRFTD</h2>
+    </section>
 
-  <p class="wrap next-note">The swing tag is paper built in code because it carries live text. If you'd prefer a photo of a real CRFTD tag, add it as assets/crftd/crftd-hangtag.png and I'll set the text on top.</p>
-</section>
+    <!-- ================= CRFTD SHOP ================= -->
+    <section class="shop" aria-label="CRFTD shop">
+      <div class="shop-intro">
+        <p><span class="accent">Co-founder and director</span> of CRFTD, formerly Roots. A purpose-driven apparel label selling to shoppers and to schools, printed with artwork by children and supporting welfare initiatives. I owned product design, social media, logistics and fulfilment.</p>
+        <ul class="fact-pills" aria-label="At a glance">
+          <li>Kolkata</li><li>Jan 2024 to Jun 2026</li><li>D2C and B2B</li><li>3 drops</li><li>8 tees by me</li><li>4 tees by children</li>
+        </ul>
+      </div>
 
-</main>
+      <div class="cards">
+        <article class="card wide" style="--bg:var(--blush)">
+          <div class="frame">
+            <div class="ph"><span class="tag"><b>crftd-valentines-front.jpg</b><br>tee on a model, front<br>1200 × 1500</span></div>
+            <div class="ph"><span class="tag"><b>crftd-valentines-back.jpg</b><br>back or flat lay<br>1200 × 1500</span></div>
+          </div>
+          <footer><h3>Valentine's drop tee</h3><svg class="heart" viewBox="0 0 26 24" aria-hidden="true"><use href="#heart"/></svg></footer>
+        </article>
+        <article class="card narrow" style="--bg:var(--mint)">
+          <div class="frame"><div class="ph"><span class="tag"><b>crftd-earthday.jpg</b><br>tee on a model<br>1400 × 1500</span></div></div>
+          <footer><h3>Earth Day drop tee</h3><svg class="heart" viewBox="0 0 26 24" aria-hidden="true"><use href="#heart"/></svg></footer>
+        </article>
+        <article class="card narrow" style="--bg:var(--sky)">
+          <div class="frame"><div class="ph"><span class="tag"><b>crftd-ipl.jpg</b><br>tee on a model<br>1400 × 1500</span></div></div>
+          <footer><h3>IPL drop tee</h3><svg class="heart" viewBox="0 0 26 24" aria-hidden="true"><use href="#heart"/></svg></footer>
+        </article>
+        <article class="card wide" style="--bg:var(--butter)">
+          <div class="frame">
+            <div class="ph"><span class="tag"><b>crftd-diy-kit.jpg</b><br>the kit, laid out<br>1200 × 1500</span></div>
+            <div class="ph"><span class="tag"><b>crftd-diy-kit-printed.jpg</b><br>a finished print<br>1200 × 1500</span></div>
+          </div>
+          <footer><h3>DIY T-shirt print kit</h3><svg class="heart" viewBox="0 0 26 24" aria-hidden="true"><use href="#heart"/></svg></footer>
+        </article>
+      </div>
 
-<script>
-  // Copy email: the only script on this page. No animation.
-  (function () {
-    var btn = document.getElementById('copy');
-    var status = document.getElementById('copy-status');
-    var email = 'geetikaa174@gmail.com';
-    btn.addEventListener('click', function () {
-      function done() { status.textContent = 'Copied ' + email; }
-      function fallback() {
-        var t = document.createElement('textarea');
-        t.value = email; t.setAttribute('readonly', ''); t.style.position = 'absolute'; t.style.left = '-9999px';
-        document.body.appendChild(t); t.select();
-        try { document.execCommand('copy'); done(); } catch (e) { status.textContent = 'Copy blocked by the browser. The email is ' + email; }
-        document.body.removeChild(t);
-      }
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(email).then(done, fallback);
-      } else { fallback(); }
-    });
-  })();
-</script>
+      <div class="stack">
+        <article class="appwin readme">
+          <div class="bar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><h3>read me.txt</h3></div>
+          <div class="body">
+            <p><strong>The brief.</strong> Build an apparel brand from zero that sells, with children's art at its heart.</p>
+            <p><strong>My role.</strong> Co-founder and director. Product design, social media, logistics and fulfilment.</p>
+            <p><strong>What I made.</strong> Three themed drops for Valentine's, Earth Day and IPL, with 8 tees designed by me and 4 by children. Plus DIY T-shirt print kits as a co-creative product.</p>
+            <p><strong>Result.</strong> Rebranded from Roots to CRFTD, then moved into selling to schools across Kolkata.</p>
+          </div>
+        </article>
+        <article class="appwin sales">
+          <div class="bar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><h3>sales summary</h3></div>
+          <div class="body">
+            <dl>
+              <dt>Units sold</dt><dd>2,000+</dd>
+              <dt>Revenue, fully bootstrapped</dt><dd>₹8 lakh+</dd>
+              <dt>DIY kit sales before launch</dt><dd>100+</dd>
+              <dt>Schools in Kolkata</dt><dd>10+</dd>
+            </dl>
+          </div>
+        </article>
+        <svg class="px cursor cursor-stack" viewBox="0 0 12 18" aria-hidden="true"><use href="#cursor"/></svg>
+        <svg class="px spark-d" viewBox="0 0 9 9" aria-hidden="true"><use href="#spark"/></svg>
+      </div>
+    </section>
+  </main>
+</div>
 </body>
 </html>
