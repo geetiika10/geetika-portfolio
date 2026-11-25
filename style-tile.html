@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Style tile v3, Geetika Agarwal portfolio</title>
+<title>Style tile v4, Geetika Agarwal portfolio</title>
 <meta name="robots" content="noindex">
+<link rel="preload" as="image" href="assets/generated/cover-folder-closed.jpg">
 <style>
 /* ---------- Fonts, stored locally so double-clicking the file works offline ---------- */
 @font-face { font-family: "Figtree"; font-weight: 400 800; font-style: normal; font-display: swap; src: url(fonts/figtree-var-latin.woff2) format("woff2"); }
@@ -14,37 +15,21 @@
 @font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-var-latin.woff2) format("woff2"); }
 @font-face { font-family: "Pinyon Script"; font-weight: 400; font-display: swap; src: url(fonts/pinyon-latin.woff2) format("woff2"); }
 @font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/instrumentserif-latin.woff2) format("woff2"); }
-@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/instrumentserif-italic-latin.woff2) format("woff2"); }
 
 :root {
-  /* Pastel stock, light blue and light pink leading */
-  --canvas:   #F2F7FD;  --dot: #B5CAE7;
-  --graph:    #F7FAFD;  --graph-line: rgba(140,170,205,.32);
-  --desktop:  #F9D3E4;
-  --sky:      #CFE6FB;  --blush: #F9D7E6;
-  --butter:   #FCEFB6;  --mint: #D3F1E0;  --lilac: #E3D9FB;  --peach: #FFD9C2;
-  --signature:#EC2A84;  --signature-text: #C81E6F;
-
-  /* folder stock: light pink, with each panel a step darker or lighter like real card */
-  --folder:        #F6CADA;
-  --folder-front:  #F2BDD0;
-  --folder-inside: #FBDDE8;
-  --gingham-blue:  rgba(86,146,214,.42);
-
-  --ink:   #1D1B3A;   /* body text */
-  --navy:  #22306A;   /* printed titles on the folders, like the case-study reference */
-  --chrome:#FBFCFE;  --chrome-line: #E3E7EE;
-
+  --canvas: #F2F7FD;  --dot: #B5CAE7;  --desktop: #F9D3E4;
+  --sky: #CFE6FB;  --blush: #F9D7E6;  --butter: #FCEFB6;  --mint: #D3F1E0;
+  --signature-text: #C81E6F;
+  --ink: #1D1B3A;
+  --navy: #22306A;     /* printed ink on the photographed paper */
+  --chrome: #FBFCFE;  --chrome-line: #E3E7EE;
   --sans: "Figtree", "Rupee", system-ui, sans-serif;
   --wide: "Archivo", "Figtree", sans-serif;
   --serif: "Instrument Serif", "Times New Roman", serif;
   --script: "Pinyon Script", cursive;
-
   --win-shadow: 0 1px 2px rgba(29,27,58,.10), 0 22px 44px -20px rgba(29,27,58,.35);
   --card-shadow: 0 1px 2px rgba(29,27,58,.08), 0 14px 28px -16px rgba(29,27,58,.30);
-  --paper-shadow: 0 1px 1px rgba(29,27,58,.16), 0 10px 22px -10px rgba(29,27,58,.32);
   --checker: repeating-conic-gradient(#E6EAF1 0 25%, #FFFFFF 0 50%) 0 0 / 20px 20px;
-  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .25  0 0 0 0 .15  0 0 0 0 .25  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   --bar-h: 64px;
 }
 @media (max-width: 899px) { :root { --bar-h: 52px; } }
@@ -53,13 +38,10 @@
 html { -webkit-text-size-adjust: 100%; }
 html.lenis, html.lenis body { height: auto; }
 body { margin: 0; background: var(--desktop); color: var(--ink); font-family: var(--sans); font-size: 1.125rem; line-height: 1.55; }
+img { display: block; max-width: 100%; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 .tile-note { margin: 0 auto; max-width: 1400px; padding: 14px 20px 10px; font-size: .875rem; line-height: 1.4; }
-
-/* paper grain on anything made of card or paper */
-.grain { position: relative; }
-.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: var(--grain); background-size: 160px; mix-blend-mode: multiply; }
 
 /* ---------- App window ---------- */
 .window { max-width: 1400px; margin: 0 auto 40px; background-color: var(--canvas);
@@ -76,135 +58,72 @@ a { color: inherit; }
 .titlebar .owner { font-size: 1.125rem; font-weight: 500; }
 .titlebar .year { margin-left: auto; font-size: .875rem; font-weight: 500; }
 
-/* ---------- Placeholders ---------- */
+/* ---------- Placeholders (only where a photo of Geetika's own work goes) ---------- */
 .ph { background: var(--checker); outline: 1.5px dashed rgba(29,27,58,.45); outline-offset: -1.5px;
   display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
   gap: 1px; padding: 6px; font: 400 .75rem/1.3 var(--sans); color: var(--ink); min-width: 0; overflow: hidden; }
 .ph b { font-size: .8125rem; font-weight: 700; }
-.ph span { overflow-wrap: anywhere; }
 .ph .tag { background: rgba(255,255,255,.9); border-radius: 8px; padding: 5px 8px; }
 
 /* =========================================================
-   COVER: the closed case file on graph paper. Scroll opens it.
+   SCENES: a photograph with live text printed onto it.
+   The scene keeps the photo's 16:9 shape and covers its frame,
+   so text positioned in % always lands on the same paper.
    ========================================================= */
-.cover { position: relative; }
-.cover-stage {
-  height: calc(100vh - var(--bar-h)); height: calc(100svh - var(--bar-h)); min-height: 560px;
-  display: grid; place-items: center; position: relative; overflow: hidden;
-  background-color: var(--graph);
-  background-image: linear-gradient(var(--graph-line) 1px, transparent 1px), linear-gradient(90deg, var(--graph-line) 1px, transparent 1px);
-  background-size: 30px 30px; background-position: -1px -1px;
-  perspective: 2400px;
-}
-.hint { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); margin: 0; font-size: .9375rem; font-weight: 500; color: var(--navy); white-space: nowrap; }
+.frame { position: relative; overflow: hidden; height: var(--fh); }
+.scene { --pan: 0%; position: absolute; top: 50%; left: 50%; aspect-ratio: 16 / 9;
+  width: max(100%, calc(var(--fh) * 16 / 9)); transform: translate(calc(-50% + var(--pan, 0%)), -50%); }
+.scene > .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* ink printed on paper: multiply lets the paper's grain and light show through the letters */
+.print { position: absolute; color: var(--navy); mix-blend-mode: multiply; }
 
-.folder {
-  --W: clamp(280px, 33vw, 470px);
-  --H: calc(var(--W) * 1.3);
-  position: relative; width: var(--W); height: var(--H);
-  transform-style: preserve-3d; transform: rotate(-3deg);
-}
-/* the photo sheet tucked in behind, peeking out on the right */
-.sheet-peek { position: absolute; top: 6%; right: -20%; width: 62%; height: 90%; background: #fff; padding: 12px;
-  display: grid; grid-template-rows: 1fr 1.3fr; gap: 10px; box-shadow: var(--paper-shadow); transform: translateZ(-2px) rotate(5deg); }
-.sheet-peek .ph { font-size: .6875rem; }
+/* ---------- Cover ---------- */
+.cover .frame { --fh: calc(100svh - var(--bar-h)); min-height: 520px; }
+.photo-open { opacity: 0; }
 
-/* back panel: carries the gingham tab and, once open, the contents page */
-.back { position: absolute; inset: 0; background: var(--folder); border-radius: 4px 10px 10px 4px; transform: translateZ(0);
-  /* the stack of papers inside shows along the left and bottom edges */
-  box-shadow: -3px 3px 0 0 #FFFFFF, -3px 3px 0 1px #DADFE7, -6px 6px 0 0 #FFFFFF, -6px 6px 0 1px #DADFE7,
-              -9px 9px 0 0 #FCFCFD, -9px 9px 0 1px #D5DAE3, -10px 18px 28px -6px rgba(29,27,58,.34); }
-.tab { position: absolute; top: 9%; right: -40px; width: 44px; height: 62%; border-radius: 0 12px 12px 0;
-  background: repeating-linear-gradient(0deg, var(--gingham-blue) 0 5px, transparent 5px 10px),
-              repeating-linear-gradient(90deg, var(--gingham-blue) 0 5px, transparent 5px 10px), #EEF5FC;
-  box-shadow: 4px 6px 12px -6px rgba(29,27,58,.35); display: grid; place-items: center; }
-.tab span { writing-mode: vertical-rl; font: 400 calc(var(--W) * .058)/1 var(--script); color: var(--navy);
-  background: rgba(238,245,252,.86); padding: 10px 2px; border-radius: 4px; }
+.front-text { left: 28.5%; top: 35%; width: 39.5%; text-align: center; container-type: inline-size; }
+.front-text h1 { margin: 0; font-weight: 400; display: grid; justify-items: center; }
+.front-text .script { font: 400 17cqw/.7 var(--script); transform: rotate(-4deg); margin-bottom: 2cqw; }
+.front-text .serif { font: 400 12.5cqw/.92 var(--serif); letter-spacing: -.01em; }
+.front-text .name { display: inline-block; margin: 6cqw 0 0; border: 1.5px dashed currentColor; padding: .4em 1.1em .45em; background: #fff;
+  font: 700 3.8cqw/1 var(--sans); color: var(--ink); transform: rotate(-1.2deg); mix-blend-mode: normal; }
+.front-text .line { margin: 4.5cqw auto 0; max-width: 30ch; font: 400 max(13px, 3.1cqw)/1.45 var(--sans); color: var(--ink); }
 
-.contents { position: absolute; inset: 5% 6% 5% 7%; background: #fff; padding: 7% 8%; box-shadow: var(--paper-shadow); }
-.contents h2 { margin: 0 0 .5em; font: 400 calc(var(--W) * .08)/1 var(--serif); color: var(--navy); }
-.contents ol { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--W) * .006); }
-.contents a { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: max(13px, calc(var(--W) * .034)); line-height: 1.75; border-radius: 4px; }
-.contents a i { width: 18px; height: 12px; border-radius: 3px 3px 0 0; background: var(--c); flex: none; box-shadow: inset 0 -1px 0 rgba(29,27,58,.12); }
-.contents a:hover span { text-decoration: underline; text-underline-offset: 3px; }
+/* text printed onto the papers inside the open folder */
+.on-card { left: 16.6%; top: 31.5%; width: 24.4%; height: 27%; transform: rotate(-4.1deg); padding: 1.6% 1.8%; opacity: 0; container-type: inline-size; }
+.on-card h2 { margin: 0 0 3cqw; font: 400 9cqw/1 var(--serif); }
+.on-card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 1.6cqw 4cqw; font: 400 max(11px, 4.4cqw)/1.35 var(--sans); color: var(--ink); }
+.on-card dt { font-weight: 700; }
+.on-card dd { margin: 0; }
+.on-sheet { left: 54.6%; top: 13.5%; width: 28%; height: 70%; opacity: 0; container-type: inline-size; }
+.on-sheet h2 { margin: 0 0 4cqw; font: 400 10cqw/1 var(--serif); }
+.on-sheet ol { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.on-sheet li { counter-increment: s; border-bottom: 1px solid rgba(34,48,106,.18); }
+.on-sheet a { display: flex; gap: 4cqw; align-items: baseline; padding: 2.1cqw 0; text-decoration: none; font: 400 max(12px, 4.6cqw)/1.25 var(--sans); color: var(--ink); }
+.on-sheet a::before { content: counter(s, decimal-leading-zero); font-weight: 600; color: var(--navy); min-width: 2.2em; }
+.on-sheet a:hover span { text-decoration: underline; text-underline-offset: 3px; }
 
-/* the front cover: hinged on the left, it swings open like a real file */
-.front { position: absolute; inset: 0; transform-origin: 0 50%; transform-style: preserve-3d; transform: translateZ(3px); }
-.face { position: absolute; inset: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 4px 10px 10px 4px; }
-.face-out { background: var(--folder-front); box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 2px 4px 10px -4px rgba(29,27,58,.3);
-  display: flex; flex-direction: column; align-items: center; padding: 30% 9% 0; text-align: center; color: var(--navy); }
-.face-in { background: var(--folder-inside); transform: rotateY(180deg); padding: 7%; display: flex; flex-direction: column; justify-content: center; }
+.hint { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); margin: 0; z-index: 3; font-size: .9375rem; font-weight: 500;
+  color: var(--navy); background: rgba(255,255,255,.82); padding: 6px 14px 7px; border-radius: 999px; white-space: nowrap; }
 
-.cover-title { margin: 0; display: grid; justify-items: center; }
-.cover-title .script { font: 400 calc(var(--W) * .2)/.7 var(--script); transform: rotate(-4deg); margin-bottom: calc(var(--W) * .01); position: relative; z-index: 1; }
-.cover-title .serif { font: 400 calc(var(--W) * .135)/.92 var(--serif); letter-spacing: -.01em; }
-.name-label { margin: calc(var(--W) * .07) 0 0; background: #fff; border: 1.5px dashed var(--navy); padding: .35em 1.1em .4em;
-  font: 700 calc(var(--W) * .044)/1 var(--sans); color: var(--ink); transform: rotate(-1.5deg); }
-.cover-line { margin: calc(var(--W) * .05) 0 0; max-width: 26ch; font: 400 max(12px, calc(var(--W) * .034))/1.4 var(--sans); color: var(--ink); }
-.seal { position: absolute; right: 7%; bottom: 5%; width: 27%; aspect-ratio: 1; transform: rotate(-12deg); color: var(--navy); opacity: .9; }
+/* the sticker cut-outs that slide out of the file */
+.sticker { position: absolute; width: var(--w); height: auto; left: var(--x); top: var(--y); transform: translate(-50%, -50%) rotate(var(--r, 0deg));
+  filter: drop-shadow(0 1px 1px rgba(40,30,50,.28)) drop-shadow(3px 9px 10px rgba(40,30,50,.22)); opacity: 0; z-index: 2; }
 
-.about-card { background: #fff; padding: 9% 9% 8%; box-shadow: var(--paper-shadow); transform: rotate(-1deg); font-size: max(12px, calc(var(--W) * .032)); line-height: 1.5; }
-.about-card h2 { margin: 0 0 .6em; font: 400 calc(var(--W) * .075)/1 var(--serif); color: var(--navy); }
-.about-card dl { margin: 0 0 .9em; display: grid; grid-template-columns: auto 1fr; gap: .35em 1em; }
-.about-card dt { font-weight: 700; }
-.about-card dd { margin: 0; }
-.about-card p { margin: 0; }
+/* static fallback: no JS, reduced motion, or the scripts didn't load */
+.no-motion .photo-closed, .no-motion .front-text { opacity: 0; }
+.no-motion .photo-open, .no-motion .on-card, .no-motion .on-sheet, .no-motion .sticker { opacity: 1; }
+.no-motion .hint { display: none; }
 
-/* polaroid clipped to the cover; it slides off to the side as the file opens */
-.polaroid { position: absolute; left: -14%; top: -7%; width: 40%; margin: 0; background: #fff; padding: 6% 5% 0; box-shadow: var(--paper-shadow);
-  transform: translateZ(6px) rotate(-5deg); }
-.polaroid .photo { aspect-ratio: 1 / 1.05; }
-.polaroid figcaption { font: 400 calc(var(--W) * .045)/1 var(--script); color: var(--navy); text-align: center; padding: .55em 0 .6em; }
-.clip { position: absolute; left: 50%; top: -15%; width: 34%; height: 22%; transform: translateX(-50%); border-radius: 6px; font-size: .5625rem; }
-.clip.ph { background-color: rgba(255,255,255,.75); }
+/* ---------- Divider: the stacked folders photograph ---------- */
+.divider .frame { --fh: min(88svh, 56.25vw * 1.08); min-height: 460px; }
+.tablabel { font: 600 max(11px, .95cqw)/1 var(--sans); letter-spacing: .3em; text-transform: uppercase; transform: translate(-50%, -50%); white-space: nowrap; }
+.divider .scene { container-type: inline-size; }
+.dtitle { left: 8%; top: 61%; margin: 0; }
+.dtitle .big { display: block; font: 800 12.5cqw/.9 var(--wide); font-stretch: 125%; letter-spacing: .01em; }
+.dtitle .script { display: block; font: 400 3.6cqw/1 var(--script); margin: .35em 0 0 .3em; }
 
-/* the collage objects tucked inside; they slide out sideways */
-.obj { position: absolute; left: calc(50% - 75px); top: calc(50% - 56px); width: 150px; height: 112px; border-radius: 18px;
-  transform: translateZ(1px); font-size: .6875rem; background-color: rgba(255,255,255,.6);
-  filter: drop-shadow(0 2px 1px rgba(29,27,58,.22)) drop-shadow(5px 12px 12px rgba(29,27,58,.2)); }
-
-/* No JavaScript, reduced motion, or GSAP didn't load: show the file already open */
-.no-motion .front { transform: translateZ(3px) rotateY(-178deg); }
-.no-motion .folder { transform: translateX(calc(var(--W) / 2)); }
-.no-motion .polaroid, .no-motion .hint, .no-motion .obj, .no-motion .sheet-peek { display: none; }
-@media (max-width: 899px) {
-  .no-motion .front { display: none; }
-  .no-motion .folder { transform: none; }
-}
-
-/* =========================================================
-   FOLDER-TAB DIVIDER: real stacked folders
-   ========================================================= */
-.divider { position: relative; padding-top: 150px; margin-top: 40px; overflow: hidden; }
-.later { position: absolute; left: 0; right: 0; height: 120px; border-radius: 10px 10px 0 0; }
-.later .t { position: absolute; bottom: 100%; height: 50px; width: 250px; display: grid; place-items: center;
-  font: 600 .9375rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--navy); border-radius: 12px 12px 0 0; }
-.later-2 { top: 50px; background: var(--lilac); }   .later-2 .t { left: 60%; background: var(--lilac); }
-.later-1 { top: 96px; background: var(--mint); }    .later-1 .t { left: 33%; background: var(--mint); }
-
-.dfolder { position: relative; z-index: 2; }
-.dfolder .dback { position: relative; background: var(--folder); border-radius: 14px 14px 0 0; padding-top: 96px; box-shadow: 0 -8px 22px -12px rgba(29,27,58,.3); }
-.dfolder .dtab { position: absolute; bottom: calc(100% - 1px); left: 4%; width: 300px; height: 58px; background: var(--folder);
-  border-radius: 14px 14px 0 0; display: flex; align-items: center; justify-content: center; gap: 1.2em;
-  font: 600 1rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--navy); }
-.dfolder .dtab b { font-weight: 800; letter-spacing: .1em; }
-.dfolder .dfront { position: relative; background: var(--folder-front); border-radius: 12px 12px 0 0; min-height: 66vh;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 -6px 16px -10px rgba(29,27,58,.35);
-  display: grid; place-items: center; padding: 64px 5% 80px; }
-/* the front panel's own little shoulder, like a real file folder */
-.dfolder .dfront::before { content: ""; position: absolute; bottom: calc(100% - 1px); right: 6%; width: 34%; height: 30px;
-  background: var(--folder-front); border-radius: 12px 12px 0 0; }
-.dtitle { margin: 0; text-align: center; color: var(--navy); }
-.dtitle .big { display: block; font: 800 clamp(3.5rem, 13vw, 12rem)/.9 var(--wide); font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; }
-.dtitle .script { display: block; font: 400 clamp(2rem, 4.4vw, 4rem)/1 var(--script); margin-top: .15em; }
-.dpolaroid { position: absolute; right: 9%; top: -78px; z-index: 3; width: clamp(130px, 15vw, 210px); margin: 0; background: #fff; padding: 9px 9px 0; box-shadow: var(--paper-shadow); transform: rotate(5deg); }
-.dpolaroid .photo { aspect-ratio: 1; }
-.dpolaroid figcaption { font: 400 1.375rem/1 var(--script); color: var(--navy); text-align: center; padding: .5em 0 .55em; }
-.dpolaroid .clip { top: -14%; height: 18%; }
-
-/* =========================================================
-   CRFTD SHOP (unchanged from v2)
-   ========================================================= */
+/* ---------- CRFTD shop (unchanged from v2) ---------- */
 .shop { padding: 96px 5% 140px; position: relative; }
 .shop-intro { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; margin-bottom: 64px; max-width: 1180px; }
 @media (min-width: 900px) { .shop-intro { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; } }
@@ -215,8 +134,8 @@ a { color: inherit; }
 .cards { display: grid; gap: 28px; grid-template-columns: repeat(12, minmax(0, 1fr)); }
 .card { grid-column: span 12; border-radius: 32px; padding: 16px 16px 0; background: var(--bg); box-shadow: var(--card-shadow); display: flex; flex-direction: column; }
 @media (min-width: 900px) { .card.wide { grid-column: span 7; } .card.narrow { grid-column: span 5; } }
-.card .frame { background: #fff; border-radius: 22px; overflow: hidden; display: flex; gap: 12px; padding: 12px; height: clamp(280px, 30vw, 430px); }
-.card .frame .ph { flex: 1; border-radius: 14px; }
+.card .shot { background: #fff; border-radius: 22px; overflow: hidden; display: flex; gap: 12px; padding: 12px; height: clamp(280px, 30vw, 430px); }
+.card .shot .ph { flex: 1; border-radius: 14px; }
 .card footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 10px 22px; }
 .card h3 { margin: 0; font: 500 1.375rem/1.2 var(--sans); }
 .card .heart { width: 26px; height: 24px; flex: none; }
@@ -243,18 +162,14 @@ a { color: inherit; }
 @media (max-width: 899px) {
   .titlebar { gap: 14px; padding: 0 16px; }
   .titlebar .year { display: none; }
-  .folder { --W: min(68vw, 330px); }
-  .tab { right: -30px; width: 32px; }
-  .sheet-peek { right: -16%; }
-  .polaroid { left: -10%; top: -9%; }
-  .obj { width: 104px; height: 80px; left: calc(50% - 52px); top: calc(50% - 40px); font-size: .5625rem; }
-  .obj .tag { padding: 3px 5px; }
-  .divider { padding-top: 120px; }
-  .later .t { width: 150px; height: 42px; font-size: .75rem; letter-spacing: .2em; }
-  .later-2 .t { left: 52%; } .later-1 .t { left: 22%; }
-  .dfolder .dtab { width: 170px; height: 48px; left: 16px; font-size: .875rem; letter-spacing: .2em; }
-  .dfolder .dfront { min-height: 52vh; padding-top: 140px; }
-  .dpolaroid { right: 16px; top: -40px; }
+  /* zoom the photo so the closed folder fills the width; the open file then pans to the contents sheet */
+  .cover .scene { width: 215vw; }
+  .cover .frame { --fh: 121vw; min-height: 0; }
+  .sticker { width: calc(var(--w) * .8); }
+  .divider .frame { --fh: 112vw; min-height: 0; }
+  .divider .scene { width: 200vw; --pan: 22%; }
+  .dtitle .big { font-size: 9cqw; }
+  .dtitle .script { font-size: 3cqw; }
   .shop { padding: 64px 16px 96px; }
   .shop-intro p { text-align: left; font-size: 1.1875rem; }
 }
@@ -263,12 +178,10 @@ a { color: inherit; }
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <symbol id="heart" viewBox="0 0 26 24"><path fill="#EC2A84" d="M13 23.2 11.2 21.6C4.8 15.8.6 12 .6 7.3.6 3.5 3.6.6 7.3.6c2.1 0 4.2 1 5.7 2.6C14.5 1.6 16.6.6 18.7.6c3.7 0 6.7 2.9 6.7 6.7 0 4.7-4.2 8.5-10.6 14.3z"/></symbol>
-  </defs>
+  <defs><symbol id="heart" viewBox="0 0 26 24"><path fill="#EC2A84" d="M13 23.2 11.2 21.6C4.8 15.8.6 12 .6 7.3.6 3.5 3.6.6 7.3.6c2.1 0 4.2 1 5.7 2.6C14.5 1.6 16.6.6 18.7.6c3.7 0 6.7 2.9 6.7 6.7 0 4.7-4.2 8.5-10.6 14.3z"/></symbol></defs>
 </svg>
 
-<p class="tile-note">Style tile v3. The cover is now the case file: scroll and it opens. Checkerboard frames are photos still to add, and each one names its file and size.</p>
+<p class="tile-note">Style tile v4. The folder, papers and objects are now photo-real images generated in your Figma, not drawn in code. Scroll to open the file.</p>
 
 <div class="window">
   <header class="titlebar">
@@ -279,94 +192,65 @@ a { color: inherit; }
   </header>
 
   <main>
-    <!-- ================= COVER: the case file ================= -->
+    <!-- ================= COVER ================= -->
     <section class="cover" aria-label="Cover">
-      <div class="cover-stage">
-        <div class="folder">
-          <div class="sheet-peek" aria-hidden="true">
-            <div class="ph"><span class="tag"><b>event photo</b><br>aquaterra/</span></div>
-            <div class="ph"><span class="tag"><b>tee photo</b><br>crftd/</span></div>
+      <div class="frame">
+        <div class="scene">
+          <img class="photo photo-open" src="assets/generated/cover-folder-open.jpg" alt="" width="1536" height="864">
+          <img class="photo photo-closed" src="assets/generated/cover-folder-closed.jpg" alt="" width="1536" height="864" fetchpriority="high">
+
+          <div class="print front-text">
+            <h1><span class="script">Portfolio</span><span class="serif">Marketing, PR<br>and content</span></h1>
+            <p class="name">Geetika Agarwal</p>
+            <p class="line">I like ideas that are fun to look at and still move numbers.</p>
           </div>
 
-          <div class="back grain">
-            <div class="tab" aria-hidden="true"><span>Kolkata to Mumbai</span></div>
-            <nav class="contents" aria-label="Inside this file">
-              <h2>Inside this file</h2>
-              <ol>
-                <li><a href="#crftd"><i style="--c:var(--blush)"></i><span>CRFTD</span></a></li>
-                <li><a href="#crftd"><i style="--c:var(--mint)"></i><span>Too Yumm!</span></a></li>
-                <li><a href="#crftd"><i style="--c:var(--lilac)"></i><span>Valentine's reels with Tiya Gupta</span></a></li>
-                <li><a href="#crftd"><i style="--c:var(--peach)"></i><span>AquaTerra</span></a></li>
-                <li><a href="#crftd"><i style="--c:var(--sky)"></i><span>Media planning</span></a></li>
-                <li><a href="#crftd"><i style="--c:#FFFFFF"></i><span>PR desk</span></a></li>
-                <li><a href="#crftd"><i style="--c:var(--lilac)"></i><span>Photography</span></a></li>
-                <li><a href="#crftd"><i style="--c:var(--butter)"></i><span>Also on my desk</span></a></li>
-                <li><a href="#crftd"><i style="--c:var(--mint)"></i><span>Contact</span></a></li>
-              </ol>
-            </nav>
+          <div class="print on-card">
+            <h2>About the file</h2>
+            <dl>
+              <dt>Based in</dt><dd>Kolkata and Mumbai</dd>
+              <dt>Studying</dt><dd>BBA Media &amp; Communication, Whistling Woods, 2025 to 2028</dd>
+              <dt>Good at</dt><dd>Brand building, social, events, sponsorships, PR writing</dd>
+            </dl>
           </div>
 
-          <div class="obj ph o-camera"><span class="tag"><b>camera.png</b><br>objects/</span></div>
-          <div class="obj ph o-clapper"><span class="tag"><b>clapperboard.png</b><br>cutouts/film</span></div>
-          <div class="obj ph o-ticket"><span class="tag"><b>ticket.png</b><br>cutouts/events</span></div>
-          <div class="obj ph o-momos"><span class="tag"><b>momos.png</b><br>cutouts/food</span></div>
-          <div class="obj ph o-coin"><span class="tag"><b>coins.png</b><br>cutouts/finance</span></div>
+          <nav class="print on-sheet" aria-label="Inside this file">
+            <h2>Inside this file</h2>
+            <ol>
+              <li><a href="#crftd"><span>CRFTD</span></a></li>
+              <li><a href="#crftd"><span>Too Yumm!</span></a></li>
+              <li><a href="#crftd"><span>Valentine's reels with Tiya Gupta</span></a></li>
+              <li><a href="#crftd"><span>AquaTerra</span></a></li>
+              <li><a href="#crftd"><span>Media planning</span></a></li>
+              <li><a href="#crftd"><span>PR desk</span></a></li>
+              <li><a href="#crftd"><span>Photography</span></a></li>
+              <li><a href="#crftd"><span>Also on my desk</span></a></li>
+              <li><a href="#crftd"><span>Contact</span></a></li>
+            </ol>
+          </nav>
 
-          <div class="front">
-            <div class="face face-out grain">
-              <h1 class="cover-title">
-                <span class="script">Portfolio</span>
-                <span class="serif">Marketing, PR<br>and content</span>
-              </h1>
-              <p class="name-label">Geetika Agarwal</p>
-              <p class="cover-line">I like ideas that are fun to look at and still move numbers.</p>
-              <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
-                <defs><path id="sealPath" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
-                <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                <circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.2"/>
-                <text font-family="Figtree, sans-serif" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="currentColor"><textPath href="#sealPath">WHISTLING WOODS ✦ MEDIA AND COMMUNICATION ✦</textPath></text>
-                <text x="60" y="58" text-anchor="middle" font-family="Pinyon Script, cursive" font-size="20" fill="currentColor">GA</text>
-                <text x="60" y="74" text-anchor="middle" font-family="Figtree, sans-serif" font-size="8" font-weight="600" letter-spacing="1" fill="currentColor">2026</text>
-              </svg>
-            </div>
-            <div class="face face-in grain">
-              <div class="about-card">
-                <h2>About the file</h2>
-                <dl>
-                  <dt>Based in</dt><dd>Kolkata and Mumbai</dd>
-                  <dt>Studying</dt><dd>BBA in Media &amp; Communication, Whistling Woods International, 2025 to 2028</dd>
-                  <dt>Good at</dt><dd>Brand building, social content, events, sponsorships, PR writing</dd>
-                </dl>
-                <p>Off the clock: my camera, momos, and the next trip.</p>
-              </div>
-            </div>
-          </div>
-
-          <figure class="polaroid" aria-hidden="true">
-            <div class="clip ph"><b>binder-clip.png</b></div>
-            <div class="photo ph"><span class="tag"><b>polaroid photo</b><br>objects/polaroid-1.jpg<br>1000 × 1050</span></div>
-            <figcaption>the CRFTD days</figcaption>
-          </figure>
+          <img class="sticker" style="--x:9.5%;--y:20%;--w:14%;--r:-8deg" data-from="-1" src="assets/generated/sticker-camera.webp" alt="" width="460" height="355">
+          <img class="sticker" style="--x:31%;--y:16%;--w:11%;--r:6deg" data-from="-1" src="assets/generated/sticker-coins.webp" alt="" width="469" height="374">
+          <img class="sticker" style="--x:9%;--y:77%;--w:12%;--r:7deg" data-from="-1" src="assets/generated/sticker-clapperboard.webp" alt="" width="398" height="428">
+          <img class="sticker" style="--x:36%;--y:80%;--w:12.5%;--r:-5deg" data-from="-1" src="assets/generated/sticker-momos.webp" alt="" width="457" height="459">
+          <img class="sticker" style="--x:91%;--y:22%;--w:13.5%;--r:9deg" data-from="1" src="assets/generated/sticker-ticket.webp" alt="" width="489" height="313">
+          <img class="sticker" style="--x:92.5%;--y:70%;--w:10%;--r:-7deg" data-from="1" src="assets/generated/sticker-passport.webp" alt="" width="345" height="521">
         </div>
         <p class="hint">Scroll to open the file</p>
       </div>
     </section>
 
-    <!-- ================= DIVIDER: stacked folders ================= -->
+    <!-- ================= DIVIDER ================= -->
     <section class="divider" aria-labelledby="crftd">
-      <div class="later later-2 grain" aria-hidden="true"><span class="t">Tiya reels</span></div>
-      <div class="later later-1 grain" aria-hidden="true"><span class="t">Too Yumm!</span></div>
-      <div class="dfolder">
-        <div class="dback grain">
-          <div class="dtab" aria-hidden="true"><b>01</b>CRFTD</div>
-          <div class="dfront grain">
-            <h2 class="dtitle" id="crftd"><span class="big">CRFTD</span><span class="script">an apparel label, 2024 to 2026</span></h2>
-            <figure class="dpolaroid" aria-hidden="true">
-              <div class="clip ph"><b>clip</b></div>
-              <div class="photo ph"><span class="tag"><b>crftd-polaroid.jpg</b><br>1000 × 1000</span></div>
-              <figcaption>drop one</figcaption>
-            </figure>
-          </div>
+      <div class="frame">
+        <div class="scene">
+          <img class="photo" src="assets/generated/divider-folders.jpg" alt="" width="1536" height="864" loading="lazy">
+          <span class="print tablabel" style="left:29.7%;top:10.3%" aria-hidden="true">Media planning</span>
+          <span class="print tablabel" style="left:65.3%;top:18.6%" aria-hidden="true">AquaTerra</span>
+          <span class="print tablabel" style="left:73.4%;top:29.5%" aria-hidden="true">Tiya reels</span>
+          <span class="print tablabel" style="left:25.8%;top:40.6%" aria-hidden="true">Too Yumm!</span>
+          <span class="print tablabel" style="left:70.3%;top:51.8%" aria-hidden="true">01 CRFTD</span>
+          <h2 class="print dtitle" id="crftd"><span class="big">CRFTD</span><span class="script">an apparel label, 2024 to 2026</span></h2>
         </div>
       </div>
     </section>
@@ -381,22 +265,22 @@ a { color: inherit; }
       </div>
       <div class="cards">
         <article class="card wide" style="--bg:var(--blush)">
-          <div class="frame">
+          <div class="shot">
             <div class="ph"><span class="tag"><b>crftd-valentines-front.jpg</b><br>tee on a model, front<br>1200 × 1500</span></div>
             <div class="ph"><span class="tag"><b>crftd-valentines-back.jpg</b><br>back or flat lay<br>1200 × 1500</span></div>
           </div>
           <footer><h3>Valentine's drop tee</h3><svg class="heart" viewBox="0 0 26 24" aria-hidden="true"><use href="#heart"/></svg></footer>
         </article>
         <article class="card narrow" style="--bg:var(--mint)">
-          <div class="frame"><div class="ph"><span class="tag"><b>crftd-earthday.jpg</b><br>tee on a model<br>1400 × 1500</span></div></div>
+          <div class="shot"><div class="ph"><span class="tag"><b>crftd-earthday.jpg</b><br>tee on a model<br>1400 × 1500</span></div></div>
           <footer><h3>Earth Day drop tee</h3><svg class="heart" viewBox="0 0 26 24" aria-hidden="true"><use href="#heart"/></svg></footer>
         </article>
         <article class="card narrow" style="--bg:var(--sky)">
-          <div class="frame"><div class="ph"><span class="tag"><b>crftd-ipl.jpg</b><br>tee on a model<br>1400 × 1500</span></div></div>
+          <div class="shot"><div class="ph"><span class="tag"><b>crftd-ipl.jpg</b><br>tee on a model<br>1400 × 1500</span></div></div>
           <footer><h3>IPL drop tee</h3><svg class="heart" viewBox="0 0 26 24" aria-hidden="true"><use href="#heart"/></svg></footer>
         </article>
         <article class="card wide" style="--bg:var(--butter)">
-          <div class="frame">
+          <div class="shot">
             <div class="ph"><span class="tag"><b>crftd-diy-kit.jpg</b><br>the kit, laid out<br>1200 × 1500</span></div>
             <div class="ph"><span class="tag"><b>crftd-diy-kit-printed.jpg</b><br>a finished print<br>1200 × 1500</span></div>
           </div>
@@ -440,12 +324,11 @@ a { color: inherit; }
 <script>
 (function () {
   var root = document.documentElement;
-  if (!window.gsap || !window.ScrollTrigger) { root.classList.add('no-motion'); return; }
+  if (!window.gsap || !window.ScrollTrigger || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    root.classList.add('no-motion'); return;
+  }
   gsap.registerPlugin(ScrollTrigger);
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { root.classList.add('no-motion'); return; }
-
-  // Smooth scrolling, kept in step with ScrollTrigger
   var lenis = null;
   if (window.Lenis) {
     lenis = new Lenis({ lerp: 0.12 });
@@ -455,71 +338,47 @@ a { color: inherit; }
   }
 
   var bar = document.querySelector('.titlebar');
-  var folder = document.querySelector('.folder');
-  var front = document.querySelector('.front');
-  var objs = gsap.utils.toArray('.obj');
+  var stickers = gsap.utils.toArray('.sticker');
   var coverST = null;
 
-  // Where each collage object lands, relative to where it starts (the middle of the folder)
-  function targets(wide) {
-    var W = folder.offsetWidth, H = folder.offsetHeight, vw = window.innerWidth;
-    var ow = objs[0].offsetWidth, oh = objs[0].offsetHeight;
-    var cx = W / 2 - ow / 2, cy = H / 2 - oh / 2;
-    if (wide) {
-      // the open file sits centred, so the free space is either side of it
-      var margin = vw / 2 - W;
-      var leftX = -W - margin / 2 - ow / 2 + 10, rightX = W + 40 + (margin - 40) / 2 - ow / 2;
-      return [
-        { x: leftX - cx,  y: H * .30 - cy, r: -9 },   // camera, left middle
-        { x: rightX - cx, y: H * .34 - cy, r: 8 },    // clapperboard, right middle
-        { x: leftX - cx,  y: H * .72 - cy, r: 6 },    // ticket, bottom left
-        { x: rightX - cx, y: H * .74 - cy, r: -5 },   // momos, bottom right
-        { x: rightX - cx, y: H * -.04 - cy, r: 10 }   // coins, top right
-      ];
-    }
-    // phones: the objects fan out above and below the file
-    var up = -oh - 26 - cy, down = H + 26 - cy, spread = Math.min(vw * .3, 130);
-    return [
-      { x: -spread, y: up, r: -8 }, { x: 0, y: up - 10, r: 5 }, { x: spread, y: up, r: 9 },
-      { x: -spread * .6, y: down, r: 6 }, { x: spread * .6, y: down, r: -7 }
-    ];
-  }
-
-  function buildCover(wide) {
-    var W = folder.offsetWidth;
-    var t = targets(wide);
+  function buildCover(phone) {
     var tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.cover', pin: '.cover-stage', scrub: 0.8,
+        trigger: '.cover', pin: '.cover .frame', scrub: 0.8,
         start: function () { return 'top ' + bar.offsetHeight + 'px'; },
-        end: '+=' + (wide ? 1500 : 1200), invalidateOnRefresh: true
+        end: '+=' + (phone ? 1300 : 1500), invalidateOnRefresh: true
       },
       defaults: { ease: 'power2.inOut' }
     });
     coverST = tl.scrollTrigger;
     tl.to('.hint', { autoAlpha: 0, duration: .08 }, 0)
-      .to(folder, { rotation: 0, x: wide ? W / 2 : 0, duration: .35 }, 0)
-      .to('.polaroid', { x: wide ? -W * 1.12 : -W * 1.2, y: wide ? -W * .12 : -40, rotation: -12, autoAlpha: wide ? 1 : 0, duration: .45 }, .08)
-      .to(front, wide ? { rotationY: -178, duration: .5 } : { rotationY: -110, autoAlpha: 0, duration: .5 }, .12)
-      .to('.sheet-peek', { x: wide ? W * .78 : W, y: wide ? W * .1 : 0, rotation: 12, autoAlpha: wide ? 1 : 0, duration: .45 }, .3);
-    objs.forEach(function (o, i) {
-      tl.to(o, { x: t[i].x, y: t[i].y, rotation: t[i].r, duration: .45, ease: 'power3.out' }, .42 + i * .05);
+      .to('.front-text', { autoAlpha: 0, duration: .14 }, .06)
+      // the closed file eases toward the viewer as it opens, then the open photo takes over
+      .to('.cover .photo', { scale: 1.03, duration: .3 }, 0)
+      .to('.photo-closed', { autoAlpha: 0, duration: .22 }, .2)
+      .to('.photo-open', { autoAlpha: 1, duration: .22 }, .2)
+      .to('.cover .photo', { scale: 1, duration: .3 }, .3)
+      .to(['.on-card', '.on-sheet'], { autoAlpha: 1, duration: .18, stagger: .06 }, .44);
+    if (phone) tl.to('.cover .scene', { '--pan': '-22%', duration: .4 }, .32);
+    // the stickers slide out sideways from the middle of the file
+    stickers.forEach(function (s, i) {
+      var dir = +s.dataset.from, r = parseFloat(getComputedStyle(s).getPropertyValue('--r')) || 0;
+      tl.fromTo(s, { xPercent: -50 - dir * 160, yPercent: -50, rotation: r - dir * 12, autoAlpha: 0, scale: .82 },
+                   { xPercent: -50, yPercent: -50, rotation: r, autoAlpha: 1, scale: 1, duration: .4, ease: 'power3.out' }, .36 + i * .05);
     });
-    tl.to({}, { duration: .12 }); // a short hold on the open file before it scrolls away
+    tl.to({}, { duration: .14 });
     return function () { coverST = null; };
   }
-
   var mm = gsap.matchMedia();
-  mm.add('(min-width: 900px)', function () { return buildCover(true); });
-  mm.add('(max-width: 899px)', function () { return buildCover(false); });
+  mm.add('(min-width: 900px)', function () { return buildCover(false); });
+  mm.add('(max-width: 899px)', function () { return buildCover(true); });
 
-  // The divider folders slide in from the side as they arrive
-  [['.dfolder', 12], ['.later-1', 7], ['.later-2', 4]].forEach(function (d) {
-    gsap.from(d[0], { xPercent: d[1], ease: 'none', scrollTrigger: { trigger: '.divider', start: 'top bottom', end: 'top 35%', scrub: 0.6 } });
-  });
+  // the divider photograph slides in from the side as it arrives
+  gsap.from('.divider .scene', { '--pan': '9%', ease: 'none',
+    scrollTrigger: { trigger: '.divider', start: 'top bottom', end: 'top 30%', scrub: 0.6 } });
 
-  // Keyboard: if someone tabs into the contents while the file is still shut, open it for them
-  document.querySelector('.contents').addEventListener('focusin', function () {
+  // keyboard: tabbing into the contents opens the file first
+  document.querySelector('.on-sheet').addEventListener('focusin', function () {
     if (coverST && coverST.progress < .95) {
       if (lenis) { lenis.scrollTo(coverST.end, { immediate: true }); } else { window.scrollTo(0, coverST.end); }
     }
