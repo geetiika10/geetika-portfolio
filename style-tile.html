@@ -117,14 +117,11 @@ a { color: inherit; }
 .hint { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); margin: 0; z-index: 3; font-size: .9375rem; font-weight: 500;
   color: var(--navy); background: rgba(255,255,255,.82); padding: 6px 14px 7px; border-radius: 999px; white-space: nowrap; }
 
-/* the sticker cut-outs that slide out of the file */
-.sticker { position: absolute; width: var(--w); height: auto; left: var(--x); top: var(--y); transform: translate(-50%, -50%) rotate(var(--r, 0deg));
-  filter: drop-shadow(0 1px 1px rgba(40,30,50,.28)) drop-shadow(3px 9px 10px rgba(40,30,50,.22)); opacity: 0; z-index: 2; }
 
 /* static fallback: no JS, reduced motion, or the scripts didn't load */
 .no-motion .closed-wrap { opacity: 0; }
 .no-motion .cover .scene { opacity: 1; }
-.no-motion .photo-open, .no-motion .on-card, .no-motion .on-sheet, .no-motion .sticker { opacity: 1; }
+.no-motion .photo-open, .no-motion .on-card, .no-motion .on-sheet { opacity: 1; }
 .no-motion .hint { display: none; }
 
 /* ---------- Divider: the stacked folders photograph ---------- */
@@ -179,7 +176,6 @@ a { color: inherit; }
   .cover .frame { --fh: 125vw; min-height: 0; }
   .closed-photo { -webkit-mask-image: none; mask-image: none; }
   .closed-wrap { top: 0; height: 100%; }
-  .sticker { width: calc(var(--w) * .8); }
   .divider .frame { --fh: 112vw; min-height: 0; }
   .divider .scene { width: 200vw; --pan: 22%; }
   .dtitle .big { font-size: 9cqw; }
@@ -239,12 +235,6 @@ a { color: inherit; }
               <li><a href="#crftd"><span>Contact</span></a></li>
             </ol>
           </nav>
-
-          <img class="sticker" style="--x:11.5%;--y:26%;--w:9.5%;--r:-6deg" data-from="-1" src="assets/cutouts/sticker-flowers.webp" alt="" width="458" height="587">
-          <img class="sticker" style="--x:11%;--y:76%;--w:6.5%;--r:5deg" data-from="-1" src="assets/cutouts/sticker-coffee.webp" alt="" width="289" height="480">
-          <img class="sticker" style="--x:44%;--y:83%;--w:11%;--r:-4deg" data-from="-1" src="assets/cutouts/sticker-sushi.webp" alt="" width="451" height="377">
-          <img class="sticker" style="--x:88.5%;--y:22%;--w:12%;--r:6deg" data-from="1" src="assets/cutouts/sticker-laptop.webp" alt="" width="554" height="427">
-          <img class="sticker" style="--x:89%;--y:76%;--w:10.5%;--r:-5deg" data-from="1" src="assets/cutouts/sticker-tickets.webp" alt="" width="418" height="387">
         </div>
         <p class="hint">Scroll to open the file</p>
       </div>
@@ -348,7 +338,6 @@ a { color: inherit; }
   }
 
   var bar = document.querySelector('.titlebar');
-  var stickers = gsap.utils.toArray('.sticker');
   var coverST = null;
 
   function buildCover(phone) {
@@ -356,7 +345,7 @@ a { color: inherit; }
       scrollTrigger: {
         trigger: '.cover', pin: '.cover .frame', scrub: 0.8,
         start: function () { return 'top ' + bar.offsetHeight + 'px'; },
-        end: '+=' + (phone ? 1300 : 1500), invalidateOnRefresh: true
+        end: '+=' + (phone ? 950 : 1100), invalidateOnRefresh: true
       },
       defaults: { ease: 'power2.inOut' }
     });
@@ -369,12 +358,6 @@ a { color: inherit; }
       .fromTo('.cover .photo', { scale: 1.04 }, { scale: 1, duration: .3 }, .2)
       .to(['.on-card', '.on-sheet'], { opacity: 1, duration: .18, stagger: .06 }, .44); // opacity only, so the links stay reachable by keyboard
     if (phone) tl.to('.cover .scene', { '--pan': '-22%', duration: .4 }, .32);
-    // the stickers slide out sideways from the middle of the file
-    stickers.forEach(function (s, i) {
-      var dir = +s.dataset.from, r = parseFloat(getComputedStyle(s).getPropertyValue('--r')) || 0;
-      tl.fromTo(s, { xPercent: -50 - dir * 160, yPercent: -50, rotation: r - dir * 12, autoAlpha: 0, scale: .82 },
-                   { xPercent: -50, yPercent: -50, rotation: r, autoAlpha: 1, scale: 1, duration: .4, ease: 'power3.out' }, .36 + i * .05);
-    });
     tl.to({}, { duration: .14 });
     return function () { coverST = null; };
   }

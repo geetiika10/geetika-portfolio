@@ -10,7 +10,7 @@ Geetika Agarwal, second-year BBA Media & Communication student at Whistling Wood
 
 ## Design direction (the client's words win)
 - **Photo-real, never drawn.** Every visual object is a photograph or a photo-real image: the folders, papers, stickers, phones, frames. Code supplies only layout, live text, motion and the app-window chrome. When an image is missing, leave a clearly labelled checkerboard frame naming the file and size, and tell Geetika.
-- **The concept: a case file.** The first page is Geetika's own cover image (`assets/generated/cover-geetika.jpg`): a light pink folder on graph paper with a clipped polaroid and a blue gingham tab. Scrolling lifts it away into the open file (`open-geetika.jpg`): "About" printed on the taped card, "Contents" (linking to every section) printed on the clipped sheet, and her sticker cut-outs sliding out sideways.
+- **The concept: a case file.** The first page is Geetika's own cover image (`assets/generated/cover-geetika.jpg`): a light pink folder on graph paper with a clipped polaroid and a blue gingham tab. Scrolling lifts it away into the open file (`open-geetika.jpg`): "About" printed on the taped card, "Contents" (linking to every section) printed on the clipped sheet. No stickers on the open file.
 - **Section dividers are real stacked pastel folders** (`divider-folders.jpg`), section names printed on the tabs in spaced capitals and a huge wide title on the front folder. Each section gets its own front-folder colour.
 - **Inside each section, the desktop language from `references/`:** a Mac-style app window around the page, a pale dot-grid canvas, project content in stacked app windows, Finder-style galleries with `.jpg` labels, and shop cards for merch.
 - **Each project looks like the world it came from:**
@@ -30,7 +30,7 @@ Geetika Agarwal, second-year BBA Media & Communication student at Whistling Wood
 ## Images
 - Geetika supplies most images, generated in ChatGPT from references and matched to the house style in `docs/image-brief.html`. Her own real work (tees, posts, reel covers, posters, press release, photographs) always stays real.
 - Process each image here: crop to the shape the page needs, cut stickers out of their background, export WebP or JPG for the web, keep the original in an `originals/` folder, and log it in `CREDITS.md`.
-- Her sticker cut-outs (crumpled torn-paper border) are the collage objects: flowers, iced coffee, sushi, laptop, concert tickets, in `assets/cutouts/`. Before launch: a laptop without the Apple logo, and tickets either blank (to print her real events) or kept as she likes.
+- Her sticker cut-outs (flowers, iced coffee, sushi, laptop, concert tickets) are kept in `assets/cutouts/` but not used on the page for now.
 - Real text goes on as live HTML on blank areas of the images. Where text is baked into an image, also put it in the page as a visually hidden heading.
 
 ## Skills
