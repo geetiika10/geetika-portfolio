@@ -48,24 +48,137 @@ svg .t { fill: rgba(236,42,132,.07); stroke: var(--text-zone); stroke-width: .9;
 svg .w { fill: rgba(47,127,216,.08); stroke: var(--work-zone); stroke-width: .9; stroke-dasharray: 2.5 1.6; }
 svg text { font: 600 4.2px "Figtree", sans-serif; fill: var(--ink); }
 svg text.s { font-size: 3.4px; font-weight: 500; }
+
+/* house style */
+.house { background: #fff; border: 1px solid var(--soft); border-radius: 18px; padding: 24px; margin: 0 0 40px; }
+@media (min-width: 700px) { .house { padding: 32px 36px; } }
+.house h2 { margin-top: 0; font-size: 1.5rem; }
+.house h3 { font: 700 1.0625rem/1.3 "Figtree", sans-serif; margin: 28px 0 8px; }
+.house p, .house li { max-width: 72ch; }
+.house ul { padding-left: 1.2em; margin: 0; }
+.house li { margin-bottom: 5px; }
+.refs { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); margin-top: 10px; }
+.refs figure { margin: 0; }
+.refs img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--soft); display: block; }
+.refs figcaption { font-size: .8125rem; margin-top: 4px; }
+.prompt { position: relative; background: #F6F8FC; border: 1px solid var(--soft); border-radius: 12px; padding: 16px 18px 18px; margin-top: 8px; }
+.prompt p { margin: 0; font-size: .9375rem; line-height: 1.6; max-width: none; }
+.copy { margin-top: 12px; appearance: none; font: 600 .875rem/1 "Figtree", sans-serif; color: var(--ink); background: #fff; border: 1.5px solid var(--ink); border-radius: 8px; padding: 10px 14px; min-height: 40px; cursor: pointer; }
+.copy:hover { background: var(--ink); color: #fff; }
+.copy:focus-visible { outline: 3px solid var(--work-zone); outline-offset: 2px; }
+.copied { font-size: .8125rem; margin-left: 10px; }
+.swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; list-style: none; padding: 0; }
+.swatches li { display: flex; align-items: center; gap: 8px; font-size: .875rem; margin: 0; }
+.swatches i { width: 34px; height: 34px; border-radius: 8px; border: 1px solid rgba(29,27,58,.15); }
+.two { display: grid; gap: 8px 32px; grid-template-columns: 1fr; }
+@media (min-width: 800px) { .two { grid-template-columns: 1fr 1fr; } }
+.check li { list-style: none; position: relative; padding-left: 1.6em; }
+.check li::before { content: ""; position: absolute; left: 0; top: .35em; width: .9em; height: .9em; border: 1.5px solid var(--line); border-radius: 3px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>Images I need</h1>
-  <p class="intro">Rough sketches of every image for the site, in build order. They only show the shape and where things sit. Generate each one photo-real, drop it in the folder named on its card, and tell me.</p>
+  <p class="intro">Start with the house style, so every image looks like it came from the same shoot. Then use the sketches below: they show the shape of each image and where things sit. Generate each one photo-real, save it in the folder named on its card, and tell me.</p>
 
   <div class="key">
     <span><i style="border-color:var(--text-zone);background:rgba(236,42,132,.07)"></i>Keep blank: I print your words here</span>
     <span><i style="border-color:var(--work-zone);background:rgba(47,127,216,.08)"></i>Keep blank: your real work goes here</span>
   </div>
-  <ul class="rules">
-    <li>Soft window light from the upper left in every image, so they all match.</li>
-    <li>No text, letters, logos or watermarks anywhere. I add all the words.</li>
-    <li>At least 2048px on the long side, saved as PNG.</li>
-    <li>Cut-out objects: on a flat plain grey background with a thick white sticker border.</li>
-    <li>Pastel colours: light pink and light blue lead, with mint, lilac, peach and butter yellow.</li>
-  </ul>
+
+  <section class="house" aria-labelledby="h-house">
+    <h2 id="h-house">House style: how every image should look</h2>
+    <p>One look across the whole site: soft pastel stationery, photographed for real on a bright morning. If an image could sit next to the cover without looking like it came from a different shoot, it's right.</p>
+
+    <h3>Match these</h3>
+    <div class="refs">
+      <figure><img src="../assets/generated/cover-folder-closed.jpg" alt="Light pink folder on graph paper with a clipped polaroid" loading="lazy"><figcaption>The light, the paper, the shadows</figcaption></figure>
+      <figure><img src="../assets/generated/cover-folder-open.jpg" alt="Open pink folder with blank white sheets" loading="lazy"><figcaption>Blank areas, flat and evenly lit</figcaption></figure>
+      <figure><img src="../assets/generated/divider-folders.jpg" alt="Stacked pastel folders with a polaroid clipped on" loading="lazy"><figcaption>The pastel palette</figcaption></figure>
+      <figure><img src="../assets/generated/originals/sticker-sheet.png" alt="Six objects cut out as white-bordered stickers on grey" loading="lazy"><figcaption>How cut-out objects should look</figcaption></figure>
+    </div>
+    <p>Tip: most tools let you upload a reference image. Upload the closed folder photo above as a style reference with every prompt.</p>
+
+    <h3>The style paragraph: paste this at the end of every prompt</h3>
+    <div class="prompt">
+      <p id="master">Photorealistic editorial stationery photograph. Soft natural window light from the upper left with gentle falloff, realistic soft contact shadows under every object and a soft longer shadow toward the lower right. Matte paper and card with visible fibres and small real-world imperfections. A calm, bright pastel palette led by light pink and light blue, with mint green, lilac, peach and butter yellow as accents, and clean white paper. Shot on a medium format camera, sharp focus throughout, true-to-life colour with no colour cast and soft contrast. Every paper, screen, tab and label is completely blank. No text, no letters, no numbers, no logos, no watermark.</p>
+      <button class="copy" type="button" data-copy="master">Copy style paragraph</button><span class="copied" role="status" aria-live="polite"></span>
+    </div>
+    <p>How to write each prompt: describe the scene from its card below in one or two sentences, then paste the style paragraph. For example: <em>"Three iPhones standing upright in a row on plain lilac card, seen straight on and slightly from above, the middle one a little forward, screens completely blank and evenly lit."</em> followed by the style paragraph.</p>
+
+    <h3>Colours</h3>
+    <ul class="swatches">
+      <li><i style="background:#F6CADA"></i>Light pink, the lead</li>
+      <li><i style="background:#CFE6FB"></i>Light blue, the lead</li>
+      <li><i style="background:#D3F1E0"></i>Mint</li>
+      <li><i style="background:#E3D9FB"></i>Lilac</li>
+      <li><i style="background:#FFD9C2"></i>Peach</li>
+      <li><i style="background:#FCEFB6"></i>Butter yellow</li>
+      <li><i style="background:#FFFFFF"></i>White paper</li>
+    </ul>
+    <p>Each project has its own card colour: CRFTD pink, Too Yumm! mint, Tiya reels lilac, AquaTerra peach, media planning light blue, PR desk white, photography butter. Keep everything soft and chalky. If a colour looks neon, glossy or deep, regenerate.</p>
+
+    <div class="two">
+      <div>
+        <h3>Light</h3>
+        <ul>
+          <li>One window, upper left, soft morning daylight.</li>
+          <li>Shadows soft and falling to the lower right, in every image.</li>
+          <li>A faint window-light shape at an edge is fine. Hard sun stripes, flash or studio glare are not.</li>
+        </ul>
+        <h3>Camera angle</h3>
+        <ul>
+          <li>Things lying on the desk: straight down from above (cover, open file, phones, calendar, planner, index cards, boarding pass).</li>
+          <li>Things standing up or on a wall: straight on, slightly from above (folder stack, tee on hanger, standing iPhones, pinboard, gallery wall).</li>
+          <li>Normal lens look. No fisheye, no tilted horizon, no blur on the main objects.</li>
+        </ul>
+        <h3>Surfaces</h3>
+        <ul>
+          <li>Desk scenes: pale white graph paper with a fine light grey grid.</li>
+          <li>Project scenes: plain matte card in that project's colour.</li>
+          <li>Wall scenes: a pale warm-white wall.</li>
+          <li>Never wood, marble, concrete, fabric or anything dark.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Props, the same small kit every time</h3>
+        <ul>
+          <li>White-framed polaroids, silver binder clips, pastel pink bulldog clips, paper clips, white A4 sheets, index cards, the light blue gingham tab.</li>
+          <li>Two props at most per scene, so the main object stays the hero.</li>
+          <li>No plants, coffee cups, candles, laptops, hands or people unless the card asks for them.</li>
+        </ul>
+        <h3>Blank areas</h3>
+        <ul>
+          <li>Flat to the camera, evenly lit, and clear of objects and shadows, so the text I print sits cleanly.</li>
+          <li>Truly blank: no fake squiggle text, no lines, no tiny logos.</li>
+        </ul>
+        <h3>Phones and screens</h3>
+        <ul>
+          <li>Modern phones with thin bezels and no visible brand logo.</li>
+          <li>Screens a flat, even light grey or white with no glare or reflections.</li>
+        </ul>
+        <h3>Cut-out stickers</h3>
+        <ul>
+          <li>Flat plain mid-grey background with no shadow or gradient.</li>
+          <li>An even, thick white paper border around each object, like the sticker sheet above.</li>
+          <li>Objects spaced apart so none of them touch.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Check before you send it to me</h3>
+    <ul class="check">
+      <li>Light from the upper left, soft shadows toward the lower right</li>
+      <li>Pastel and chalky, nothing neon, glossy or dark</li>
+      <li>Blank areas are really blank, with no fake writing</li>
+      <li>No logos, brand names or watermarks</li>
+      <li>At least 2048px on the long side, saved as PNG</li>
+      <li>It looks like the same shoot as the cover photo</li>
+      <li>Saved with the exact file name from its card</li>
+    </ul>
+    <p>If it fails one of these, generate 2 to 4 more versions and pick the best. Reuse the same seed if your tool offers one.</p>
+  </section>
+
 
   <!-- ================= COVER ================= -->
   <h2>1. Cover</h2>
@@ -319,5 +432,17 @@ svg text.s { font-size: 3.4px; font-weight: 500; }
     </ul>
   </div>
 </div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var text = document.getElementById(b.dataset.copy).textContent.trim(), out = b.nextElementSibling;
+    function done() { out.textContent = 'Copied'; }
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, fallback); } else { fallback(); }
+    function fallback() { var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); done(); } catch (e) { out.textContent = 'Select the paragraph and copy it by hand'; } document.body.removeChild(t); }
+  });
+});
+</script>
 </body>
 </html>
