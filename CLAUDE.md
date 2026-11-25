@@ -1,66 +1,69 @@
 # Geetika Agarwal: portfolio website
 
 ## Who this is for
-Geetika Agarwal, second-year BBA Media & Communication student at Whistling Woods International, Mumbai (2025 to 2028). From Kolkata, studying in Mumbai. Applying for marketing, brand, content and PR internships (first target: Mavcomm Consulting, a PR and reputation consultancy). Readers are recruiters and hiring managers who decide in about 10 seconds whether to keep scrolling, then spend 2 to 5 minutes on projects.
+Geetika Agarwal, second-year BBA Media & Communication student at Whistling Woods International, Mumbai (2025 to 2028). From Kolkata, studying in Mumbai. Applying for marketing, brand, events and PR internships (first target: Mavcomm Consulting, a PR and reputation consultancy). Readers are recruiters and hiring managers who decide in about 10 seconds whether to keep scrolling, then spend 2 to 5 minutes on projects.
 
-**The site's job:** within the first scroll, make it obvious she does marketing, PR and content, and make people want to open the file.
+**The site's job:** within the first scroll, make it obvious she does marketing, events and PR, and make people want to open the file.
+
+## Where things stand
+`style-tile.html` is the approved working prototype: cover, open file, one folder-tab divider and the CRFTD shop. Build the real site (`index.html`, `css/style.css`, `js/main.js`) from it. `docs/image-brief.html` holds the house style for images and a card for every image still needed.
 
 ## Design direction (the client's words win)
-- **Editorial and realistic.** It should feel like a fashion or culture magazine shot on a real desk: real photographs of real objects, real paper, real shadows. **No flat vector illustrations, no cartoon shapes, no clip-art stickers.** Every object on the page is a cut-out photograph from `/assets/objects`.
-- **Colourful and bright, in pastels:** light blue and light pink lead, with other pastels (butter yellow, mint, lilac, peach) as support. Pastels are used like coloured paper stock and photographed objects, not as flat cartoon fills.
-- **The concept: a case file.** The cover is a real pastel folder. As you scroll, it opens and its contents (papers, photos, objects) slide out sideways, like a collage on a desk. Everything after is something that came out of the file.
-- **Each project looks like the world it came from,** presented as a magazine spread:
-  - CRFTD: a shop lookbook with real tee mockups
-  - Too Yumm: real phone mockups with the published posts, a content calendar page
-  - Tiya reels: iPhone mockups with the real reel covers
-  - AquaTerra: a wall of the real event posters, tickets and photos
-  - Media planning: a planner's spread with clean, real charts (donuts, city bars, a week-by-week schedule)
-  - PR: a press kit, with the release set like a real newspaper clipping
+- **Photo-real, never drawn.** Every visual object is a photograph or a photo-real image: the folders, papers, stickers, phones, frames. Code supplies only layout, live text, motion and the app-window chrome. When an image is missing, leave a clearly labelled checkerboard frame naming the file and size, and tell Geetika.
+- **The concept: a case file.** The first page is Geetika's own cover image (`assets/generated/cover-geetika.jpg`): a light pink folder on graph paper with a clipped polaroid and a blue gingham tab. Scrolling lifts it away into the open file (`cover-folder-open.jpg`): "About the file" printed on the index card, "Inside this file" (the contents, linking to every section) printed on the white sheet, and her sticker cut-outs sliding out sideways.
+- **Section dividers are real stacked pastel folders** (`divider-folders.jpg`), section names printed on the tabs in spaced capitals and a huge wide title on the front folder. Each section gets its own front-folder colour.
+- **Inside each section, the desktop language from `references/`:** a Mac-style app window around the page, a pale dot-grid canvas, project content in stacked app windows, Finder-style galleries with `.jpg` labels, and shop cards for merch.
+- **Each project looks like the world it came from:**
+  - CRFTD: shop cards with real tee mockups, plus "read me" and "sales summary" windows
+  - Too Yumm: phones with the published posts, a content calendar page
+  - Tiya reels: iPhones with the real reel covers
+  - AquaTerra: a pinboard of the real event posters and tickets
+  - Media planning: an open planner with clean, real charts (donuts, city bars, week-by-week schedule)
+  - PR: the release set like a newspaper clipping
   - Photography: a gallery wall with an exhibition placard
-  - Contact: a real boarding pass or passport page (travel motif)
-- **Collage objects she wants:** camera, clapperboard, event tickets and wristbands, **momos**, travel items (passport, boarding pass, luggage tag), coins or a ₹ note (she likes finance).
-- **Her name is small,** like a byline or a folder label. **No giant name in the hero. No photo cut-out of her.**
-- **Motion:** "things moving to the side" as you scroll. One signature moment (the folder opening on the cover), then project spreads that slide in horizontally. Everything else stays calm. No fade-and-slide-up on every element, no hover wiggles on every card.
+  - Contact: a boarding pass printed with her email, LinkedIn and CV links
+- **Colour:** bright pastels. Light pink and light blue lead; mint, lilac, peach and butter yellow support. One loud candy pink (#EC2A84) for pill tags and hearts. Text is navy ink, printed onto photographed paper with `mix-blend-mode: multiply` so the paper shows through.
+- **Type:** Instrument Serif and Pinyon Script on the paper (titles, labels), Archivo wide for divider titles, Figtree for interface and body text. All stored in `fonts/`.
+- **Her name stays small,** a label or byline. No photo or cut-out of her.
+- **Motion:** one signature moment (the file opening), dividers sliding in from the side, project sections moving sideways. Everything else stays still.
 
-## Avoid (these make it look AI-generated)
-- Cream backgrounds near #F4F1EA with a serif and terracotta accent
-- Rounded identical cards with the same grey shadow everywhere
-- ALL-CAPS tracked labels above every heading, 01/02/03 numbering, "A · B · C" meta strings, arrows appended to buttons
-- One word in a headline set in a different colour or italic
-- Emoji used as icons
-- Placeholder gradients where a real image should be. If an image is missing, leave a clearly labelled empty frame and tell me.
+## Images
+- Geetika supplies most images, generated in ChatGPT from references and matched to the house style in `docs/image-brief.html`. Her own real work (tees, posts, reel covers, posters, press release, photographs) always stays real.
+- Process each image here: crop to the shape the page needs, cut stickers out of their background, export WebP or JPG for the web, keep the original in an `originals/` folder, and log it in `CREDITS.md`.
+- Her sticker cut-outs (crumpled torn-paper border) are the collage objects: flowers, iced coffee, sushi, laptop, concert tickets, in `assets/cutouts/`. Before launch: a laptop without the Apple logo, and tickets either blank (to print her real events) or kept as she likes.
+- Real text goes on as live HTML on blank areas of the images. Where text is baked into an image, also put it in the page as a visually hidden heading.
 
-## Skills to use
-First, read `skills/frontend-design/SKILL.md` in this repo and follow it for every design decision (plan, self-review, build, critique).
-Before designing or building anything, list every installed skill and plugin (run /skills and /plugin). Use **every skill relevant to website design, frontend, UI/UX, animation, accessibility, performance and deployment**, starting with the frontend-design skill. Say which skills you're using at the start of each section.
+## Skills
+Reload the frontend-design skill (`SKILL.md` in this repo and the plugin) at the start of every design round, along with the design-critique, anti-slop, colour, typography, motion and accessibility skills. Follow its loop: plan, review against this brief, build, then screenshot at 1440px and 390px and critique before showing Geetika. Say which skills you used.
 
-## Collage cutouts
-- Collage elements live in `/assets/cutouts/` as transparent PNGs, sorted into subfolders (camera, film, events, food, travel, finance, paper). Some are collected from Pinterest and free PNG sites, some are Geetika's own photos.
-- Use them to build layered, editorial collages: overlap, slight rotation, real drop shadows, tape and paper textures. They should look like real objects on a real desk.
-- If a cutout has a messy edge or a background left in, clean it or skip it and tell me.
-- Keep a `/assets/cutouts/CREDITS.md` noting where each non-original cutout came from.
+## Keep it specific (these make sites look AI-generated)
+- Pastel stock and graph paper as backgrounds, in place of cream with a serif and terracotta accent
+- Varied, purposeful surfaces in place of identical rounded cards with one grey shadow
+- Spaced capitals only on folder tabs; numbers only where content is a real sequence (the contents list, divider tabs)
+- Plain sentence-case buttons that say what happens
+- Real photographs and labelled empty frames in place of gradients or emoji
 
 ## Tech (no Node, no build tools)
-- Plain static files only: `index.html`, `css/style.css`, `js/main.js`. No npm, no Vite, no frameworks, no build step
-- Load GSAP + ScrollTrigger and Lenis from a CDN with exact pinned versions (script tags in index.html)
-- The site must work by simply double-clicking `index.html` to open it in Chrome
-- Images as WebP or compressed JPG/PNG, lazy-loaded below the cover
-- Must work well on phones (simplify the horizontal scrolling into vertical on small screens), keyboard accessible, and respect prefers-reduced-motion
-- Deploy target: Netlify Drop (drag-and-drop the folder) or Vercel, free
-- Commit to git after each finished section if git is available
+- Plain static files: `index.html`, `css/style.css`, `js/main.js`. No npm, no frameworks, no build step
+- GSAP 3.12.5 + ScrollTrigger and Lenis 1.1.13 load from the CDN with exact versions, falling back to the copies in `js/vendor/`, so the site works by double-clicking `index.html`, even offline
+- Images as WebP or compressed JPG, lazy-loaded below the cover
+- Phones: horizontal movement becomes vertical; keyboard accessible (tabbing into the contents opens the file); prefers-reduced-motion shows the file already open
+- Deploy: Netlify Drop or Vercel, free
+- Commit and push after each finished section
 
 ## Writing rules
 - No em dashes anywhere in the copy
 - Human, warm, confident, concise. Plain verbs, sentence case
-- Each project follows: **The brief → My role → What I made → Result**, kept short
+- Each project follows: **The brief, My role, What I made, Result**, kept short
 - Never invent numbers, quotes or results. Use only the facts below. Mark coursework as coursework
+- Both CV PDFs include her phone number; the site itself shows no phone number
 
 ---
 
 ## Site structure (in this order)
-1. Cover (the folder)
-2. About
-3. Index (folder tabs linking to each section)
+1. Cover (her closed folder)
+2. About (printed inside the open file)
+3. Index (the contents sheet inside the open file)
 4. CRFTD
 5. Too Yumm!
 6. Valentine's reels with Tiya Gupta
@@ -76,8 +79,8 @@ Before designing or building anything, list every installed skill and plugin (ru
 ## Content
 
 ### Cover
-- Folder label: Geetika Agarwal, Portfolio 2026
-- Line: Marketing, PR and content
+- On her cover image: Portfolio / Marketing, Events and PR / Geetika Agarwal / I like ideas that are fun to look at and still move numbers.
+- Window title bar: Geetika Agarwal, Portfolio 2026
 
 ### About
 - Name: Geetika Agarwal
