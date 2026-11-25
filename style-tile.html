@@ -3,82 +3,72 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Style tile v2, Geetika Agarwal portfolio</title>
+<title>Style tile v3, Geetika Agarwal portfolio</title>
 <meta name="robots" content="noindex">
 <style>
 /* ---------- Fonts, stored locally so double-clicking the file works offline ---------- */
 @font-face { font-family: "Figtree"; font-weight: 400 800; font-style: normal; font-display: swap; src: url(fonts/figtree-var-latin.woff2) format("woff2"); }
 @font-face { font-family: "Figtree"; font-weight: 400 800; font-style: italic; font-display: swap; src: url(fonts/figtree-var-italic-latin.woff2) format("woff2"); }
-/* Figtree has no rupee sign, so the ₹ falls through to Mukta */
 @font-face { font-family: "Rupee"; font-weight: 400; font-display: swap; src: url(fonts/mukta-400-deva.woff2) format("woff2"); unicode-range: U+20B9; }
 @font-face { font-family: "Rupee"; font-weight: 700; font-display: swap; src: url(fonts/mukta-700-deva.woff2) format("woff2"); unicode-range: U+20B9; }
 @font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(fonts/archivo-var-latin.woff2) format("woff2"); }
-@font-face { font-family: "Silkscreen"; font-weight: 700; font-display: swap; src: url(fonts/silkscreen-700-latin.woff2) format("woff2"); }
 @font-face { font-family: "Pinyon Script"; font-weight: 400; font-display: swap; src: url(fonts/pinyon-latin.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/instrumentserif-latin.woff2) format("woff2"); }
 @font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/instrumentserif-italic-latin.woff2) format("woff2"); }
-@font-face { font-family: "Rozha One"; font-weight: 400; font-display: swap; src: url(fonts/rozha-400-latin.woff2) format("woff2"); }
 
 :root {
-  /* Colour. Light blue and light pink lead; one loud pink does the reference's electric-blue job. */
-  --canvas:   #F2F7FD;   /* pale sky, the dot-grid canvas (not cream) */
-  --dot:      #B5CAE7;   /* the grid dots */
-  --desktop:  #F9D3E4;   /* light pink desktop behind the window */
-  --sky:      #CFE6FB;   /* light blue lead */
-  --blush:    #F9D7E6;   /* light pink lead */
-  --signature:#EC2A84;   /* candy pink: dividers, pill tags, hearts */
-  --signature-text: #C81E6F; /* the same pink, darkened for small text on the canvas */
-  --butter:   #FCEFB6;
-  --mint:     #D3F1E0;
-  --lilac:    #E3D9FB;
-  --peach:    #FFD9C2;
-  --sunny:    #FFC83D;   /* pixel sparkles, camera focus box */
-  --ink:      #1D1B3A;   /* text */
-  --chrome:   #FBFCFE;   /* window title bars */
-  --chrome-line: #E3E7EE;
-  --on-signature: #FFF4F9;
+  /* Pastel stock, light blue and light pink leading */
+  --canvas:   #F2F7FD;  --dot: #B5CAE7;
+  --graph:    #F7FAFD;  --graph-line: rgba(140,170,205,.32);
+  --desktop:  #F9D3E4;
+  --sky:      #CFE6FB;  --blush: #F9D7E6;
+  --butter:   #FCEFB6;  --mint: #D3F1E0;  --lilac: #E3D9FB;  --peach: #FFD9C2;
+  --signature:#EC2A84;  --signature-text: #C81E6F;
+
+  /* folder stock: light pink, with each panel a step darker or lighter like real card */
+  --folder:        #F6CADA;
+  --folder-front:  #F2BDD0;
+  --folder-inside: #FBDDE8;
+  --gingham-blue:  rgba(86,146,214,.42);
+
+  --ink:   #1D1B3A;   /* body text */
+  --navy:  #22306A;   /* printed titles on the folders, like the case-study reference */
+  --chrome:#FBFCFE;  --chrome-line: #E3E7EE;
 
   --sans: "Figtree", "Rupee", system-ui, sans-serif;
   --wide: "Archivo", "Figtree", sans-serif;
+  --serif: "Instrument Serif", "Times New Roman", serif;
+  --script: "Pinyon Script", cursive;
 
   --win-shadow: 0 1px 2px rgba(29,27,58,.10), 0 22px 44px -20px rgba(29,27,58,.35);
   --card-shadow: 0 1px 2px rgba(29,27,58,.08), 0 14px 28px -16px rgba(29,27,58,.30);
-  /* cut-out objects: a contact shadow plus a soft cast shadow, like a photo on a desk */
-  --cutout-shadow: drop-shadow(0 2px 1px rgba(29,27,58,.25)) drop-shadow(6px 14px 14px rgba(29,27,58,.22));
-
-  /* Photoshop's "transparent layer" checkerboard: the honest look for an image that isn't there yet */
-  --checker: repeating-conic-gradient(#E6EAF1 0 25%, #FFFFFF 0 50%) 0 0 / 22px 22px;
+  --paper-shadow: 0 1px 1px rgba(29,27,58,.16), 0 10px 22px -10px rgba(29,27,58,.32);
+  --checker: repeating-conic-gradient(#E6EAF1 0 25%, #FFFFFF 0 50%) 0 0 / 20px 20px;
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .25  0 0 0 0 .15  0 0 0 0 .25  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --bar-h: 64px;
 }
+@media (max-width: 899px) { :root { --bar-h: 52px; } }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body {
-  margin: 0; background: var(--desktop); color: var(--ink);
-  font-family: var(--sans); font-size: 1.125rem; line-height: 1.55;
-}
+html.lenis, html.lenis body { height: auto; }
+body { margin: 0; background: var(--desktop); color: var(--ink); font-family: var(--sans); font-size: 1.125rem; line-height: 1.55; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
-
 .tile-note { margin: 0 auto; max-width: 1400px; padding: 14px 20px 10px; font-size: .875rem; line-height: 1.4; }
 
-/* ---------- The app window around the whole page ---------- */
-.window {
-  max-width: 1400px; margin: 0 auto 40px;
-  background-color: var(--canvas);
-  background-image: radial-gradient(circle, var(--dot) 1.15px, transparent 1.6px);
-  background-size: 22px 22px;
-  border-radius: 16px; overflow: clip;
-  box-shadow: var(--win-shadow);
-}
+/* paper grain on anything made of card or paper */
+.grain { position: relative; }
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: var(--grain); background-size: 160px; mix-blend-mode: multiply; }
+
+/* ---------- App window ---------- */
+.window { max-width: 1400px; margin: 0 auto 40px; background-color: var(--canvas);
+  background-image: radial-gradient(circle, var(--dot) 1.15px, transparent 1.6px); background-size: 22px 22px;
+  border-radius: 16px; box-shadow: var(--win-shadow); overflow: clip; }
 @media (min-width: 700px) { .window { margin-inline: 16px; } }
 @media (min-width: 1432px) { .window { margin-inline: auto; } }
-
-.titlebar {
-  position: sticky; top: 0; z-index: 50;
-  display: flex; align-items: center; gap: 22px;
-  height: 64px; padding: 0 24px;
-  background: var(--chrome);
-  box-shadow: 0 1px 0 var(--chrome-line), 0 6px 14px -8px rgba(29,27,58,.25);
-}
+.titlebar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 22px; height: var(--bar-h); padding: 0 24px;
+  background: var(--chrome); box-shadow: 0 1px 0 var(--chrome-line), 0 6px 14px -8px rgba(29,27,58,.25); }
 .lights { display: flex; gap: 12px; }
 .lights i { width: 15px; height: 15px; border-radius: 50%; display: block; }
 .lights i:nth-child(1) { background: #FF5F57; } .lights i:nth-child(2) { background: #FEBC2E; } .lights i:nth-child(3) { background: #28C840; }
@@ -87,116 +77,134 @@ a { color: inherit; }
 .titlebar .year { margin-left: auto; font-size: .875rem; font-weight: 500; }
 
 /* ---------- Placeholders ---------- */
-.ph {
-  background: var(--checker);
-  outline: 1.5px dashed rgba(29,27,58,.45); outline-offset: -1.5px;
+.ph { background: var(--checker); outline: 1.5px dashed rgba(29,27,58,.45); outline-offset: -1.5px;
   display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-  gap: 1px; padding: 8px; font-size: .75rem; line-height: 1.3; color: var(--ink);
-  min-width: 0; overflow: hidden;
-}
+  gap: 1px; padding: 6px; font: 400 .75rem/1.3 var(--sans); color: var(--ink); min-width: 0; overflow: hidden; }
 .ph b { font-size: .8125rem; font-weight: 700; }
 .ph span { overflow-wrap: anywhere; }
-.ph .tag { background: rgba(255,255,255,.88); border-radius: 8px; padding: 6px 9px; }
+.ph .tag { background: rgba(255,255,255,.9); border-radius: 8px; padding: 5px 8px; }
 
-/* ---------- Cover ---------- */
-.cover { position: relative; height: 1280px; }
-
-/* collage objects: real cut-out photos go here, with a real shadow */
-.cut { position: absolute; border-radius: 22px; filter: var(--cutout-shadow); }
-.cut.ph { background-color: rgba(255,255,255,.5); }
-.cut-camera  { left: 2.5%; top: 40px;  width: 230px; height: 170px; transform: rotate(-8deg); }
-.cut-clapper { left: 1.5%; top: 300px; width: 180px; height: 160px; transform: rotate(7deg); z-index: 3; }
-.cut-ticket  { left: 2%; top: 780px; width: 230px; height: 104px; transform: rotate(-5deg); z-index: 4; }
-.cut-momos   { right: 2%; top: 640px; width: 250px; height: 180px; transform: rotate(4deg); z-index: 4; }
-
-/* camera focus box around the momos, the photographer's eye */
-.focus { position: absolute; right: 2.6%; top: 628px; width: 150px; height: 128px; border: 2px solid var(--sunny); z-index: 5; pointer-events: none; }
-.focus::before, .focus::after { content: ""; position: absolute; background: var(--sunny); }
-.focus::before { left: 50%; top: -6px; width: 2px; height: 12px; }
-.focus::after  { top: 50%; left: -6px; width: 12px; height: 2px; }
-.focus svg { position: absolute; right: -34px; top: 22px; width: 30px; height: 30px; }
-
-/* desktop folder icons */
-.desk-folders { position: absolute; right: 1.5%; top: 34px; width: 330px; height: 400px; list-style: none; margin: 0; padding: 0; z-index: 3; }
-.desk-folders li { position: absolute; }
-.desk-folders a { display: grid; justify-items: center; gap: 6px; text-decoration: none; padding: 6px 10px; border-radius: 10px; }
-.desk-folders a:hover { background: rgba(207,230,251,.7); }
-.desk-folders svg { width: 104px; height: 84px; filter: drop-shadow(0 4px 6px rgba(29,27,58,.15)); }
-.desk-folders span { font-size: .9375rem; font-weight: 500; line-height: 1.25; text-align: center; white-space: nowrap; }
-
-/* the torn photo at the bottom of the cover */
-.tear { position: absolute; left: 0; right: 0; top: 700px; height: 580px; }
-.tear .checker, .tear .photo { position: absolute; inset: 0; }
-.tear .checker { background: repeating-conic-gradient(#D7DCE5 0 25%, #FFFFFF 0 50%) 0 0 / 26px 26px;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 25px), 99.7% calc(100% - 26px), 95.4% calc(100% - 29px), 91.5% calc(100% - 41px), 89.6% calc(100% - 22px), 89.1% calc(100% - 20px), 86.6% calc(100% - 23px), 83.4% calc(100% - 30px), 80.3% calc(100% - 23px), 80.1% calc(100% - 27px), 79.2% calc(100% - 17px), 78.5% calc(100% - 28px), 75.6% calc(100% - 31px), 73.3% calc(100% - 31px), 73.1% calc(100% - 28px), 72.8% calc(100% - 16px), 70.5% calc(100% - 34px), 67.7% calc(100% - 31px), 65.8% calc(100% - 30px), 62.6% calc(100% - 36px), 56.9% calc(100% - 37px), 54.5% calc(100% - 22px), 54.2% calc(100% - 28px), 52.0% calc(100% - 22px), 51.1% calc(100% - 16px), 50.0% calc(100% - 27px), 48.0% calc(100% - 50px), 45.4% calc(100% - 25px), 41.4% calc(100% - 22px), 39.6% calc(100% - 25px), 39.4% calc(100% - 34px), 39.0% calc(100% - 35px), 38.9% calc(100% - 18px), 37.7% calc(100% - 41px), 36.9% calc(100% - 26px), 32.7% calc(100% - 30px), 32.5% calc(100% - 36px), 31.1% calc(100% - 34px), 29.9% calc(100% - 26px), 28.9% calc(100% - 42px), 26.8% calc(100% - 19px), 26.3% calc(100% - 29px), 26.1% calc(100% - 16px), 26.0% calc(100% - 20px), 24.5% calc(100% - 28px), 23.3% calc(100% - 35px), 20.3% calc(100% - 29px), 20.2% calc(100% - 40px), 14.8% calc(100% - 16px), 13.9% calc(100% - 34px), 12.8% calc(100% - 17px), 12.0% calc(100% - 21px), 11.4% calc(100% - 30px), 10.8% calc(100% - 41px), 10.5% calc(100% - 29px), 9.9% calc(100% - 30px), 7.1% calc(100% - 16px), 2.6% calc(100% - 22px), 0.7% calc(100% - 31px), 0% calc(100% - 21px));
-  filter: drop-shadow(0 3px 3px rgba(29,27,58,.18)); }
-.tear .photo { background-color: #DCEBFA; background-image: repeating-conic-gradient(#CBDDF2 0 25%, #DCEBFA 0 50%); background-size: 34px 34px;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 55px), 98.0% calc(100% - 73px), 97.6% calc(100% - 72px), 94.8% calc(100% - 73px), 87.5% calc(100% - 56px), 85.8% calc(100% - 61px), 82.7% calc(100% - 62px), 81.6% calc(100% - 68px), 79.4% calc(100% - 69px), 76.5% calc(100% - 74px), 75.7% calc(100% - 55px), 72.9% calc(100% - 69px), 69.9% calc(100% - 69px), 68.0% calc(100% - 59px), 66.8% calc(100% - 67px), 65.1% calc(100% - 73px), 63.9% calc(100% - 51px), 62.7% calc(100% - 76px), 58.6% calc(100% - 51px), 58.2% calc(100% - 70px), 57.7% calc(100% - 58px), 57.4% calc(100% - 70px), 57.3% calc(100% - 74px), 54.8% calc(100% - 53px), 53.6% calc(100% - 58px), 52.5% calc(100% - 75px), 50.7% calc(100% - 51px), 48.9% calc(100% - 52px), 45.3% calc(100% - 60px), 43.4% calc(100% - 54px), 42.8% calc(100% - 61px), 42.5% calc(100% - 74px), 41.8% calc(100% - 69px), 39.7% calc(100% - 69px), 37.2% calc(100% - 84px), 36.6% calc(100% - 62px), 32.4% calc(100% - 73px), 31.4% calc(100% - 59px), 30.8% calc(100% - 50px), 30.0% calc(100% - 64px), 29.0% calc(100% - 56px), 28.8% calc(100% - 54px), 24.4% calc(100% - 73px), 22.3% calc(100% - 59px), 20.6% calc(100% - 57px), 18.1% calc(100% - 70px), 15.2% calc(100% - 63px), 15.1% calc(100% - 52px), 14.4% calc(100% - 59px), 12.4% calc(100% - 79px), 11.8% calc(100% - 62px), 9.1% calc(100% - 51px), 7.2% calc(100% - 59px), 7.0% calc(100% - 70px), 6.3% calc(100% - 66px), 6.0% calc(100% - 51px), 5.8% calc(100% - 61px), 4.7% calc(100% - 70px), 3.9% calc(100% - 64px), 3.7% calc(100% - 67px), 0% calc(100% - 71px)); }
-.tear .photo-label { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); width: max-content; max-width: 90%; }
-
-/* the white card holding the ransom-note title */
-.title-card {
-  position: absolute; left: 50%; top: 190px; transform: translateX(-50%);
-  width: min(900px, 64%); padding: 44px 40px 60px;
-  background: rgba(255,255,255,.74);
-  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
-  border-radius: 36px; z-index: 2;
+/* =========================================================
+   COVER: the closed case file on graph paper. Scroll opens it.
+   ========================================================= */
+.cover { position: relative; }
+.cover-stage {
+  height: calc(100vh - var(--bar-h)); height: calc(100svh - var(--bar-h)); min-height: 560px;
+  display: grid; place-items: center; position: relative; overflow: hidden;
+  background-color: var(--graph);
+  background-image: linear-gradient(var(--graph-line) 1px, transparent 1px), linear-gradient(90deg, var(--graph-line) 1px, transparent 1px);
+  background-size: 30px 30px; background-position: -1px -1px;
+  perspective: 2400px;
 }
-.ransom { --L: clamp(64px, 15vw, 215px); margin: 0; display: grid; justify-items: center; row-gap: calc(var(--L) * .16); line-height: 1; font-weight: 400; }
-.ransom .row { display: flex; align-items: flex-end; justify-content: center; }
-.ransom .row > span { display: inline-grid; place-items: center; position: relative; }
-.ransom .row1 { margin-left: calc(var(--L) * -.5); }
-.ransom .row2 { margin-left: calc(var(--L) * .35); }
-.l-p  { font: 700 calc(var(--L) * 1.18)/.78 "Silkscreen", monospace; transform: rotate(-3deg); margin-right: .02em; }
-.l-o1 { width: calc(var(--L) * .74); height: calc(var(--L) * .9); transform: rotate(4deg) translateY(-6%);
-        background: linear-gradient(165deg, #FFE27A 0%, #FF9DC4 52%, #C6B4FF 100%); box-shadow: var(--card-shadow); }
-.l-o1 b { font: 900 calc(var(--L) * .86)/1 var(--wide); color: rgba(255,255,255,.82); filter: blur(1.2px); }
-.l-r  { font: calc(var(--L) * 1.32)/.8 "Pinyon Script", cursive; margin: 0 calc(var(--L) * -.1) 0 calc(var(--L) * -.04); transform: translateY(4%); }
-.l-t  { font: 800 calc(var(--L) * 1.16)/.8 var(--wide); font-stretch: 62%; }
-.l-f  { font: 900 calc(var(--L) * 1.04)/.82 var(--wide); font-stretch: 100%;
-        background: repeating-linear-gradient(0deg, rgba(236,42,132,.5) 0 9px, transparent 9px 18px),
-                    repeating-linear-gradient(90deg, rgba(236,42,132,.5) 0 9px, transparent 9px 18px), #FFE1EE;
-        -webkit-background-clip: text; background-clip: text; color: transparent;
-        filter: drop-shadow(0 2px 0 rgba(200,30,111,.55)) drop-shadow(3px 8px 6px rgba(29,27,58,.25)); transform: rotate(-4deg); }
-.l-o2 { width: calc(var(--L) * .66); height: calc(var(--L) * .66); margin: 0 calc(var(--L) * .04); }
-.l-o2 i { position: absolute; left: 50%; top: 50%; width: calc(var(--L) * .14); height: calc(var(--L) * .14); margin: calc(var(--L) * -.07);
-          border-radius: 50%; background: #9FB3CF; transform: rotate(calc(var(--n) * 45deg)) translate(calc(var(--L) * .25)); }
-.l-l  { font: calc(var(--L) * .96)/.9 "Rozha One", serif; padding: .02em .14em 0;
-        background: var(--peach); transform: rotate(-5deg); box-shadow: var(--card-shadow);
-        /* ticket-stub notches on both sides */
-        -webkit-mask: radial-gradient(circle at 0 50%, transparent 9px, #000 10px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, transparent 9px, #000 10px) right / 51% 100% no-repeat;
-                mask: radial-gradient(circle at 0 50%, transparent 9px, #000 10px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, transparent 9px, #000 10px) right / 51% 100% no-repeat; }
-.l-i  { font: italic calc(var(--L) * 1.2)/.8 "Instrument Serif", serif; margin: 0 .04em 0 .06em; }
-.l-o3 { width: calc(var(--L) * .8); height: calc(var(--L) * .8); }
-.l-o3 .wheel { position: absolute; inset: 0; border-radius: 50%;
-        background: conic-gradient(#FF9DC4, #FFC9A6, #FFE27A, #BFEBD2, #A9D4FA, #C6B4FF, #FF9DC4);
-        -webkit-mask: radial-gradient(circle, transparent 57%, #000 58%); mask: radial-gradient(circle, transparent 57%, #000 58%); }
-.l-o3 .coin { position: absolute; inset: 15%; border-radius: 50%; font-size: .625rem; padding: 4px; }
-.l-o3 .coin b { font-size: .6875rem; }
+.hint { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); margin: 0; font-size: .9375rem; font-weight: 500; color: var(--navy); white-space: nowrap; }
 
-/* pixel cursor and sparkles */
-.px { position: absolute; image-rendering: pixelated; shape-rendering: crispEdges; pointer-events: none; z-index: 6; }
-.cursor { filter: drop-shadow(4px 4px 0 rgba(29,27,58,.18)); }
-.cursor-cover { left: 72%; top: 690px; width: 72px; height: 108px; }
-.spark-a { left: 30%; top: 330px; width: 54px; height: 54px; }
-.spark-b { left: 19%; top: 160px; width: 30px; height: 30px; }
-.spark-c { right: 27%; top: 470px; width: 40px; height: 40px; }
+.folder {
+  --W: clamp(280px, 33vw, 470px);
+  --H: calc(var(--W) * 1.3);
+  position: relative; width: var(--W); height: var(--H);
+  transform-style: preserve-3d; transform: rotate(-3deg);
+}
+/* the photo sheet tucked in behind, peeking out on the right */
+.sheet-peek { position: absolute; top: 6%; right: -20%; width: 62%; height: 90%; background: #fff; padding: 12px;
+  display: grid; grid-template-rows: 1fr 1.3fr; gap: 10px; box-shadow: var(--paper-shadow); transform: translateZ(-2px) rotate(5deg); }
+.sheet-peek .ph { font-size: .6875rem; }
 
-/* pill tags and tools */
-.pills { position: absolute; left: 6%; top: 330px; list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; justify-items: start; z-index: 3; }
-.pill { display: inline-block; background: var(--signature); color: #fff; font: 700 1.5rem/1 var(--sans); padding: 10px 26px 12px; border-radius: 999px; box-shadow: 0 6px 14px -8px rgba(29,27,58,.45); }
-.tools { position: absolute; right: 6%; top: 340px; z-index: 3; display: flex; gap: 14px; padding: 12px; border-radius: 22px; background: rgba(255,255,255,.55); }
-.tools .ph { width: 80px; height: 80px; border-radius: 20px; font-size: .6875rem; background-color: #fff; }
+/* back panel: carries the gingham tab and, once open, the contents page */
+.back { position: absolute; inset: 0; background: var(--folder); border-radius: 4px 10px 10px 4px; transform: translateZ(0);
+  /* the stack of papers inside shows along the left and bottom edges */
+  box-shadow: -3px 3px 0 0 #FFFFFF, -3px 3px 0 1px #DADFE7, -6px 6px 0 0 #FFFFFF, -6px 6px 0 1px #DADFE7,
+              -9px 9px 0 0 #FCFCFD, -9px 9px 0 1px #D5DAE3, -10px 18px 28px -6px rgba(29,27,58,.34); }
+.tab { position: absolute; top: 9%; right: -40px; width: 44px; height: 62%; border-radius: 0 12px 12px 0;
+  background: repeating-linear-gradient(0deg, var(--gingham-blue) 0 5px, transparent 5px 10px),
+              repeating-linear-gradient(90deg, var(--gingham-blue) 0 5px, transparent 5px 10px), #EEF5FC;
+  box-shadow: 4px 6px 12px -6px rgba(29,27,58,.35); display: grid; place-items: center; }
+.tab span { writing-mode: vertical-rl; font: 400 calc(var(--W) * .058)/1 var(--script); color: var(--navy);
+  background: rgba(238,245,252,.86); padding: 10px 2px; border-radius: 4px; }
 
-/* ---------- Folder-tab section divider ---------- */
-.divider { position: relative; margin-top: 170px; background: var(--signature); color: var(--on-signature);
-  border-radius: 32px 32px 0 0; min-height: 78vh; display: grid; place-items: center; padding: 64px 16px; }
-.divider .tab { position: absolute; bottom: calc(100% - 1px); left: var(--tab-x, 8%); width: 360px; height: 54px; }
-.divider .tab svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.divider .tab span { position: relative; display: block; text-align: center; padding-top: 14px; font: 700 1.5rem/1 var(--sans); }
-.divider h2 { margin: 0; font: 800 clamp(3.5rem, 13vw, 12.5rem)/.9 var(--wide); font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; text-align: center; }
+.contents { position: absolute; inset: 5% 6% 5% 7%; background: #fff; padding: 7% 8%; box-shadow: var(--paper-shadow); }
+.contents h2 { margin: 0 0 .5em; font: 400 calc(var(--W) * .08)/1 var(--serif); color: var(--navy); }
+.contents ol { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--W) * .006); }
+.contents a { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: max(13px, calc(var(--W) * .034)); line-height: 1.75; border-radius: 4px; }
+.contents a i { width: 18px; height: 12px; border-radius: 3px 3px 0 0; background: var(--c); flex: none; box-shadow: inset 0 -1px 0 rgba(29,27,58,.12); }
+.contents a:hover span { text-decoration: underline; text-underline-offset: 3px; }
 
-/* ---------- CRFTD shop ---------- */
+/* the front cover: hinged on the left, it swings open like a real file */
+.front { position: absolute; inset: 0; transform-origin: 0 50%; transform-style: preserve-3d; transform: translateZ(3px); }
+.face { position: absolute; inset: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 4px 10px 10px 4px; }
+.face-out { background: var(--folder-front); box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 2px 4px 10px -4px rgba(29,27,58,.3);
+  display: flex; flex-direction: column; align-items: center; padding: 30% 9% 0; text-align: center; color: var(--navy); }
+.face-in { background: var(--folder-inside); transform: rotateY(180deg); padding: 7%; display: flex; flex-direction: column; justify-content: center; }
+
+.cover-title { margin: 0; display: grid; justify-items: center; }
+.cover-title .script { font: 400 calc(var(--W) * .2)/.7 var(--script); transform: rotate(-4deg); margin-bottom: calc(var(--W) * .01); position: relative; z-index: 1; }
+.cover-title .serif { font: 400 calc(var(--W) * .135)/.92 var(--serif); letter-spacing: -.01em; }
+.name-label { margin: calc(var(--W) * .07) 0 0; background: #fff; border: 1.5px dashed var(--navy); padding: .35em 1.1em .4em;
+  font: 700 calc(var(--W) * .044)/1 var(--sans); color: var(--ink); transform: rotate(-1.5deg); }
+.cover-line { margin: calc(var(--W) * .05) 0 0; max-width: 26ch; font: 400 max(12px, calc(var(--W) * .034))/1.4 var(--sans); color: var(--ink); }
+.seal { position: absolute; right: 7%; bottom: 5%; width: 27%; aspect-ratio: 1; transform: rotate(-12deg); color: var(--navy); opacity: .9; }
+
+.about-card { background: #fff; padding: 9% 9% 8%; box-shadow: var(--paper-shadow); transform: rotate(-1deg); font-size: max(12px, calc(var(--W) * .032)); line-height: 1.5; }
+.about-card h2 { margin: 0 0 .6em; font: 400 calc(var(--W) * .075)/1 var(--serif); color: var(--navy); }
+.about-card dl { margin: 0 0 .9em; display: grid; grid-template-columns: auto 1fr; gap: .35em 1em; }
+.about-card dt { font-weight: 700; }
+.about-card dd { margin: 0; }
+.about-card p { margin: 0; }
+
+/* polaroid clipped to the cover; it slides off to the side as the file opens */
+.polaroid { position: absolute; left: -14%; top: -7%; width: 40%; margin: 0; background: #fff; padding: 6% 5% 0; box-shadow: var(--paper-shadow);
+  transform: translateZ(6px) rotate(-5deg); }
+.polaroid .photo { aspect-ratio: 1 / 1.05; }
+.polaroid figcaption { font: 400 calc(var(--W) * .045)/1 var(--script); color: var(--navy); text-align: center; padding: .55em 0 .6em; }
+.clip { position: absolute; left: 50%; top: -15%; width: 34%; height: 22%; transform: translateX(-50%); border-radius: 6px; font-size: .5625rem; }
+.clip.ph { background-color: rgba(255,255,255,.75); }
+
+/* the collage objects tucked inside; they slide out sideways */
+.obj { position: absolute; left: calc(50% - 75px); top: calc(50% - 56px); width: 150px; height: 112px; border-radius: 18px;
+  transform: translateZ(1px); font-size: .6875rem; background-color: rgba(255,255,255,.6);
+  filter: drop-shadow(0 2px 1px rgba(29,27,58,.22)) drop-shadow(5px 12px 12px rgba(29,27,58,.2)); }
+
+/* No JavaScript, reduced motion, or GSAP didn't load: show the file already open */
+.no-motion .front { transform: translateZ(3px) rotateY(-178deg); }
+.no-motion .folder { transform: translateX(calc(var(--W) / 2)); }
+.no-motion .polaroid, .no-motion .hint, .no-motion .obj, .no-motion .sheet-peek { display: none; }
+@media (max-width: 899px) {
+  .no-motion .front { display: none; }
+  .no-motion .folder { transform: none; }
+}
+
+/* =========================================================
+   FOLDER-TAB DIVIDER: real stacked folders
+   ========================================================= */
+.divider { position: relative; padding-top: 150px; margin-top: 40px; overflow: hidden; }
+.later { position: absolute; left: 0; right: 0; height: 120px; border-radius: 10px 10px 0 0; }
+.later .t { position: absolute; bottom: 100%; height: 50px; width: 250px; display: grid; place-items: center;
+  font: 600 .9375rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--navy); border-radius: 12px 12px 0 0; }
+.later-2 { top: 50px; background: var(--lilac); }   .later-2 .t { left: 60%; background: var(--lilac); }
+.later-1 { top: 96px; background: var(--mint); }    .later-1 .t { left: 33%; background: var(--mint); }
+
+.dfolder { position: relative; z-index: 2; }
+.dfolder .dback { position: relative; background: var(--folder); border-radius: 14px 14px 0 0; padding-top: 96px; box-shadow: 0 -8px 22px -12px rgba(29,27,58,.3); }
+.dfolder .dtab { position: absolute; bottom: calc(100% - 1px); left: 4%; width: 300px; height: 58px; background: var(--folder);
+  border-radius: 14px 14px 0 0; display: flex; align-items: center; justify-content: center; gap: 1.2em;
+  font: 600 1rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--navy); }
+.dfolder .dtab b { font-weight: 800; letter-spacing: .1em; }
+.dfolder .dfront { position: relative; background: var(--folder-front); border-radius: 12px 12px 0 0; min-height: 66vh;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 -6px 16px -10px rgba(29,27,58,.35);
+  display: grid; place-items: center; padding: 64px 5% 80px; }
+/* the front panel's own little shoulder, like a real file folder */
+.dfolder .dfront::before { content: ""; position: absolute; bottom: calc(100% - 1px); right: 6%; width: 34%; height: 30px;
+  background: var(--folder-front); border-radius: 12px 12px 0 0; }
+.dtitle { margin: 0; text-align: center; color: var(--navy); }
+.dtitle .big { display: block; font: 800 clamp(3.5rem, 13vw, 12rem)/.9 var(--wide); font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; }
+.dtitle .script { display: block; font: 400 clamp(2rem, 4.4vw, 4rem)/1 var(--script); margin-top: .15em; }
+.dpolaroid { position: absolute; right: 9%; top: -78px; z-index: 3; width: clamp(130px, 15vw, 210px); margin: 0; background: #fff; padding: 9px 9px 0; box-shadow: var(--paper-shadow); transform: rotate(5deg); }
+.dpolaroid .photo { aspect-ratio: 1; }
+.dpolaroid figcaption { font: 400 1.375rem/1 var(--script); color: var(--navy); text-align: center; padding: .5em 0 .55em; }
+.dpolaroid .clip { top: -14%; height: 18%; }
+
+/* =========================================================
+   CRFTD SHOP (unchanged from v2)
+   ========================================================= */
 .shop { padding: 96px 5% 140px; position: relative; }
 .shop-intro { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; margin-bottom: 64px; max-width: 1180px; }
 @media (min-width: 900px) { .shop-intro { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; } }
@@ -204,7 +212,6 @@ a { color: inherit; }
 .accent { color: var(--signature-text); font-weight: 700; font-style: italic; }
 .fact-pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .fact-pills li { background: var(--sky); border-radius: 999px; padding: 6px 16px 7px; font-size: 1rem; font-weight: 600; }
-
 .cards { display: grid; gap: 28px; grid-template-columns: repeat(12, minmax(0, 1fr)); }
 .card { grid-column: span 12; border-radius: 32px; padding: 16px 16px 0; background: var(--bg); box-shadow: var(--card-shadow); display: flex; flex-direction: column; }
 @media (min-width: 900px) { .card.wide { grid-column: span 7; } .card.narrow { grid-column: span 5; } }
@@ -213,8 +220,6 @@ a { color: inherit; }
 .card footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 10px 22px; }
 .card h3 { margin: 0; font: 500 1.375rem/1.2 var(--sans); }
 .card .heart { width: 26px; height: 24px; flex: none; }
-
-/* stacked app windows */
 .stack { position: relative; margin-top: 88px; display: grid; gap: 28px; }
 @media (min-width: 900px) {
   .stack { display: block; height: 560px; }
@@ -227,74 +232,43 @@ a { color: inherit; }
 .appwin .bar .lights { gap: 8px; } .appwin .bar .lights i { width: 12px; height: 12px; }
 .appwin .bar h3 { margin: 0; font: 500 .9375rem/1 var(--sans); }
 .appwin .body { padding: 26px 30px 30px; }
-.readme p { margin: 0 0 12px; max-width: 62ch; }
-.readme p:last-child { margin-bottom: 0; }
+.readme p { margin: 0 0 12px; } .readme p:last-child { margin-bottom: 0; }
 .sales dl { margin: 0; display: grid; grid-template-columns: 1fr auto; }
 .sales dt, .sales dd { margin: 0; padding: 14px 0; border-bottom: 1px solid #E7EAF0; }
 .sales dt { font-size: 1rem; }
 .sales dd { font: 800 1.75rem/1 var(--sans); text-align: right; align-self: center; }
 .sales dl > :nth-last-child(-n+2) { border-bottom: 0; }
-.cursor-stack { left: 49%; top: 470px; width: 54px; height: 81px; }
-.spark-d { right: 2%; top: 40px; width: 46px; height: 46px; }
 
-/* ---------- Phones: drop the absolute collage into a stacked flow ---------- */
-@media (min-width: 900px) { .collage-row { display: contents; } }
+/* ---------- Phones ---------- */
 @media (max-width: 899px) {
-  .titlebar { height: 52px; gap: 14px; padding: 0 16px; }
+  .titlebar { gap: 14px; padding: 0 16px; }
   .titlebar .year { display: none; }
-  .cover { height: auto; display: flex; flex-direction: column; align-items: center; padding: 20px 16px 0; }
-  .desk-folders { position: static; width: auto; height: auto; display: flex; gap: 2px; justify-content: center; order: 1; }
-  .desk-folders li { position: static !important; }
-  .desk-folders svg { width: 64px; height: 52px; }
-  .desk-folders span { font-size: .8125rem; white-space: normal; max-width: 9em; }
-  .title-card { position: relative; left: auto; top: auto; transform: none; width: 100%; order: 2; margin-top: 18px; padding: 26px 12px 34px; }
-  .ransom { --L: clamp(52px, 24vw, 140px); }
-  .l-o3 .coin span { display: none; }
-  .ransom .row1, .ransom .row2 { margin-left: 0; }
-  .collage-row { order: 3; display: flex; gap: 14px; justify-content: center; margin: 22px 0 8px; position: relative; z-index: 3; }
-  .cut { position: relative; left: auto; right: auto; top: auto; width: 30vw; height: 24vw; max-width: 150px; max-height: 120px; font-size: .625rem; }
-  .cut .tag { padding: 4px 5px; }
-  .cut-ticket { display: none; }
-  .focus, .spark-b, .spark-c, .cursor-cover { display: none; }
-  .tear { position: relative; top: auto; height: 560px; order: 4; margin: -40px -16px 0; width: calc(100% + 32px); }
-  .tear .photo-label { top: 360px; }
-  .pills { top: 80px; left: 16px; }
-  .pill { font-size: 1.25rem; }
-  .tools { top: 250px; right: 16px; left: 16px; gap: 8px; justify-content: center; }
-  .tools .ph { width: 54px; height: 54px; font-size: .5625rem; border-radius: 14px; }
-  .tools .ph b { font-size: .625rem; }
-  .spark-a { left: auto; right: 16px; top: 70px; }
-  .divider { margin-top: 110px; min-height: 52vh; border-radius: 24px 24px 0 0; }
-  .divider .tab { width: 220px; height: 44px; left: 16px; }
-  .divider .tab span { padding-top: 11px; font-size: 1.25rem; }
+  .folder { --W: min(68vw, 330px); }
+  .tab { right: -30px; width: 32px; }
+  .sheet-peek { right: -16%; }
+  .polaroid { left: -10%; top: -9%; }
+  .obj { width: 104px; height: 80px; left: calc(50% - 52px); top: calc(50% - 40px); font-size: .5625rem; }
+  .obj .tag { padding: 3px 5px; }
+  .divider { padding-top: 120px; }
+  .later .t { width: 150px; height: 42px; font-size: .75rem; letter-spacing: .2em; }
+  .later-2 .t { left: 52%; } .later-1 .t { left: 22%; }
+  .dfolder .dtab { width: 170px; height: 48px; left: 16px; font-size: .875rem; letter-spacing: .2em; }
+  .dfolder .dfront { min-height: 52vh; padding-top: 140px; }
+  .dpolaroid { right: 16px; top: -40px; }
   .shop { padding: 64px 16px 96px; }
   .shop-intro p { text-align: left; font-size: 1.1875rem; }
-  .cursor-stack, .spark-d { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- Reusable drawings: folder icon, pixel cursor, pixel sparkle, heart -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="folderFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A6DCFF"/><stop offset="1" stop-color="#5DB5F6"/></linearGradient>
-    <symbol id="folder" viewBox="0 0 104 84">
-      <path d="M8 6h28c3 0 4.5 1 6.5 3.2L46 13h50a8 8 0 0 1 8 8v55a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8V14a8 8 0 0 1 8-8z" fill="#58A9E8"/>
-      <rect x="7" y="17" width="90" height="10" rx="2.5" fill="#FFFFFF" opacity=".95"/>
-      <rect x="0" y="23" width="104" height="61" rx="8" fill="url(#folderFront)"/>
-      <rect x="0" y="23" width="104" height="2" rx="1" fill="#D3EEFF" opacity=".8"/>
-    </symbol>
-    <symbol id="cursor" viewBox="0 0 12 18"><rect x="0" y="0" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="1" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="1" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="2" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="2" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="2" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="3" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="3" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="3" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="3" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="4" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="4" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="4" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="4" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="4" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="5" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="5" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="5" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="5" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="5" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="5" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="6" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="6" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="7" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="7" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="7" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="8" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="8" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="8" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="9" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="9" width="1" height="1" fill="#FFFFFF"/><rect x="9" y="9" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="10" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="9" y="10" width="1" height="1" fill="#FFFFFF"/><rect x="10" y="10" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="4" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="11" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="7" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="8" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="9" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="10" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="11" y="11" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="12" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="12" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="12" width="1" height="1" fill="#FFFFFF"/><rect x="3" y="12" width="1" height="1" fill="#1D1B3A"/><rect x="4" y="12" width="1" height="1" fill="#FFFFFF"/><rect x="5" y="12" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="12" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="13" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="13" width="1" height="1" fill="#FFFFFF"/><rect x="2" y="13" width="1" height="1" fill="#1D1B3A"/><rect x="4" y="13" width="1" height="1" fill="#1D1B3A"/><rect x="5" y="13" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="13" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="13" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="14" width="1" height="1" fill="#1D1B3A"/><rect x="1" y="14" width="1" height="1" fill="#1D1B3A"/><rect x="4" y="14" width="1" height="1" fill="#1D1B3A"/><rect x="5" y="14" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="14" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="14" width="1" height="1" fill="#1D1B3A"/><rect x="0" y="15" width="1" height="1" fill="#1D1B3A"/><rect x="5" y="15" width="1" height="1" fill="#1D1B3A"/><rect x="6" y="15" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="15" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="15" width="1" height="1" fill="#1D1B3A"/><rect x="5" y="16" width="1" height="1" fill="#1D1B3A"/><rect x="6" y="16" width="1" height="1" fill="#FFFFFF"/><rect x="7" y="16" width="1" height="1" fill="#FFFFFF"/><rect x="8" y="16" width="1" height="1" fill="#1D1B3A"/><rect x="6" y="17" width="1" height="1" fill="#1D1B3A"/><rect x="7" y="17" width="1" height="1" fill="#1D1B3A"/></symbol>
-    <symbol id="spark" viewBox="0 0 9 9">
-      <path fill="#FFC83D" d="M4 0h1v1h-1zM4 1h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM5 3h1v1h-1zM6 3h1v1h-1zM0 4h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1zM4 8h1v1h-1z"/>
-      <path fill="#FFF6D6" d="M4 3h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM4 5h1v1h-1z"/>
-    </symbol>
     <symbol id="heart" viewBox="0 0 26 24"><path fill="#EC2A84" d="M13 23.2 11.2 21.6C4.8 15.8.6 12 .6 7.3.6 3.5 3.6.6 7.3.6c2.1 0 4.2 1 5.7 2.6C14.5 1.6 16.6.6 18.7.6c3.7 0 6.7 2.9 6.7 6.7 0 4.7-4.2 8.5-10.6 14.3z"/></symbol>
   </defs>
 </svg>
 
-<p class="tile-note">Style tile v2, to compare side by side with the reference screenshots. Everything is still, with no animation yet. Checkerboard frames are photos still to add, and each one names its file and size.</p>
+<p class="tile-note">Style tile v3. The cover is now the case file: scroll and it opens. Checkerboard frames are photos still to add, and each one names its file and size.</p>
 
 <div class="window">
   <header class="titlebar">
@@ -305,61 +279,96 @@ a { color: inherit; }
   </header>
 
   <main>
-    <!-- ================= COVER ================= -->
+    <!-- ================= COVER: the case file ================= -->
     <section class="cover" aria-label="Cover">
+      <div class="cover-stage">
+        <div class="folder">
+          <div class="sheet-peek" aria-hidden="true">
+            <div class="ph"><span class="tag"><b>event photo</b><br>aquaterra/</span></div>
+            <div class="ph"><span class="tag"><b>tee photo</b><br>crftd/</span></div>
+          </div>
 
-      <ul class="desk-folders" aria-label="Folders">
-        <li style="left:0;top:0"><a href="#crftd"><svg aria-hidden="true"><use href="#folder"/></svg><span>brand and merch</span></a></li>
-        <li style="left:170px;top:80px"><a href="#crftd"><svg aria-hidden="true"><use href="#folder"/></svg><span>social and reels</span></a></li>
-        <li style="left:90px;top:230px"><a href="#crftd"><svg aria-hidden="true"><use href="#folder"/></svg><span>events and PR</span></a></li>
-      </ul>
+          <div class="back grain">
+            <div class="tab" aria-hidden="true"><span>Kolkata to Mumbai</span></div>
+            <nav class="contents" aria-label="Inside this file">
+              <h2>Inside this file</h2>
+              <ol>
+                <li><a href="#crftd"><i style="--c:var(--blush)"></i><span>CRFTD</span></a></li>
+                <li><a href="#crftd"><i style="--c:var(--mint)"></i><span>Too Yumm!</span></a></li>
+                <li><a href="#crftd"><i style="--c:var(--lilac)"></i><span>Valentine's reels with Tiya Gupta</span></a></li>
+                <li><a href="#crftd"><i style="--c:var(--peach)"></i><span>AquaTerra</span></a></li>
+                <li><a href="#crftd"><i style="--c:var(--sky)"></i><span>Media planning</span></a></li>
+                <li><a href="#crftd"><i style="--c:#FFFFFF"></i><span>PR desk</span></a></li>
+                <li><a href="#crftd"><i style="--c:var(--lilac)"></i><span>Photography</span></a></li>
+                <li><a href="#crftd"><i style="--c:var(--butter)"></i><span>Also on my desk</span></a></li>
+                <li><a href="#crftd"><i style="--c:var(--mint)"></i><span>Contact</span></a></li>
+              </ol>
+            </nav>
+          </div>
 
-      <div class="title-card">
-        <h1 class="ransom" aria-label="Portfolio">
-          <span class="row row1"><span class="l-p" aria-hidden="true">P</span><span class="l-o1" aria-hidden="true"><b>o</b></span><span class="l-r" aria-hidden="true">r</span><span class="l-t" aria-hidden="true">t</span></span>
-          <span class="row row2"><span class="l-f" aria-hidden="true">f</span><span class="l-o2" aria-hidden="true"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i></span><span class="l-l" aria-hidden="true">l</span><span class="l-i" aria-hidden="true">i</span><span class="l-o3" aria-hidden="true"><span class="wheel"></span><span class="coin ph"><b>coin</b><span>finance/<br>coin.png</span></span></span></span>
-        </h1>
-      </div>
+          <div class="obj ph o-camera"><span class="tag"><b>camera.png</b><br>objects/</span></div>
+          <div class="obj ph o-clapper"><span class="tag"><b>clapperboard.png</b><br>cutouts/film</span></div>
+          <div class="obj ph o-ticket"><span class="tag"><b>ticket.png</b><br>cutouts/events</span></div>
+          <div class="obj ph o-momos"><span class="tag"><b>momos.png</b><br>cutouts/food</span></div>
+          <div class="obj ph o-coin"><span class="tag"><b>coins.png</b><br>cutouts/finance</span></div>
 
-      <div class="collage-row">
-        <div class="cut cut-camera ph"><span class="tag"><b>camera.png</b><br>assets/objects<br>1600 × 1200</span></div>
-        <div class="cut cut-clapper ph"><span class="tag"><b>clapperboard.png</b><br>cutouts/film<br>1400 × 1250</span></div>
-        <div class="cut cut-ticket ph"><span class="tag"><b>ticket.png</b> cutouts/events, 1600 × 720</span></div>
-        <div class="cut cut-momos ph"><span class="tag"><b>momos.png</b><br>cutouts/food<br>1600 × 1150</span></div>
-      </div>
-      <div class="focus" aria-hidden="true"><svg viewBox="0 0 30 30"><g stroke="#FFC83D" stroke-width="2.4" stroke-linecap="round"><circle cx="15" cy="15" r="5" fill="#FFC83D" stroke="none"/><path d="M15 2v4M15 24v4M2 15h4M24 15h4M5.8 5.8l2.8 2.8M21.4 21.4l2.8 2.8M5.8 24.2l2.8-2.8M21.4 8.6l2.8-2.8"/></g></svg></div>
+          <div class="front">
+            <div class="face face-out grain">
+              <h1 class="cover-title">
+                <span class="script">Portfolio</span>
+                <span class="serif">Marketing, PR<br>and content</span>
+              </h1>
+              <p class="name-label">Geetika Agarwal</p>
+              <p class="cover-line">I like ideas that are fun to look at and still move numbers.</p>
+              <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+                <defs><path id="sealPath" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
+                <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                <text font-family="Figtree, sans-serif" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="currentColor"><textPath href="#sealPath">WHISTLING WOODS ✦ MEDIA AND COMMUNICATION ✦</textPath></text>
+                <text x="60" y="58" text-anchor="middle" font-family="Pinyon Script, cursive" font-size="20" fill="currentColor">GA</text>
+                <text x="60" y="74" text-anchor="middle" font-family="Figtree, sans-serif" font-size="8" font-weight="600" letter-spacing="1" fill="currentColor">2026</text>
+              </svg>
+            </div>
+            <div class="face face-in grain">
+              <div class="about-card">
+                <h2>About the file</h2>
+                <dl>
+                  <dt>Based in</dt><dd>Kolkata and Mumbai</dd>
+                  <dt>Studying</dt><dd>BBA in Media &amp; Communication, Whistling Woods International, 2025 to 2028</dd>
+                  <dt>Good at</dt><dd>Brand building, social content, events, sponsorships, PR writing</dd>
+                </dl>
+                <p>Off the clock: my camera, momos, and the next trip.</p>
+              </div>
+            </div>
+          </div>
 
-      <div class="tear">
-        <div class="checker" aria-hidden="true"></div>
-        <div class="photo"></div>
-        <div class="ph photo-label" style="background:none;outline:none"><span class="tag"><b>Photo to add: one of your wide shots, like the Goa sea</b><br>assets/photography/cover-wide.jpg, 2800 × 1000</span></div>
-        <ul class="pills" aria-label="What I do">
-          <li class="pill">marketing</li>
-          <li class="pill">PR</li>
-          <li class="pill">content</li>
-        </ul>
-        <div class="tools" aria-label="Tools I use">
-          <div class="ph"><b>Canva</b>icon</div>
-          <div class="ph"><b>Figma</b>icon</div>
-          <div class="ph"><b>CapCut</b>icon</div>
-          <div class="ph"><b>VN</b>icon</div>
-          <div class="ph"><b>Insta­gram</b>icon</div>
+          <figure class="polaroid" aria-hidden="true">
+            <div class="clip ph"><b>binder-clip.png</b></div>
+            <div class="photo ph"><span class="tag"><b>polaroid photo</b><br>objects/polaroid-1.jpg<br>1000 × 1050</span></div>
+            <figcaption>the CRFTD days</figcaption>
+          </figure>
         </div>
-        <svg class="px spark-a" viewBox="0 0 9 9" aria-hidden="true"><use href="#spark"/></svg>
+        <p class="hint">Scroll to open the file</p>
       </div>
-
-      <svg class="px cursor cursor-cover" viewBox="0 0 12 18" aria-hidden="true"><use href="#cursor"/></svg>
-      <svg class="px spark-b" viewBox="0 0 9 9" aria-hidden="true"><use href="#spark"/></svg>
-      <svg class="px spark-c" viewBox="0 0 9 9" aria-hidden="true"><use href="#spark"/></svg>
     </section>
 
-    <!-- ================= DIVIDER ================= -->
-    <section class="divider" style="--tab-x:7%" aria-labelledby="crftd">
-      <div class="tab" aria-hidden="true">
-        <svg viewBox="0 0 360 54" preserveAspectRatio="none"><path fill="#EC2A84" d="M0 54c16 0 21-5 25-15L35 13C39 4 45 0 56 0h248c11 0 17 4 21 13l10 26c4 10 9 15 25 15z"/></svg>
-        <span>01</span>
+    <!-- ================= DIVIDER: stacked folders ================= -->
+    <section class="divider" aria-labelledby="crftd">
+      <div class="later later-2 grain" aria-hidden="true"><span class="t">Tiya reels</span></div>
+      <div class="later later-1 grain" aria-hidden="true"><span class="t">Too Yumm!</span></div>
+      <div class="dfolder">
+        <div class="dback grain">
+          <div class="dtab" aria-hidden="true"><b>01</b>CRFTD</div>
+          <div class="dfront grain">
+            <h2 class="dtitle" id="crftd"><span class="big">CRFTD</span><span class="script">an apparel label, 2024 to 2026</span></h2>
+            <figure class="dpolaroid" aria-hidden="true">
+              <div class="clip ph"><b>clip</b></div>
+              <div class="photo ph"><span class="tag"><b>crftd-polaroid.jpg</b><br>1000 × 1000</span></div>
+              <figcaption>drop one</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
-      <h2 id="crftd">CRFTD</h2>
     </section>
 
     <!-- ================= CRFTD SHOP ================= -->
@@ -370,7 +379,6 @@ a { color: inherit; }
           <li>Kolkata</li><li>Jan 2024 to Jun 2026</li><li>D2C and B2B</li><li>3 drops</li><li>8 tees by me</li><li>4 tees by children</li>
         </ul>
       </div>
-
       <div class="cards">
         <article class="card wide" style="--bg:var(--blush)">
           <div class="frame">
@@ -395,7 +403,6 @@ a { color: inherit; }
           <footer><h3>DIY T-shirt print kit</h3><svg class="heart" viewBox="0 0 26 24" aria-hidden="true"><use href="#heart"/></svg></footer>
         </article>
       </div>
-
       <div class="stack">
         <article class="appwin readme">
           <div class="bar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><h3>read me.txt</h3></div>
@@ -417,11 +424,107 @@ a { color: inherit; }
             </dl>
           </div>
         </article>
-        <svg class="px cursor cursor-stack" viewBox="0 0 12 18" aria-hidden="true"><use href="#cursor"/></svg>
-        <svg class="px spark-d" viewBox="0 0 9 9" aria-hidden="true"><use href="#spark"/></svg>
       </div>
     </section>
   </main>
 </div>
+
+<!-- Pinned versions from the CDN, with a local copy as backup so the page still works offline -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>window.gsap || document.write('<script src="js/vendor/gsap.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>window.ScrollTrigger || document.write('<script src="js/vendor/ScrollTrigger.min.js"><\/script>')</script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>window.Lenis || document.write('<script src="js/vendor/lenis.min.js"><\/script>')</script>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  if (!window.gsap || !window.ScrollTrigger) { root.classList.add('no-motion'); return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { root.classList.add('no-motion'); return; }
+
+  // Smooth scrolling, kept in step with ScrollTrigger
+  var lenis = null;
+  if (window.Lenis) {
+    lenis = new Lenis({ lerp: 0.12 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  var bar = document.querySelector('.titlebar');
+  var folder = document.querySelector('.folder');
+  var front = document.querySelector('.front');
+  var objs = gsap.utils.toArray('.obj');
+  var coverST = null;
+
+  // Where each collage object lands, relative to where it starts (the middle of the folder)
+  function targets(wide) {
+    var W = folder.offsetWidth, H = folder.offsetHeight, vw = window.innerWidth;
+    var ow = objs[0].offsetWidth, oh = objs[0].offsetHeight;
+    var cx = W / 2 - ow / 2, cy = H / 2 - oh / 2;
+    if (wide) {
+      // the open file sits centred, so the free space is either side of it
+      var margin = vw / 2 - W;
+      var leftX = -W - margin / 2 - ow / 2 + 10, rightX = W + 40 + (margin - 40) / 2 - ow / 2;
+      return [
+        { x: leftX - cx,  y: H * .30 - cy, r: -9 },   // camera, left middle
+        { x: rightX - cx, y: H * .34 - cy, r: 8 },    // clapperboard, right middle
+        { x: leftX - cx,  y: H * .72 - cy, r: 6 },    // ticket, bottom left
+        { x: rightX - cx, y: H * .74 - cy, r: -5 },   // momos, bottom right
+        { x: rightX - cx, y: H * -.04 - cy, r: 10 }   // coins, top right
+      ];
+    }
+    // phones: the objects fan out above and below the file
+    var up = -oh - 26 - cy, down = H + 26 - cy, spread = Math.min(vw * .3, 130);
+    return [
+      { x: -spread, y: up, r: -8 }, { x: 0, y: up - 10, r: 5 }, { x: spread, y: up, r: 9 },
+      { x: -spread * .6, y: down, r: 6 }, { x: spread * .6, y: down, r: -7 }
+    ];
+  }
+
+  function buildCover(wide) {
+    var W = folder.offsetWidth;
+    var t = targets(wide);
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.cover', pin: '.cover-stage', scrub: 0.8,
+        start: function () { return 'top ' + bar.offsetHeight + 'px'; },
+        end: '+=' + (wide ? 1500 : 1200), invalidateOnRefresh: true
+      },
+      defaults: { ease: 'power2.inOut' }
+    });
+    coverST = tl.scrollTrigger;
+    tl.to('.hint', { autoAlpha: 0, duration: .08 }, 0)
+      .to(folder, { rotation: 0, x: wide ? W / 2 : 0, duration: .35 }, 0)
+      .to('.polaroid', { x: wide ? -W * 1.12 : -W * 1.2, y: wide ? -W * .12 : -40, rotation: -12, autoAlpha: wide ? 1 : 0, duration: .45 }, .08)
+      .to(front, wide ? { rotationY: -178, duration: .5 } : { rotationY: -110, autoAlpha: 0, duration: .5 }, .12)
+      .to('.sheet-peek', { x: wide ? W * .78 : W, y: wide ? W * .1 : 0, rotation: 12, autoAlpha: wide ? 1 : 0, duration: .45 }, .3);
+    objs.forEach(function (o, i) {
+      tl.to(o, { x: t[i].x, y: t[i].y, rotation: t[i].r, duration: .45, ease: 'power3.out' }, .42 + i * .05);
+    });
+    tl.to({}, { duration: .12 }); // a short hold on the open file before it scrolls away
+    return function () { coverST = null; };
+  }
+
+  var mm = gsap.matchMedia();
+  mm.add('(min-width: 900px)', function () { return buildCover(true); });
+  mm.add('(max-width: 899px)', function () { return buildCover(false); });
+
+  // The divider folders slide in from the side as they arrive
+  [['.dfolder', 12], ['.later-1', 7], ['.later-2', 4]].forEach(function (d) {
+    gsap.from(d[0], { xPercent: d[1], ease: 'none', scrollTrigger: { trigger: '.divider', start: 'top bottom', end: 'top 35%', scrub: 0.6 } });
+  });
+
+  // Keyboard: if someone tabs into the contents while the file is still shut, open it for them
+  document.querySelector('.contents').addEventListener('focusin', function () {
+    if (coverST && coverST.progress < .95) {
+      if (lenis) { lenis.scrollTo(coverST.end, { immediate: true }); } else { window.scrollTo(0, coverST.end); }
+    }
+  });
+})();
+</script>
 </body>
 </html>
