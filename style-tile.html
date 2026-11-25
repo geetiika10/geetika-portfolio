@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style tile, Geetika Agarwal portfolio</title>
+<meta name="robots" content="noindex">
+<style>
+/* Fonts: stored locally so the page works when double-clicked, even offline */
+@font-face { font-family: "Rozha One"; font-weight: 400; font-display: swap; src: url(fonts/rozha-400-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2212; }
+@font-face { font-family: "Rozha One"; font-weight: 400; font-display: swap; src: url(fonts/rozha-400-deva.woff2) format("woff2"); unicode-range: U+0900-097F, U+20B9, U+25CC; }
+@font-face { font-family: "Mukta"; font-weight: 400; font-display: swap; src: url(fonts/mukta-400-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2212; }
+@font-face { font-family: "Mukta"; font-weight: 400; font-display: swap; src: url(fonts/mukta-400-deva.woff2) format("woff2"); unicode-range: U+0900-097F, U+20B9, U+25CC; }
+@font-face { font-family: "Mukta"; font-weight: 500; font-display: swap; src: url(fonts/mukta-500-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2212; }
+@font-face { font-family: "Mukta"; font-weight: 500; font-display: swap; src: url(fonts/mukta-500-deva.woff2) format("woff2"); unicode-range: U+0900-097F, U+20B9, U+25CC; }
+@font-face { font-family: "Mukta"; font-weight: 700; font-display: swap; src: url(fonts/mukta-700-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2212; }
+@font-face { font-family: "Mukta"; font-weight: 700; font-display: swap; src: url(fonts/mukta-700-deva.woff2) format("woff2"); unicode-range: U+0900-097F, U+20B9, U+25CC; }
+
+:root {
+  /* Colour: every colour is a material on the desk */
+  --desk:   #CFE3F5;  /* light blue desk mat, page background */
+  --folder: #F7C5D5;  /* pink folder card */
+  --folder-deep: #EEB1C5; /* the folder's inside face, a shade darker */
+  --paper:  #FAFCFF;  /* cool copier white */
+  --butter: #FDE99B;
+  --mint:   #C4EBD5;
+  --lilac:  #DACDF3;
+  --peach:  #FFD2B6;
+  --sky:    #B9D6F0;  /* divider card a step deeper than the desk */
+  --ink:    #1E2A6E;  /* ballpoint blue, all text */
+  --stamp:  #5A3FA6;  /* violet stamp-pad ink */
+
+  /* Type scale (px): 12 14 18 21 24 36 48 72 120 */
+  --t-12: 0.75rem; --t-14: 0.875rem; --t-18: 1.125rem; --t-21: 1.3125rem;
+  --t-24: 1.5rem;  --t-36: 2.25rem;  --t-48: 3rem;     --t-72: 4.5rem;
+  --t-120: clamp(3.5rem, 9vw, 7.5rem);
+
+  --display: "Rozha One", "Bodoni 72", Georgia, serif;
+  --text: "Mukta", "Segoe UI", system-ui, sans-serif;
+
+  /* Shadows are tinted with the ink blue, because shadows on a blue desk go blue.
+     Height decides the shadow: flat paper sits close, thicker things throw further. */
+  --lift-paper: 0 1px 1px rgba(30,42,110,.20), 0 3px 8px -2px rgba(30,42,110,.16);
+  --lift-card:  0 1px 2px rgba(30,42,110,.22), 0 8px 18px -6px rgba(30,42,110,.24);
+  --lift-folder: 0 2px 3px rgba(30,42,110,.20), 0 22px 40px -14px rgba(30,42,110,.35);
+
+  /* Paper grain, a tiny noise texture laid over every paper surface */
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .12  0 0 0 0 .16  0 0 0 0 .43  0 0 0 .16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background-color: var(--desk);
+  background-image: var(--grain);
+  background-size: 160px;
+  background-blend-mode: multiply;
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: var(--t-18);
+  line-height: 1.55;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--stamp); outline-offset: 3px; border-radius: 2px; }
+
+/* Anything made of paper gets grain */
+.paper { position: relative; isolation: isolate; }
+.paper::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: var(--grain); background-size: 160px; opacity: .6; mix-blend-mode: multiply;
+  border-radius: inherit;
+}
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 700px) { .wrap { padding: 0 48px; } }
+
+.tile-section { padding-block: 72px; }
+.tile-section + .tile-section { padding-block-start: 24px; }
+.tile-head { font: 700 var(--t-24)/1.2 var(--text); margin: 0 0 8px; }
+.tile-note { max-width: 64ch; margin: 0 0 36px; font-size: var(--t-14); line-height: 1.5; }
+
+/* ---------- Intro ---------- */
+.intro { padding-block: 48px 0; }
+.intro h1 { font: 700 var(--t-24)/1.2 var(--text); margin: 0 0 8px; }
+.intro p { max-width: 64ch; margin: 0; font-size: var(--t-14); }
+
+/* ---------- Paper swatches ---------- */
+.swatches {
+  display: grid; gap: 28px 24px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  list-style: none; margin: 0; padding: 0;
+}
+.swatch {
+  aspect-ratio: 1 / 1.414;           /* A-series paper proportion */
+  background: var(--c);
+  box-shadow: var(--lift-paper);
+  padding: 14px 14px 12px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  transform: rotate(var(--r, 0deg));
+}
+.swatch b { font-weight: 700; font-size: var(--t-18); line-height: 1.2; }
+.swatch span { font-size: var(--t-14); line-height: 1.35; }
+.swatch .hex { font-weight: 500; margin-top: 2px; }
+.swatch.lead { outline: 2px solid var(--ink); outline-offset: 6px; }
+
+.inks { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 36px; }
+.ink-card {
+  background: var(--paper); box-shadow: var(--lift-paper);
+  padding: 16px 18px; display: flex; align-items: center; gap: 14px; min-width: 260px;
+}
+.ink-dot { width: 44px; height: 44px; border-radius: 50%; background: var(--c); flex: none;
+  /* ink soaks unevenly into paper */
+  -webkit-mask: radial-gradient(circle at 48% 52%, #000 62%, transparent 72%);
+          mask: radial-gradient(circle at 48% 52%, #000 62%, transparent 72%); }
+.ink-card b { display: block; line-height: 1.2; }
+.ink-card span { font-size: var(--t-14); }
+
+/* ---------- Type specimen ---------- */
+.specimen { background: var(--paper); box-shadow: var(--lift-card); padding: 32px 20px; }
+@media (min-width: 700px) { .specimen { padding: 48px 56px; } }
+.specimen h3 { font: 700 var(--t-21)/1.3 var(--text); margin: 0 0 4px; }
+.specimen .who { font-size: var(--t-14); margin: 0 0 28px; }
+.specimen + .specimen { margin-top: 32px; }
+.spec-row { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 14px 0; border-top: 1px solid rgba(30,42,110,.15); }
+@media (min-width: 900px) { .spec-row { grid-template-columns: 170px 1fr; gap: 24px; align-items: baseline; } }
+.spec-row .size { font-size: var(--t-14); line-height: 1.35; }
+.spec-row .size b { font-weight: 700; }
+.spec-row .sample { margin: 0; overflow-wrap: anywhere; }
+.rozha { font-family: var(--display); font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; }
+.mukta { font-family: var(--text); }
+.weights { display: grid; gap: 6px; margin-top: 28px; }
+.weights p { margin: 0; font-size: var(--t-21); line-height: 1.3; }
+.body-sample { max-width: 64ch; margin-top: 28px; }
+.body-sample p { margin: 0 0 12px; }
+
+/* ---------- Placeholder frame (stands in for a missing image) ---------- */
+.ph {
+  background: var(--paper);
+  border: 1.5px dashed rgba(30,42,110,.45);
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  padding: 12px 14px; gap: 2px;
+  font-size: var(--t-12); line-height: 1.35;
+  overflow: hidden; min-width: 0;
+}
+.ph b { font-size: var(--t-14); font-weight: 700; }
+.ph code { font-family: var(--text); font-weight: 500; overflow-wrap: anywhere; }
+
+/* ---------- Folder with index tabs ---------- */
+.folder-stage { padding: 24px 0 8px; }
+.folder {
+  position: relative; max-width: 1040px; margin: 0 auto;
+  aspect-ratio: 1.75 / 1;
+}
+.folder-back {
+  position: absolute; inset: 9% 0 0 0;
+  background: var(--folder-deep); border-radius: 6px;
+  box-shadow: var(--lift-folder);
+}
+.dividers { position: absolute; inset: 0 3.5% 0 3.5%; list-style: none; margin: 0; padding: 0; }
+.divider {
+  position: absolute; left: 0; right: 0; bottom: 4%;
+  top: calc(13% + var(--i) * 1.5%);
+  background: var(--c); border-radius: 3px 3px 2px 2px;
+  box-shadow: 0 -1px 0 rgba(30,42,110,.10), var(--lift-paper);
+}
+.divider a {
+  position: absolute; bottom: 100%;
+  left: calc(var(--i) * 10.6%);
+  width: 11.4%; min-width: 0;
+  background: var(--c);
+  border-radius: 7px 7px 0 0;
+  padding: 7px 6px 5px; margin-bottom: -1px;
+  font: 500 var(--t-14)/1.15 var(--text);
+  text-decoration: none; text-align: center;
+  box-shadow: 0 -1px 2px rgba(30,42,110,.14);
+  overflow-wrap: anywhere;
+}
+/* The one hover effect on the whole site: a tab lifts. Instant for now, no animation yet. */
+.divider a:hover, .divider a:focus-visible { transform: translateY(-6px); }
+.divider a:focus-visible { outline-offset: 2px; }
+
+.folder-front {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 32%;
+  background: var(--folder); border-radius: 4px 4px 6px 6px;
+  box-shadow: 0 -2px 2px rgba(30,42,110,.10), 0 -10px 24px -12px rgba(30,42,110,.35);
+  display: flex; align-items: flex-end; justify-content: flex-start; padding: 0 0 4.5% 6%;
+}
+.folder-label {
+  background: var(--paper); box-shadow: var(--lift-paper);
+  padding: 10px 16px 8px; transform: rotate(-1.2deg);
+  font: 500 var(--t-18)/1.3 var(--text);
+  max-width: 70%;
+}
+.folder-label small { display: block; font-size: var(--t-12); font-weight: 400; margin-top: 2px; opacity: .8; }
+
+/* Phones: the tabs can't sit in one row, so the dividers stand up as a stack you read top to bottom */
+@media (max-width: 760px) {
+  .folder { aspect-ratio: auto; padding: 18px 12px 0; background: var(--folder-deep); border-radius: 6px; box-shadow: var(--lift-folder); }
+  .folder-back { display: none; }
+  .dividers { position: static; display: grid; gap: 0; }
+  .divider { position: relative; inset: auto; height: 56px; margin-top: -18px; border-radius: 3px; }
+  .divider:first-child { margin-top: 26px; }
+  .divider a { left: calc(var(--i) * 6%); width: auto; min-width: 44%; padding: 8px 14px 6px; text-align: left; }
+  .folder-front { position: relative; height: auto; padding: 28px 16px 24px; margin: -10px -12px 0; border-radius: 4px 4px 6px 6px; }
+  .folder-label { max-width: 100%; }
+}
+
+/* ---------- Small objects: stamp, sticky note, button ---------- */
+.objects { display: grid; gap: 48px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: center; }
+.obj-cap { font-size: var(--t-14); margin: 18px 0 0; max-width: 34ch; }
+
+.stamp-sheet { background: var(--paper); box-shadow: var(--lift-paper); padding: 40px 24px; display: grid; place-items: center; }
+.stamp {
+  color: var(--stamp);
+  border: 3px solid currentColor; border-radius: 10px;
+  padding: 6px; transform: rotate(-7deg);
+  mix-blend-mode: multiply; filter: url(#ink);
+  text-align: center;
+}
+.stamp-inner { border: 1.5px solid currentColor; border-radius: 6px; padding: 8px 18px 6px; }
+.stamp b { display: block; font: 700 var(--t-24)/1.1 var(--text); letter-spacing: .02em; }
+.stamp span { display: block; font: 500 var(--t-14)/1.3 var(--text); }
+
+.sticky {
+  aspect-ratio: 1 / 1; max-width: 260px; width: 100%;
+  background: var(--butter);
+  transform: rotate(2deg);
+  /* a sticky note lifts at the free bottom edge, so its shadow is deeper there */
+  box-shadow: 0 1px 1px rgba(30,42,110,.18), 2px 14px 14px -10px rgba(30,42,110,.40);
+  padding: 22px 18px 18px;
+  display: flex;
+}
+.sticky::before { /* the glue strip along the top reads slightly darker */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 18%;
+  background: rgba(30,42,110,.035);
+}
+.sticky .ph { flex: 1; background: transparent; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.btn {
+  appearance: none; cursor: pointer;
+  font: 500 var(--t-18)/1 var(--text); color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--ink); border-radius: 4px;
+  padding: 13px 22px 11px; min-height: 48px;
+  box-shadow: var(--lift-paper);
+}
+.btn:hover, .btn.is-hover { background: var(--ink); color: var(--paper); }
+.btn.is-focus { outline: 3px solid var(--stamp); outline-offset: 3px; }
+.btn-states { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; font-size: var(--t-12); }
+.btn-states div { display: grid; gap: 8px; justify-items: start; }
+.copy-status { font-size: var(--t-14); min-height: 1.5em; margin: 10px 0 0; }
+
+/* ---------- CRFTD spread, real size ---------- */
+.spread-wrap { padding-block: 72px 96px; }
+.spread-intro { margin-bottom: 24px; }
+.spread {
+  display: grid; grid-template-columns: 1fr;
+  background: var(--butter);
+  box-shadow: var(--lift-folder);
+  width: 100%;
+}
+@media (min-width: 900px) {
+  .spread { grid-template-columns: 1fr 1fr; min-height: 100vh; min-height: 100svh; }
+  /* the fold between two pages: a real shadow where the paper curves into the spine */
+  .page-left  { box-shadow: inset -28px 0 30px -26px rgba(30,42,110,.30); }
+  .page-right { box-shadow: inset  28px 0 30px -26px rgba(30,42,110,.30); }
+}
+.page { padding: 32px 16px; min-width: 0; }
+@media (min-width: 700px) { .page { padding: 56px 48px; } }
+
+.lookbook { display: grid; grid-template-columns: minmax(0, 2.9fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.lookbook .hero { aspect-ratio: 4 / 5; }
+.tees { display: grid; gap: 16px; }
+.tee figure, figure.tee { margin: 0; }
+.tee .ph { aspect-ratio: 1 / 1; padding: 8px; }
+.tee figcaption { font-size: var(--t-14); line-height: 1.3; margin-top: 6px; font-weight: 500; }
+@media (max-width: 560px) {
+  .lookbook { grid-template-columns: 1fr; }
+  .tees { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .tee .ph b { font-size: var(--t-12); }
+}
+
+.page-right { display: flex; flex-direction: column; }
+.page-right h2 { font: 400 var(--t-72)/1 var(--display); letter-spacing: -0.01em; margin: 0; }
+@media (max-width: 560px) { .page-right h2 { font-size: var(--t-48); } }
+.standfirst { font-size: var(--t-21); line-height: 1.4; margin: 12px 0 28px; max-width: 34ch; }
+.dek { font-size: var(--t-14); margin: 0 0 24px; }
+.story { max-width: 60ch; }
+.story p { margin: 0 0 14px; }
+.story strong { font-weight: 700; }
+
+.hangtag {
+  align-self: flex-end; margin-top: auto;
+  position: relative; width: 200px;
+  background: var(--paper); box-shadow: var(--lift-card);
+  padding: 34px 18px 16px; transform: rotate(4deg);
+  /* tag shape: the top corners are clipped, like a real swing tag */
+  clip-path: polygon(18% 0, 82% 0, 100% 14%, 100% 100%, 0 100%, 0 14%);
+}
+.hangtag::before { /* punched hole */
+  content: ""; position: absolute; top: 12px; left: 50%; width: 12px; height: 12px; margin-left: -6px;
+  border-radius: 50%; background: var(--butter);
+  box-shadow: inset 0 1px 2px rgba(30,42,110,.35);
+}
+.hangtag b { display: block; font: 400 var(--t-36)/1 var(--display); }
+.hangtag span { display: block; font-size: var(--t-14); line-height: 1.3; margin-top: 6px; }
+@media (max-width: 899px) { .hangtag { margin-top: 24px; } }
+
+.next-note { font-size: var(--t-14); margin-top: 16px; max-width: 64ch; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
+</head>
+<body>
+
+<!-- Ink texture for the rubber stamp: roughens the edges and knocks out tiny specks, the way a real stamp prints -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="2" seed="11" result="speck"/>
+    <feColorMatrix in="speck" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2 1.85" result="mask"/>
+    <feComposite in="rough" in2="mask" operator="in"/>
+  </filter>
+</svg>
+
+<header class="intro wrap">
+  <h1>Style tile for Geetika Agarwal's portfolio</h1>
+  <p>This is a test page, not the site. It shows the colours, type, folder, one project spread and the small objects, all still. Dashed frames mark photos that haven't been added yet. Each one says which file goes there and at what size.</p>
+</header>
+
+<main>
+
+<!-- Paper swatches -->
+<section class="tile-section wrap" aria-labelledby="h-colour">
+  <h2 class="tile-head" id="h-colour">Paper stock</h2>
+  <p class="tile-note">Every colour on the site is a material you could pick up. Light blue and pink lead (outlined). The others are coloured paper, one per project, and the same colour shows on that project's index tab.</p>
+  <ul class="swatches">
+    <li class="swatch paper lead" style="--c:var(--desk);--r:-1deg"><b>Desk</b><span>The page itself</span><span class="hex">#CFE3F5</span></li>
+    <li class="swatch paper lead" style="--c:var(--folder);--r:1.2deg"><b>Folder</b><span>The case file, cover and index</span><span class="hex">#F7C5D5</span></li>
+    <li class="swatch paper" style="--c:var(--paper);--r:-.6deg"><b>Paper</b><span>Text pages, PR desk</span><span class="hex">#FAFCFF</span></li>
+    <li class="swatch paper" style="--c:var(--butter);--r:.8deg"><b>Butter</b><span>CRFTD, sticky notes</span><span class="hex">#FDE99B</span></li>
+    <li class="swatch paper" style="--c:var(--mint);--r:-1.4deg"><b>Mint</b><span>Too Yumm!, contact</span><span class="hex">#C4EBD5</span></li>
+    <li class="swatch paper" style="--c:var(--lilac);--r:.5deg"><b>Lilac</b><span>Tiya reels, photography</span><span class="hex">#DACDF3</span></li>
+    <li class="swatch paper" style="--c:var(--peach);--r:-.4deg"><b>Peach</b><span>AquaTerra</span><span class="hex">#FFD2B6</span></li>
+    <li class="swatch paper" style="--c:var(--sky);--r:1deg"><b>Sky card</b><span>Media planning divider</span><span class="hex">#B9D6F0</span></li>
+  </ul>
+  <div class="inks">
+    <div class="ink-card paper"><span class="ink-dot" style="--c:var(--ink)"></span><div><b>Ballpoint ink #1E2A6E</b><span>All text, instead of black</span></div></div>
+    <div class="ink-card paper"><span class="ink-dot" style="--c:var(--stamp)"></span><div><b>Stamp ink #5A3FA6</b><span>Only on stamps</span></div></div>
+  </div>
+</section>
+
+<!-- Type specimen -->
+<section class="tile-section wrap" aria-labelledby="h-type">
+  <h2 class="tile-head" id="h-type">Type</h2>
+  <p class="tile-note">Two typefaces, both from Indian foundries. Rozha One is only for the cover line and headlines. Mukta does everything else. Each one is shown below at every size in the scale, so you can see where each starts and stops working.</p>
+
+  <div class="specimen paper">
+    <h3>Rozha One</h3>
+    <p class="who">Indian Type Foundry. One weight. Display only.</p>
+    <div class="spec-row"><div class="size"><b>120px</b><br>Cover line. Shrinks on phones</div><p class="sample rozha" style="font-size:var(--t-120)">Marketing, PR and content</p></div>
+    <div class="spec-row"><div class="size"><b>72px</b><br>Spread headlines</div><p class="sample rozha" style="font-size:var(--t-72)">Too Yumm!</p></div>
+    <div class="spec-row"><div class="size"><b>48px</b><br>Headlines on phones</div><p class="sample rozha" style="font-size:var(--t-48)">Same ₹8 crore, opposite jobs</p></div>
+    <div class="spec-row"><div class="size"><b>36px</b><br>Figures on tags and tickets</div><p class="sample rozha" style="font-size:var(--t-36)">250K+ views in 3 days</p></div>
+    <div class="spec-row"><div class="size"><b>24px</b><br>Smallest it should go</div><p class="sample rozha" style="font-size:var(--t-24)">Paradox 4.0, 1,200+ attendees</p></div>
+    <div class="spec-row"><div class="size"><b>21px</b><br>Too small, not used</div><p class="sample rozha" style="font-size:var(--t-21)">Starry Night and Disco Diwali</p></div>
+    <div class="spec-row"><div class="size"><b>18px</b><br>Too small, not used</div><p class="sample rozha" style="font-size:var(--t-18)">Chandor, Aguada Fort, Aguada Jail</p></div>
+    <div class="spec-row"><div class="size"><b>14px</b><br>Too small, not used</div><p class="sample rozha" style="font-size:var(--t-14)">Kolkata and Mumbai</p></div>
+    <div class="spec-row"><div class="size"><b>12px</b><br>Too small, not used</div><p class="sample rozha" style="font-size:var(--t-12)">Whistling Woods International</p></div>
+  </div>
+
+  <div class="specimen paper">
+    <h3>Mukta</h3>
+    <p class="who">Ek Type, Mumbai. Regular 400, Medium 500, Bold 700.</p>
+    <div class="spec-row"><div class="size"><b>120px</b><br>Not used this big</div><p class="sample mukta" style="font-size:var(--t-120);line-height:1.05;font-weight:700">Marketing, PR and content</p></div>
+    <div class="spec-row"><div class="size"><b>72px</b><br>Not used this big</div><p class="sample mukta" style="font-size:var(--t-72);line-height:1.05;font-weight:700">Too Yumm!</p></div>
+    <div class="spec-row"><div class="size"><b>48px</b><br>Not used this big</div><p class="sample mukta" style="font-size:var(--t-48);line-height:1.1;font-weight:500">Same ₹8 crore, opposite jobs</p></div>
+    <div class="spec-row"><div class="size"><b>36px</b><br>Rarely, large pull lines</div><p class="sample mukta" style="font-size:var(--t-36);line-height:1.15;font-weight:500">250K+ views in 3 days</p></div>
+    <div class="spec-row"><div class="size"><b>24px</b><br>Section and name heads, bold</div><p class="sample mukta" style="font-size:var(--t-24);line-height:1.25;font-weight:700">Geetika Agarwal</p></div>
+    <div class="spec-row"><div class="size"><b>21px</b><br>Standfirst under a headline</div><p class="sample mukta" style="font-size:var(--t-21);line-height:1.4">An apparel label printed with artwork by children.</p></div>
+    <div class="spec-row"><div class="size"><b>18px</b><br>Body text, 1.55 line height</div><p class="sample mukta" style="font-size:var(--t-18)">I like ideas that are fun to look at and still move numbers.</p></div>
+    <div class="spec-row"><div class="size"><b>14px</b><br>Captions, dates, tabs</div><p class="sample mukta" style="font-size:var(--t-14)">Co-founder and director, Kolkata, January 2024 to June 2026</p></div>
+    <div class="spec-row"><div class="size"><b>12px</b><br>Photo credits, the smallest text</div><p class="sample mukta" style="font-size:var(--t-12)">Photographed in Goa for Erasmus. Selected for NCPA, Mumbai, January 2027.</p></div>
+
+    <div class="weights">
+      <p style="font-weight:400">Regular 400: brand building, social content, events</p>
+      <p style="font-weight:500">Medium 500: sponsorships and PR writing</p>
+      <p style="font-weight:700">Bold 700: 30+ sponsors closed</p>
+    </div>
+
+    <div class="body-sample">
+      <p><strong>Body text at 18px, kept under 64 characters a line.</strong> I co-founded an apparel label that sold 2,000+ units, ran events for a student NGO, wrote strategy for a snack brand and shot reels that crossed 250K views.</p>
+      <p>I like ideas that are fun to look at and still move numbers. Off the clock: my camera, momos, and the next trip.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Folder and index tabs -->
+<section class="tile-section wrap" aria-labelledby="h-folder">
+  <h2 class="tile-head" id="h-folder">The folder and its index tabs</h2>
+  <p class="tile-note">On the real site the cover folder will be your photograph. These dividers and tabs are built in code because they are the links. Hover over a tab or Tab to it with the keyboard and it lifts. That is the only hover effect on the site.</p>
+
+  <div class="folder-stage">
+    <div class="folder">
+      <div class="folder-back paper" aria-hidden="true"></div>
+      <nav aria-label="Sections in the folder">
+        <ol class="dividers">
+          <li class="divider paper" style="--i:0;--c:var(--butter)"><a href="#crftd">CRFTD</a></li>
+          <li class="divider paper" style="--i:1;--c:var(--mint)"><a href="#crftd">Too Yumm!</a></li>
+          <li class="divider paper" style="--i:2;--c:var(--lilac)"><a href="#crftd">Tiya reels</a></li>
+          <li class="divider paper" style="--i:3;--c:var(--peach)"><a href="#crftd">AquaTerra</a></li>
+          <li class="divider paper" style="--i:4;--c:var(--sky)"><a href="#crftd">Media planning</a></li>
+          <li class="divider paper" style="--i:5;--c:var(--paper)"><a href="#crftd">PR desk</a></li>
+          <li class="divider paper" style="--i:6;--c:var(--lilac)"><a href="#crftd">Photography</a></li>
+          <li class="divider paper" style="--i:7;--c:var(--butter)"><a href="#crftd">Also on my desk</a></li>
+          <li class="divider paper" style="--i:8;--c:var(--mint)"><a href="#crftd">Contact</a></li>
+        </ol>
+      </nav>
+      <div class="folder-front paper">
+        <p class="folder-label paper">Geetika Agarwal, Portfolio 2026<small>Your handwritten label replaces this: assets/objects/folder-label-hand.png</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stamp, sticky note, button -->
+<section class="tile-section wrap" aria-labelledby="h-objects">
+  <h2 class="tile-head" id="h-objects">Stamp, sticky note and button</h2>
+  <p class="tile-note">The small things that repeat across the site.</p>
+  <div class="objects">
+    <div>
+      <div class="stamp-sheet paper">
+        <div class="stamp"><div class="stamp-inner"><b>Selected</b><span>NCPA, Mumbai</span><span>January 2027</span></div></div>
+      </div>
+      <p class="obj-cap">The violet stamp only marks things that really happened, like the NCPA selection or a release going out.</p>
+    </div>
+    <div>
+      <div class="sticky paper">
+        <div class="ph"><b>Image to add</b><span>A sticky note in your handwriting, cut out</span><code>assets/objects/note-hand-1.png</code><span>1:1, 1200 × 1200</span></div>
+      </div>
+      <p class="obj-cap">The note's paper and shadow are built in code. What's written on it is a scan of your handwriting.</p>
+    </div>
+    <div>
+      <div class="btn-row">
+        <button class="btn" type="button" id="copy">Copy email</button>
+      </div>
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+      <div class="btn-states" aria-hidden="true">
+        <div><span class="btn is-hover">Copy email</span>Hover</div>
+        <div><span class="btn is-focus">Copy email</span>Keyboard focus</div>
+      </div>
+      <p class="obj-cap">One button style for the whole site. The label says exactly what happens, with no arrow.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CRFTD spread, real size -->
+<section class="spread-wrap" id="crftd" aria-labelledby="h-crftd">
+  <div class="wrap spread-intro">
+    <h2 class="tile-head">The CRFTD spread at real size</h2>
+    <p class="tile-note" style="margin-bottom:0">On a laptop this fills the screen exactly, the way it will on the site. On the site a second spread will slide in from the right after this one, with the DIY kits and the move to selling to schools.</p>
+  </div>
+
+  <article class="spread paper" aria-labelledby="h-crftd">
+    <div class="page page-left">
+      <div class="lookbook">
+        <div class="ph hero" role="img" aria-label="Image to add: CRFTD lookbook hero">
+          <b>Image to add</b><span>Lookbook hero: a tee being worn, or a styled flat lay</span><code>assets/crftd/crftd-lookbook-hero.jpg</code><span>4:5, 1600 × 2000</span>
+        </div>
+        <div class="tees">
+          <figure class="tee"><div class="ph" role="img" aria-label="Image to add: Valentine's drop tee mockup"><b>Image to add</b><code>assets/crftd/crftd-tee-valentines.png</code><span>1:1, 1600 × 1600</span></div><figcaption>Valentine's drop</figcaption></figure>
+          <figure class="tee"><div class="ph" role="img" aria-label="Image to add: Earth Day drop tee mockup"><b>Image to add</b><code>assets/crftd/crftd-tee-earthday.png</code><span>1:1, 1600 × 1600</span></div><figcaption>Earth Day drop</figcaption></figure>
+          <figure class="tee"><div class="ph" role="img" aria-label="Image to add: IPL drop tee mockup"><b>Image to add</b><code>assets/crftd/crftd-tee-ipl.png</code><span>1:1, 1600 × 1600</span></div><figcaption>IPL drop</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="page page-right">
+      <h2 id="h-crftd">CRFTD</h2>
+      <p class="standfirst">An apparel label printed with artwork by children, supporting welfare initiatives.</p>
+      <p class="dek">Co-founder and director, formerly Roots. Kolkata, January 2024 to June 2026.</p>
+      <div class="story">
+        <p><strong>The brief.</strong> Build an apparel brand from zero that sells, with children's art at its heart.</p>
+        <p><strong>My role.</strong> I co-founded the label and ran it as director, owning product design, social media, logistics and fulfilment.</p>
+        <p><strong>What I made.</strong> Three themed drops for Valentine's, Earth Day and IPL. I designed 8 of the tees and children designed 4. We also made DIY T-shirt print kits, so buyers could make their own.</p>
+        <p><strong>Result.</strong> 2,000+ units sold and ₹8 lakh+ in fully bootstrapped revenue before we rebranded to CRFTD. The DIY kits brought in 100+ sales before launch. We then moved into selling to schools and worked with 10+ in Kolkata.</p>
+      </div>
+      <div class="hangtag paper" aria-hidden="true"><b>2,000+</b><span>units sold, fully bootstrapped</span></div>
+    </div>
+  </article>
+
+  <p class="wrap next-note">The swing tag is paper built in code because it carries live text. If you'd prefer a photo of a real CRFTD tag, add it as assets/crftd/crftd-hangtag.png and I'll set the text on top.</p>
+</section>
+
+</main>
+
+<script>
+  // Copy email: the only script on this page. No animation.
+  (function () {
+    var btn = document.getElementById('copy');
+    var status = document.getElementById('copy-status');
+    var email = 'geetikaa174@gmail.com';
+    btn.addEventListener('click', function () {
+      function done() { status.textContent = 'Copied ' + email; }
+      function fallback() {
+        var t = document.createElement('textarea');
+        t.value = email; t.setAttribute('readonly', ''); t.style.position = 'absolute'; t.style.left = '-9999px';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); done(); } catch (e) { status.textContent = 'Copy blocked by the browser. The email is ' + email; }
+        document.body.removeChild(t);
+      }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(done, fallback);
+      } else { fallback(); }
+    });
+  })();
+</script>
+</body>
+</html>
