@@ -8,3 +8,4 @@ One line per non-original cutout: file name, where it came from (link), licence 
 | assets/generated/cover-folder-open.jpg | AI-generated in Geetika's Figma, Nov 2026. Stand-in | Generated for this site |
 | assets/generated/divider-folders.jpg | AI-generated in Geetika's Figma, Nov 2026. Stand-in | Generated for this site |
 | assets/generated/sticker-*.webp | AI-generated sticker sheet in Geetika's Figma, cut out locally, Nov 2026. Stand-ins until her own object photos | Generated for this site |
+| assets/cutouts/sticker-coffee/laptop/flowers/sushi/tickets.webp | Geetika's own AI-generated sticker sheet (ChatGPT), cut out locally, Nov 2026. Original in assets/cutouts/originals | Generated for this site |
